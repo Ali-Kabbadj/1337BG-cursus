@@ -6,11 +6,12 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 22:42:29 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/06 23:10:58 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 01:09:15 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void ft_bzero(void *s, size_t n)
 {
-	ft_memset(*s, '\0', n);
+	if(n > 0)
+		ft_memset(*s, '\0', n);
 }

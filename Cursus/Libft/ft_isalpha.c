@@ -6,10 +6,10 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:39:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 01:56:21 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/07 23:59:22 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+i
 int isalpha(int c)
 {
 	if(ft_islower(c) || ft_isupper(c))

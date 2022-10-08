@@ -6,15 +6,16 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 22:29:19 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/06 22:34:23 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 00:16:43 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		i++;
 	}
