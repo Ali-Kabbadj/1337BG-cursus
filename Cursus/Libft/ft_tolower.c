@@ -6,11 +6,12 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:26:06 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 00:27:42 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 22:23:20 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int ft_tolower(int c, locate_t loc)
+int ft_tolower(int c)
 {
 	if(c >= 'A' && c <= 'Z')
 		c = c - 32;

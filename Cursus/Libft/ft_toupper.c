@@ -6,11 +6,12 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:14:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 00:25:18 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 22:22:52 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_toupper(int c, locale_t loc)
+int	ft_toupper(int c)
 {
 	if(c >= 'a' && c <= 'z')
 		c = c - 32;

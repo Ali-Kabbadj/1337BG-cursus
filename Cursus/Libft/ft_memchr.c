@@ -6,22 +6,25 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:48:50 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 00:58:51 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:13:46 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void *memchr(const void *s, int c, size_t n)
+void *ft_memchr(const void *s, int c, size_t n)
 {
 	int i;
-
+	size_t slen;
 	i = 0;
-	while(s[i] && i < n)
+
+	slen = ft_strlen((char *)s);
+	if(n == slen && c == '\0')
+		return ((void *)s + slen);
+	while(*((unsigned char*)s + i) && i < n)
 	{
-		if(s[i] == (unsigned char)c)
-			return (&s[i]);
+		if(*((unsigned char*)s + i) == (unsigned char)c)
+			return (((void *)s + i));
 		i++;
 	}
-	if(c == '\0' && i < n)
-		return (&s[i]);
-	return (NULL);
+	return (0);
 }

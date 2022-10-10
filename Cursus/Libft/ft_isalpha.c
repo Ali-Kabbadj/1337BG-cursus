@@ -6,13 +6,14 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:39:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 23:59:22 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 22:33:06 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-i
-int isalpha(int c)
+#include "libft.h"
+
+int ft_isalpha(int c)
 {
 	if(ft_islower(c) || ft_isupper(c))
-		return (c);
+		return (1);
 	return (0);
 }

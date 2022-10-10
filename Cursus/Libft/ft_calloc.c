@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 21:37:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 01:59:19 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/09 21:43:20 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/10/09 22:15:15 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int ft_is_lower(int c)
+void *calloc(size_t count, size_t size)
 {
-	if(c >= 'a' && c <= 'z')
-		return (c);
-	return (0);
+	void *buffer;
+	if(!(buffer = malloc(count * size)))
+		return (0);
+	return (buffer);
 }

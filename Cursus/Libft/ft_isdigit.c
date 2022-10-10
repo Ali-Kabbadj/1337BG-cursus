@@ -6,12 +6,14 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:52:04 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 00:03:32 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:38:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
 int ft_isdigit(int c)
 {
 	if(c >= '0' && c <= '9')
-		return (c);
+		return (1);
 	return (0);
 }

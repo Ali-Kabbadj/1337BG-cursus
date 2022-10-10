@@ -6,12 +6,13 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 22:42:29 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 01:09:15 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:47:38 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void ft_bzero(void *s, size_t n)
 {
 	if(n > 0)
-		ft_memset(*s, '\0', n);
+		ft_memset(s, '\0', n);
 }
