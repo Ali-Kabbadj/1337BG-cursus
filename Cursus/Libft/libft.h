@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 03:58:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/07 04:08:52 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:32:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-#include <stdio.h>
 #ifndef LIBFT_H
-# define LIBFT_H
-int ft_isupper(int c);
-int ft_islower(int c);
+# define LIBFT_H 
+# include <stdlib.h>
+
+int     ft_isupper(int c);
+int     ft_islower(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strrchr(const char *s, int c);
@@ -37,7 +35,6 @@ int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_isupper(int c);
-
 void	ft_bzero(void *s, size_t n);
 int		ft_atoi(const char *str);
 #endif

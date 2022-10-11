@@ -11,29 +11,15 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void *ft_memset(void *b, int c , int len)
+void	*ft_memset(void *b, int c , int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		*((unsigned char*)b + i) = (unsigned char)c;
 		i++;
 	}
 	return (b);
 }
-
-/*int main ()
-{
-	char src[10] = "abcdefgh";
-	ft_memset(src, 'x', 4);
-	printf("%s",src);
-
-	int i;
-    i = 0;
-	int array[10] = {5 , 5 , 5 ,5};
-	memset(array, 1, sizeof(int) * 4);
-	while(i < 4)
-	    printf("%d\n",array[i++]);
-}*/
