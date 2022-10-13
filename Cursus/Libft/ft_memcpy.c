@@ -38,5 +38,3 @@ void *ft_memcpy(void *dst, const void *src, size_t n)
 	// printf("-dyalhom : %s\n", ptr1);
 	return 0;
 }*/
-
-int

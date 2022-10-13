@@ -11,20 +11,18 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void *ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	slen;
-	
-	i = 0;
-	slen = ft_strlen((char *)s);
-	if (n == slen && c == '\0')
+	size_t slen;
+
+	slen = (size_t)ft_strlen((const char *)s);
+	if (c == '\0')
 		return ((void *)s + slen);
-	while (*((unsigned char*)s + i) && i < n)
+	while (n + 1 > -1)
 	{
-		if(*((unsigned char*)s + i) == (unsigned char)c)
-			return (((void *)s + i));
-		i++;
+		if (*((unsigned char *)s + n) == (unsigned char)c)
+			return (((void *)s + n));
+		n--;
 	}
 	return (0);
 }
