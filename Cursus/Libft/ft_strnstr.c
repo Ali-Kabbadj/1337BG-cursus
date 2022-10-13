@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*strnstr(const char *haystack, const char *needle, size_t len)
+char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t i;
+	size_t j;
 
 	i = 0;
 	j = 0;
@@ -34,3 +34,13 @@ char	*strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
+
+/*int main()
+{
+	char *str = "hello";
+	char *ptr = ft_strnstr(str, "l", 3);
+	char *ptr1 = strnstr(str, "l", 3);
+	printf("dyalna : %s\n", ptr);
+	printf("dyalhoum :%s", ptr1);
+	return 0;
+}*/

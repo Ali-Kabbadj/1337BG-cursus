@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-	int	slen;
+	int slen;
 
+	slen = 0;
+	if (s == NULL)
+		return (0);
 	slen = ft_strlen(s);
-	if (c == '\0')
-		return ((char *)s + slen);
 	while (slen >= 0)
 	{
 		if (s[slen] == c)
@@ -26,3 +27,13 @@ char	*strrchr(const char *s, int c)
 	}
 	return (0);
 }
+
+/*int main()
+{
+	char *str = NULL;
+	// char *ptr = strrchr(str, 'a');
+	char *ptr1 = ft_strrchr(str, 'a');
+	// printf("dyalna%s\n", ptr);
+	printf("dyalna%s", ptr1);
+	return 0;
+}*/

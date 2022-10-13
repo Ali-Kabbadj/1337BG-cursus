@@ -10,29 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
-int	ft_atoi(const char *str)
+#include <stdio.h>
+int ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
-		
+	int i;
+	int sign;
+	int res;
+
 	i = 0;
 	sign = 1;
 	res = 0;
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
-	if (str[i] == '-'){
+	if (str[i] == '-')
+	{
 		sign = -1;
 		i++;
 	}
-	else if (str[i] == '+'){
+	else if (str[i] == '+')
+	{
 		sign = 1;
 		i++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9'){
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
 	return res * sign;
 }
+
+/*int main()
+{
+	char *str = "  -2147483647";
+	printf("%d\n\n", ft_atoi(str));
+	printf("%d", atoi(str));
+	return 0;
+}*/
