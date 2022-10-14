@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 00:48:50 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:13:46 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 21:37:42 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/10/08 21:36:38 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+int	ft_islower(int c)
 {
-	size_t i;
-
-	i = 0;
-	while (i < n)
-	{
-		if(*((unsigned char*)s + i) == (unsigned char)c)
-			return(((void *)s + i));
-		i++;
-	}
-	return (NULL);
+	if (c >= 'a' && c <= 'z')
+		return (c);
+	return (0);
 }

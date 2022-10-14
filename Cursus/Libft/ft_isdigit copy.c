@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 00:48:50 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:13:46 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 21:52:04 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/10/11 12:13:01 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+int	ft_isdigit(int c)
 {
-	size_t i;
-
-	i = 0;
-	while (i < n)
-	{
-		if(*((unsigned char*)s + i) == (unsigned char)c)
-			return(((void *)s + i));
-		i++;
-	}
-	return (NULL);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

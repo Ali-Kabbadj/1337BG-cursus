@@ -29,6 +29,14 @@ FILES = ft_memset \
 		ft_calloc \
 		ft_islower \
 		ft_isupper \
+		ft_memccpy \
+		ft_strdup \
+		ft_substr \
+		ft_strjoin \
+		ft_strtrim \
+		ft_split \
+
+		
 
 
 SRCS_DIR = ./
@@ -38,9 +46,9 @@ OBJS_DIR = ./
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+#so:
+#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+#	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 
 .c.o: $(SRCS)

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 00:59:18 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:19:46 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 23:12:30 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/10/08 22:21:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+void *ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t i;
-	unsigned char *src1;
-	unsigned char *src2;
 
-	src1 = (unsigned char*)s1;
-	src2 = (unsigned char *)s2;
 	i = 0;
-	while (i < n - 1 && src1[i] == src2[i] )
+	if (dst == src || !n)
+		return (dst);
+	while (i < n)
+	{
+		*((unsigned char *)dst + i) = *((unsigned char *)src + i);
 		i++;
-	return (src1[i] - src2[i]);
+	}
+	return (dst);
 }
 
-// int main()
-// {
-// 	char *s1 = "\xff\xaa\xde\x12";
-// 	char *s2 = "\xff\xaa\xde\x12MACOSAAAAA";
-// 	size_t size = 4;
-// 	printf("thiers : %d \n", memcmp(s1, s2, size));
-// 	printf("mine   : %d",ft_memcmp(s1, s2, size));
-// }
+/*int main()
+{
+	char *src = "abcd";
+	char *dst = "efgh";
+	// char *dst1 = "efgh";
+
+	char *ptr = ft_memcpy(dst, src, 2);
+	// char *ptr1 = memcpy(dst1, src, 3);
+	printf("-dyalna : %s\n", ptr);
+	// printf("-dyalhom : %s\n", ptr1);
+	return 0;
+}*/
