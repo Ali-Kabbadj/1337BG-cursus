@@ -11,29 +11,29 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int set_sign(unsigned char c)
+static int	set_sign(unsigned char c)
 {
-	if(c == '-')
+	if (c == '-')
 		return (-1);
-	else 
+	else
 		return (1);
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int res;
+	int	i;
+	int	sign;
+	int	res;
 
 	i = 0;
 	sign = 1;
 	res = 0;
-	if(!str[0])
+	if (!str[0])
 		return (0);
-	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' 
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == '\n'))
+	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
+			|| str[i] == '\f' || str[i] == '\r' || str[i] == '\n'))
 		i++;
-	if(str[i] ==  '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		sign = set_sign(str[i]);
 		i++;
@@ -43,6 +43,5 @@ int ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	return res * sign;
+	return (res * sign);
 }
-

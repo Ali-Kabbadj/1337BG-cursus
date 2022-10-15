@@ -16,9 +16,7 @@ char **ft_split(char const *s, char c)
     char **res;
     size_t s1len;
     size_t s2len;
-    size_t i;
 
-    i = 0;
     s1len = 0;
     s2len = 0;
     while (s[s1len] && s[s1len] != c)
@@ -66,7 +64,7 @@ char **ft_split(char const *s, char c)
 //     return (res);
 // }
 
-int main()
+/*int main()
 {
     char **ar;
 
@@ -74,4 +72,4 @@ int main()
     ar = ft_split(s, '-');
     printf("%s",ar[0]);
     printf("%s",ar[1]);
-}
+}*/

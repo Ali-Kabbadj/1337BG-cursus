@@ -24,7 +24,7 @@ char *ft_strtrim(char const *s1, char const *set)
         return (0);
     while (s1[i])
     {
-        if(s1[i] ! set[i])
+        if(s1[i] != set[i])
             res[j++] = s1[i]; 
     }
     return (res);

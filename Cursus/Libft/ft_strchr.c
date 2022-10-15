@@ -6,12 +6,12 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:30:03 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:08:20 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:07:06 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s,int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 	int	slen;

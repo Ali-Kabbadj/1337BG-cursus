@@ -6,33 +6,46 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:38:51 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 21:25:38 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:02:38 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static void	write_from_start(unsigned char *dest,
+			unsigned char *source, size_t len)
 {
 	size_t	i;
 
 	i = 0;
+	while (i < len)
+	{
+		dest[i] = source[i];
+		i++;
+	}
+}
+
+static void	write_from_end(unsigned char *dest,
+			unsigned char *source, size_t len)
+{
+	while (len > 0)
+	{
+		dest[len - 1] = source[len - 1];
+		len--;
+	}
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*source;
+	unsigned char	*dest;
+
+	source = (unsigned char *)src;
+	dest = (unsigned char *)dst;
 	if (dst == src)
 		return (dst);
 	if (dst < src)
-	{
-		while (i < len)
-		{
-			*((unsigned char*)dst + i) = *((unsigned char*)src + i);
-			i++;
-		}
-	}
+		write_from_start(dest, source, len);
 	else
-	{
-		while (len > 0)
-		{
-			*((unsigned char*)dst + len - 1) = *((unsigned char*)src  +len - 1);
-			len--;
-		}
-	}
+		write_from_end(dest, source, len);
 	return (dst);
 }

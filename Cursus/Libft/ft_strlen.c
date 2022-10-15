@@ -6,18 +6,16 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 22:29:19 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/08 21:43:55 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/15 06:16:28 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	// if(!s)
-	// 	return (0);
 	while (s[i])
 		i++;
 	return (i);
