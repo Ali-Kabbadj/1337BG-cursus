@@ -6,14 +6,20 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 03:58:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/11 13:32:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:22:46 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 #define LIBFT_H
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <unistd.h>
+typedef struct s_indextouple
+{
+	size_t idxstart;
+	size_t idxend;
+}			t_indextouple;
 
 int ft_isupper(int c);
 int ft_islower(int c);
@@ -47,4 +53,11 @@ char *ft_strjoin(char const *s1, char const *s2);
 char *ft_substr(char const *s, unsigned int start, size_t len);
 char *ft_strtrim(char const *s1, char const *set);
 char **ft_split(char const *s, char c);
+char *ft_itoa(int n);
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void ft_striteri(char *s, void (*f)(unsigned int, char *));
+void ft_putchar_fd(char c, int fd);
+void ft_putstr_fd(char *s, int fd);
+void ft_putendl_fd(char *s, int fd);
+void ft_putnbr_fd(int n, int fd);
 #endif

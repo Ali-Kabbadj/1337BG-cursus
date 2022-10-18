@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:12:30 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/15 05:32:49 by alika            ###   ########.fr       */
+/*   Updated: 2022/10/18 11:25:08 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (dst == src || !n)
+	if (dst == src)
 		return (dst);
 	while (i < n)
 	{
