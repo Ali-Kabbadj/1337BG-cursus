@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:30:03 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/22 08:11:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:18:35 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s + slen);
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			return ((char *)s + i);
 		i++;
 	}
