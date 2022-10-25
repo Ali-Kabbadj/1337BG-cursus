@@ -6,33 +6,28 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:57:57 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/24 06:35:17 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 02:51:04 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h" 
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	j;
 	size_t	dstlen;
-	size_t	srclen;
-	size_t	lentocpy;
+	size_t	j;
+	size_t	reslen;
 
-	i = 0;
 	j = 0;
+	reslen = ft_strlen(src) + ft_strlen(dst);
 	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
 	if (!dstsize)
-		return (srclen);
-	/*if (dstsize < dstlen)
-		return (dstlen + srclen);*/
-	if (dstsize < sizeof(dst))
-		return (srclen + dstsize);
-	lentocpy = dstsize - dstlen - 1;
-	i = dstlen;
-	while (j < lentocpy && src[j])
-		dst[i++] = src[j++];
-	dst[i] = '\0';
-	return (dstlen + srclen);
+		return (ft_strlen(src));
+	if (dstsize > dstlen)
+		reslen = ft_strlen(src) + dstlen;
+	else
+		reslen = ft_strlen(src) + dstsize;
+	while (dstlen < dstsize - 1 && src[j])
+		dst[dstlen++] = src[j++];
+	dst[dstlen] = '\0';
+	return (reslen);
 }
