@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 10:58:22 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/27 12:56:37 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/27 13:24:04 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/10/27 13:32:57 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list *ft_lstnew(void *content)
 {
-	char	*res;
-	size_t	slen;
+	t_list	*res;
 
-	slen = ft_strlen(s);
-	if (start >= slen || !len)
-		return (ft_strdup(""));
-	if (len > slen)
-		len = slen - start;
-	res = malloc(sizeof(char) * (len + 1));
+	res = malloc(sizeof(t_list));
 	if (!res)
 		return (0);
-	ft_memset(res, '\0', len + 1);
-	ft_memmove(res, (const char *)s + start, len);
+	res->content = content;
+	res->next = NULL;
 	return (res);
 }
-
-// int main()
-// {
-//     char *s = "tripouille;
-//     printf("%s",ft_substr(s,6,13));
-// }

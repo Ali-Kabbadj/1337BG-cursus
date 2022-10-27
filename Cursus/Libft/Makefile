@@ -6,10 +6,13 @@
 #    By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2022/10/25 04:45:29 by alika            ###   ########.fr        #
+#    Updated: 2022/10/27 15:56:33 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra
+
 SRCS = ft_islower.c ft_memmove.c ft_strdup.c ft_strnstr.c ft_atoi.c \
 	   ft_isprint.c ft_memset.c ft_striteri.c ft_strrchr.c \
 	   ft_bzero.c ft_isupper.c ft_putchar_fd.c ft_strjoin.c  \
@@ -20,17 +23,20 @@ SRCS = ft_islower.c ft_memmove.c ft_strdup.c ft_strnstr.c ft_atoi.c \
 	   ft_memcmp.c ft_split.c ft_strmapi.c \
 	   ft_isdigit.c ft_memcpy.c ft_strchr.c ft_strncmp.c \
 
+BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c
+
 OBJS = $(SRCS:.c=.o)
-
-CFLAGS = -Wall -Werror -Wextra
-
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 NAME = libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rs $(NAME) $(OBJS)
+	ar -r $(NAME) $(OBJS)
+
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar -r $(NAME) $(OBJS) $(BONUS_OBJS)
 
 RM: rm -f
 
@@ -40,7 +46,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
 
 re: fclean all
 
