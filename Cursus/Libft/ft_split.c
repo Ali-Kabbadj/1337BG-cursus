@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 06:02:09 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/27 22:26:08 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:18:30 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -74,17 +74,3 @@ char	**ft_split(char const *s, char c)
 	split[j] = 0;
 	return (split);
 }
-
-#include <stdio.h>
-
-int main()
-{
-	char **p;
-	int i;
-	i = 0;
-	char a = 'a';
-	char *s = "aaaaaaaaaaaaaaaaaaaaaaaa";
-	p = ft_split(s, a);
-
-		printf("%s\n",p[i + 1]);
-			}

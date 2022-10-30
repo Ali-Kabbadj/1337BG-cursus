@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 01:03:20 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/24 03:26:47 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:03:52 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,13 +35,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
-// int main()
-// {
-// 	char *str = "hello";
-// 	char *ptr = ft_strnstr(str, (void*)0, 0);
-// 	//char *ptr1 = strnstr(str, (void*)0, 0);
-// 	printf("dyalna : %s\n", ptr);
-// 	//printf("dyalhoum :%s", ptr1);
-// 	return 0;
-// }

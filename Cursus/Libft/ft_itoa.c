@@ -6,7 +6,7 @@
 /*   By: alika <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:30:30 by alika             #+#    #+#             */
-/*   Updated: 2022/10/22 08:30:03 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:31:13 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -45,8 +45,7 @@ static char	*ft_create_array(char *res, int nbr, int nbrlen, int isneg)
 	}
 	if (isneg)
 		res[0] = '-';
-	else
-		res[0] = nbr % 10 + '0';
+	res[0] = nbr % 10 + '0';
 	return (res);
 }
 

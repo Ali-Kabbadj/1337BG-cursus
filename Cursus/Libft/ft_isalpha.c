@@ -6,14 +6,12 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:39:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/22 07:58:37 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:33:06 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isalpha(int c)
 {
-	if (ft_islower(c) || ft_isupper(c))
-		return (1);
-	return (0);
+	return (ft_islower(c) || ft_isupper(c));
 }

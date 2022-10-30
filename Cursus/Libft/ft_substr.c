@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:58:22 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/27 12:56:37 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:30:22 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -28,9 +28,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_memmove(res, (const char *)s + start, len);
 	return (res);
 }
-
-// int main()
-// {
-//     char *s = "tripouille;
-//     printf("%s",ft_substr(s,6,13));
-// }
