@@ -15,13 +15,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*lastnode;
 
-	if (lst == NULL)
-		(*lst)->next = ft_lstnew(new->content);
-	else if (new == NULL)
-		(*lst)->next = NULL;
-	else
-	{
-		lastnode = malloc(sizeof(t_list));
+	if (*lst && new)
+	{	
 		lastnode = ft_lstlast(*lst);
 		lastnode->next = new;
 	}

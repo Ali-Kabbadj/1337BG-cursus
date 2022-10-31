@@ -15,8 +15,6 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*buffer;
 
-	if (!count || !size || count > SIZE_MAX / size)
-		return (0);
 	buffer = malloc(count * size);
 	if (!buffer)
 		return (0);

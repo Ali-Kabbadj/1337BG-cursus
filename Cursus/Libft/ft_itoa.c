@@ -45,7 +45,8 @@ static char	*ft_create_array(char *res, int nbr, int nbrlen, int isneg)
 	}
 	if (isneg)
 		res[0] = '-';
-	res[0] = nbr % 10 + '0';
+	else
+		res[0] = nbr % 10 + '0';
 	return (res);
 }
 
