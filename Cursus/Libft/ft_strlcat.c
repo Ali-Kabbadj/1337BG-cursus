@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:57:57 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/30 17:50:13 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/10/31 20:41:28 by alika            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h" 
@@ -25,17 +25,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	if (dstsize > dstlen)
 		reslen = ft_strlen(src) + dstlen;
 	else
-		reslen = ft_strlen(src) + dstsize;
+		return (ft_strlen(src) + dstsize);
 	while (dstlen < dstsize - 1 && src[j])
 		dst[dstlen++] = src[j++];
 	dst[dstlen] = '\0';
 	return (reslen);
 }
-/*#include<stdio.h>
+#include<stdio.h>
 #include<string.h>
 
 int main()
 {
-	printf("%zu",strlcat("ali","ali", 1));
+	printf("%zu", ft_strlcat("ali", "ali", 1));
 }
-*/

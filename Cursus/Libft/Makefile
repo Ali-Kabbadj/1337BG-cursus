@@ -6,7 +6,7 @@
 #    By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2022/10/30 17:18:26 by akabbadj         ###   ########.fr        #
+#    Updated: 2022/10/31 20:10:23 by alika            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = gcc
@@ -23,7 +23,9 @@ SRCS = ft_islower.c ft_memmove.c ft_strdup.c ft_strnstr.c ft_atoi.c \
 	   ft_memcmp.c ft_split.c ft_strmapi.c \
 	   ft_isdigit.c ft_memcpy.c ft_strchr.c ft_strncmp.c \
 
-BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+	     ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+	     ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
@@ -37,6 +39,11 @@ $(NAME): $(OBJS)
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	ar -r $(NAME) $(OBJS) $(BONUS_OBJS)
+NAMESO = libft.so
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
+	gcc -shared -o libft.so $(OBJS) $(BONUS_OBJS)
 
 RM: rm -f
 
