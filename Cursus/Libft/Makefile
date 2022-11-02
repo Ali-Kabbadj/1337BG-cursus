@@ -6,7 +6,7 @@
 #    By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2022/10/31 20:10:23 by alika            ###   ########.fr        #
+#    Updated: 2022/11/02 05:55:48 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = gcc
@@ -28,22 +28,25 @@ BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	     ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
+
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 NAME = libft.a
 
 all: $(NAME)
 
+AR = ar -rc
+
 $(NAME): $(OBJS)
-	ar -r $(NAME) $(OBJS)
+	$(AR) $@ $^
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	ar -r $(NAME) $(OBJS) $(BONUS_OBJS)
-NAMESO = libft.so
+	$(AR) $(NAME) $^
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
-	gcc -shared -o libft.so $(OBJS) $(BONUS_OBJS)
+# NAMESO = libft.so
+# so:
+#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
+#	gcc -shared -o libft.so $(OBJS) $(BONUS_OBJS)
 
 RM: rm -f
 
@@ -53,7 +56,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-.PHONY: all bonus clean fclean re
-
 re: fclean all
+
+.PHONY: all bonus clean fclean re
 

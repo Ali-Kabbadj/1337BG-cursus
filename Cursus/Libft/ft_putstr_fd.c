@@ -6,7 +6,7 @@
 /*   By: alika <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:07:53 by alika             #+#    #+#             */
-/*   Updated: 2022/10/30 13:20:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/01 22:59:03 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,9 +16,12 @@ void	ft_putstr_fd(char *s, int fd)
 	unsigned int	i;
 
 	i = 0;
-	while (s[i])
+	if (s && fd)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		while (s[i])
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }
