@@ -6,14 +6,14 @@
 /*   By: alika <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:07:53 by alika             #+#    #+#             */
-/*   Updated: 2022/11/01 22:59:03 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:24:16 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
 	if (s && fd)

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 06:02:09 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/02 05:58:58 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:58:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,20 +15,20 @@ static int	ft_get_word_count(const char *str, char wordsep)
 {
 	int	i;
 	int	wordcount;
-	int	isword;
+	int	counted;
 
 	i = 0;
 	wordcount = 0;
-	isword = 0;
+	counted = 0;
 	while (str[i])
 	{
-		if (str[i] != wordsep && isword == 0)
+		if (str[i] != wordsep && counted == 0)
 		{
 			wordcount++;
-			isword = 1;
+			counted = 1;
 		}
 		else if (str[i] == wordsep)
-			isword = 0;
+			counted = 0;
 		i++;
 	}
 	return (wordcount);
@@ -101,7 +101,7 @@ char	**ft_split(char const *s, char c)
 	if (!split)
 		return (0);
 	j = spliter(split, s, c);
-	if (j != -1 || j == 0 || !split[1])
+	if (j != -1 || j == 0)
 	{
 		ft_clear(split);
 		split = NULL;

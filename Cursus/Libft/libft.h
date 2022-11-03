@@ -6,13 +6,14 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 03:58:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/10/31 19:49:34 by alika            ###   ########.fr       */
+/*   Updated: 2022/11/03 00:35:51 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 int		ft_isupper(int c);
 int		ft_islower(int c);

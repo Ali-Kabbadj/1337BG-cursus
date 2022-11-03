@@ -6,10 +6,10 @@
 #    By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2022/11/02 05:55:48 by akabbadj         ###   ########.fr        #
+#    Updated: 2022/11/03 05:42:34 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 

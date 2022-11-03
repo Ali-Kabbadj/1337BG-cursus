@@ -6,12 +6,12 @@
 /*   By: alika <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:30:30 by alika             #+#    #+#             */
-/*   Updated: 2022/11/02 03:25:47 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:21:28 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	ft_estimate_array_size(long n)
+static int	ft_estimate_array_size(int n)
 {
 	size_t	estimation;
 

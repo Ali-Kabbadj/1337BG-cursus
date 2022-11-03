@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:58:22 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/02 05:59:22 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:06:45 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -36,11 +36,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res[i] = '\0';
 	return (res);
 }
-/*#include <stdio.h>
-int main()
-{
-	char *str = ft_strdup("");
-	char *s = ft_substr((void*)0, 0, 0);
-
-	printf("%s",s);
-}*/
