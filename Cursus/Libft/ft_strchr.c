@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 00:30:03 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/02 22:50:03 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:33:04 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -30,3 +30,14 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
+/*#include <stdio.h>
+#include <string.h>
+int main()
+{
+	const char *s = "ab-cde";
+	int c = '-';
+
+	printf("mine : %s\n", ft_strchr(s, c));
+	printf("original : %s", strchr(s, c));
+
+}*/

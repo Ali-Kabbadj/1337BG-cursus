@@ -6,7 +6,7 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:57:57 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/02 22:48:18 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:28:21 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h" 
@@ -33,11 +33,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dstlen] = '\0';
 	return (reslen);
 }
-/*
-#include<stdio.h>
+/*#include<stdio.h>
 #include<string.h>
-
 int main()
 {
-	printf("%zu", ft_strlcat("ali", "ali", 1));
+	char dst[13] = "abcde";
+	char dst1[13] = "abcde";
+
+	char *src = "efghi";
+	size_t dstsize = 13;
+	
+	printf("mine : %zu | %s\n", ft_strlcat(dst, src, dstsize), dst);
+	printf("orginal : %zu | %s", strlcat(dst1, src, dstsize), dst1);
 }*/

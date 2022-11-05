@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 04:44:38 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/02 23:08:22 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 01:28:31 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -30,3 +30,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(res + s1len, (const void *)s2, s2len);
 	return (res);
 }
+/*#include <stdio.h>
+int main()
+{
+	char const *s1 = "abcde";
+	char const *s2 = "ghijk";
+
+	char *res = ft_strjoin(s1, s2);
+	printf("%s", res);
+
+}*/
