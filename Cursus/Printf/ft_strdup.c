@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 22:35:40 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/04 23:13:29 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:23:34 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:23:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memset(void *b, int c, int len)
+static size_t ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while(s[i])
+		i++;
+	return (i);
+}
+
+static void	*ft_memset(void *b, int c, int len)
 {
 	int	i;
 
@@ -23,18 +33,22 @@ void	*ft_memset(void *b, int c, int len)
 	}
 	return (b);
 }
-/*#include <string.h>
-#include <stdio.h>
-int main(void)
+
+static void ft_bzero(void *s, size_t n)
 {
-	char b[] = "abcdefgh";
-	int c;
-	int len;
-	char *res;
+	if (n > 0)
+		ft_memset(s, '\0', n);
+}
 
-	c = 'a';
-	len = 0;
+char	*ft_strdup(const char *s1)
+{
+	char	*res;
+	size_t	slen;
 
-	printf("mine : %s\n", ft_memset((void *)b, c, len));
-	printf("original : %s", memset((void *)b, c, len));
-}*/
+	slen = ft_strlen(s1) + 1;
+	res = malloc(slen * sizeof(char));
+	if (!res)
+		return (0);
+	ft_bzero(res, slen);
+	return ((char *)ft_memmove(res, s1, slen));
+}

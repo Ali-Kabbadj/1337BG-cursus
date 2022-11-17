@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alika <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 11:30:30 by alika             #+#    #+#             */
-/*   Updated: 2022/11/04 03:03:41 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:15:36 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:15:52 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	ft_estimate_array_size(int n)
 {

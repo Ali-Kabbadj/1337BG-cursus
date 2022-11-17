@@ -5,11 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 23:38:51 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/04 01:27:45 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:16:10 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:19:25 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "ft_printf.h"
 
 static void	write_from_start(unsigned char *dest,
 			unsigned char *source, size_t len)
@@ -49,14 +49,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		write_from_end(dest, source, len);
 	return (dst);
 }
-/*#include <string.h>
-#include <stdio.h>
-int main()
-{
-	char dst[] = "abcdefgh";
-	char src[] = "igkl";
-	size_t	len = 4;
-
-	printf("mine : %s\n",(char *)ft_memmove(dst, src, len));
-	printf("original : %s", (char *)memmove(dst, src, len));
-}*/
