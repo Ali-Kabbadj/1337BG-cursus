@@ -1,31 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/17 21:27:39 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:27:40 by akabbadj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef GET_NEXT_LINE_H
 #define GET_NEXT_LINE_H
-
 #include <stdlib.h>
-
 #include <sys/types.h>
-#include <sys/uio.h>
+#include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
+    #define BUFFER_SIZE 5
 #endif
 
-typedef struct s_list
-{
-    void *content;
-    struct s_list *next;
-} t_list;
+char *ft_strjoin(char *s1, const char *s2);
 char *get_next_line(int fd);
-void read_and_store(int fd, t_list **stored, int *readcount);
-int found_newline(t_list *stored);
-void add_to_store(t_list **stored, char *buffer, int readcount);
-void extract_line(t_list *stored, char **line);
-void make_line(char **line, t_list *stored);
-void clean_stored(t_list **stored);
-void free_stored(t_list *stored);
-t_list *ft_lstlast(t_list *lst);
+int has_linebreak(char *s);
+char *read_and_store(int fd, char *stored);
+char *extract_line(char *line);
 size_t ft_strlen(const char *s);
-void ft_lstclear(t_list **lst, void (*del)(void *));
-void ft_lstdelone(t_list *lst, void (*del)(void *));
+char *extract_rest(char *line);
+char *extract_line(char *line);
 #endif
+
