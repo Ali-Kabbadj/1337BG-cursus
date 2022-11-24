@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static size_t ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -34,7 +34,7 @@ static void	*ft_memset(void *b, int c, int len)
 	return (b);
 }
 
-static void ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
 	if (n > 0)
 		ft_memset(s, '\0', n);

@@ -9,23 +9,23 @@
 /*   Updated: 2022/11/17 21:22:48 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
 #include "ft_printf.h"
+#include <stdlib.h>
 
-int ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (str == NULL)
-    {
-        ft_putstr_fd("(null)", 1);
-        return (6);
-    }
-    while (str[i])
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-    return (i);
+	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

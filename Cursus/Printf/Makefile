@@ -13,7 +13,7 @@ NAME = libftprintf.a
 
 CC = cc
 
-FLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_printf.c ft_putunsigned.c ft_puthex.c ft_putptr.c ft_putpercent.c ft_putnbr.c ft_putstr.c ft_putchar.c ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_strdup.c ft_memmove.c
 OBJS = $(SRCS:.c=.o)
@@ -32,5 +32,3 @@ fclean : clean
 re : fclean all
 
 .PHONY:		all clean fclean re
-
-  

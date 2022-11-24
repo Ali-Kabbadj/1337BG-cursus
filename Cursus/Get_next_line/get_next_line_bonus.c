@@ -6,36 +6,37 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:27:30 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/23 00:38:16 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:38:34 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+#include <limits.h>
 
 char	*get_next_line(int fd)
 {
-	static char		*store;
+	static char		*store[OPEN_MAX];
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 	{
-		if (store)
+		if (store[fd])
 		{
-			free(store);
-			store = 0;
+			free(store[fd]);
+			store[fd] = 0;
 		}
 		return (0);
 	}
-	if (store && has_linebreak(store))
+	if (store[fd] && has_linebreak(store[fd]))
 	{
-		line = extract_line(store);
-		store = extract_rest(store);
+		line = extract_line(store[fd]);
+		store[fd] = extract_rest(store[fd]);
 		return (line);
 	}
-	store = read_and_store(fd, store);
-	if (!store)
+	store[fd] = read_and_store(fd, store[fd]);
+	if (!store[fd])
 		return (NULL);
-	line = extract_line(store);
-	store = extract_rest(store);
+	line = extract_line(store[fd]);
+	store[fd] = extract_rest(store[fd]);
 	return (line);
 }
 
@@ -132,3 +133,35 @@ char	*read_and_store(int fd, char *stored)
 	free(buff);
 	return (stored);
 }
+
+// #include <fcntl.h>
+// #include <sys/stat.h>
+// void ft_putstr_fd(char *s, int fd)
+// {
+// 	int i;
+// 	i = 0;
+// 	while(s[i])
+// 	{
+// 		write(fd, &s[i], 1);
+// 		i++;
+// 	}
+// }
+
+// int main(void)
+// {
+//     int fd = open("hello.txt" ,O_RDWR|O_CREAT , S_IWUSR | S_IRUSR);
+// 	if (read(fd, 0, 1) == 0)
+// 	{
+//     	ft_putstr_fd("abcdefgh\nijklmnop\n\nqrstuv\nurst\n.", fd);
+// 		close(fd);
+// 	}
+// 	fd = open("hello.txt" ,O_RDWR|O_CREAT , S_IWUSR | S_IRUSR);
+// 	printf("%s", get_next_line(fd));
+//     printf("%s", get_next_line(fd));
+//     printf("%s", get_next_line(fd));
+//     printf("%s", get_next_line(fd));
+//     printf("%s", get_next_line(fd));
+//     printf("%s", get_next_line(fd));
+// 	close(fd);
+// 	return (0);
+// }

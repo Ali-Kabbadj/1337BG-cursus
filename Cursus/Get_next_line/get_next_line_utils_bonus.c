@@ -6,10 +6,10 @@
 /*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:27:45 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/23 00:38:57 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:39:08 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strdup(const char *s1)
 {
