@@ -1,35 +1,33 @@
 #include "push_swap.h"
 
-void program_error(t_stack **stack_a, t_stack **stack_b)
+
+int char_is_digit(char c)
 {
-    if (stack_a == NULL || *stack_a != NULL)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b != NULL)
-        free_stack(stack_b);
-    write(2, "Error\n", 6);
-    exit(1);
+    if (c >= '0' && c <= '9')
+        return (1);
+    return (0);
 }
 
-long int ft_atoi(const char *str)
+int ft_atoi(const char *s)
 {
-    long int nb;
-    int isneg;
     int i;
+    int sign;
+    long int nb;
 
-    nb = 0;
-    isneg = 1;
     i = 0;
-    if (str[i] == '+')
+    sign = 1;
+    nb = 0;
+    if (s[i] == '+')
         i++;
-    else if (str[i] == '-')
+    else if (s[i] == '-')
     {
-        isneg *= -1;
+        sign = -1;
         i++;
     }
-    while (is_digit(str[i]))
+    while (s[i] && char_is_digit(s[i]))
     {
-        nb = (nb * 10) + (str[i] - '0');
+        nb = nb * 10 + (s[i] - '0');
         i++;
     }
-    return (nb * isneg);
+    return (nb * sign);
 }

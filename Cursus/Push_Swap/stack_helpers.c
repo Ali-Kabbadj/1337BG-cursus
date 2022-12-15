@@ -1,18 +1,16 @@
 #include "push_swap.h"
 
-void free_stack(t_stack **stack)
+t_stack *create_new_stack_node(int value)
 {
-    t_stack *tmp;
+    t_stack *newnode;
 
-    if (!stack || !(*stack))
-        return;
-    while (*stack)
-    {
-        tmp = (*stack)->next;
-        free(*stack);
-        *stack = tmp;
-    }
-    *stack = NULL;
+    newnode = malloc(sizeof(t_stack));
+    newnode->index = 0;
+    newnode->next = NULL;
+    newnode->pos = -1;
+    newnode->target_pos = -1;
+    newnode->value = value;
+    return (newnode);
 }
 
 t_stack *get_stack_tail(t_stack *stack)
@@ -20,7 +18,7 @@ t_stack *get_stack_tail(t_stack *stack)
     t_stack *tmp;
 
     tmp = stack;
-    while (tmp && tmp->next != NULL)
+    while (tmp->next)
         tmp = tmp->next;
     return (tmp);
 }
@@ -30,53 +28,53 @@ t_stack *get_stack_tail_precedent(t_stack *stack)
     t_stack *tmp;
 
     tmp = stack;
-    while (tmp && tmp->next && tmp->next->next != NULL)
+    while (tmp->next)
+    {
+        if ((tmp->next)->next == NULL)
+            break;
         tmp = tmp->next;
+    }
     return (tmp);
 }
 
-t_stack *create_new_stack_node(int nb_value)
-{
-    t_stack *new_node;
-
-    new_node = malloc(sizeof(t_stack));
-    if (!new_node)
-        return (NULL);
-    new_node->value = nb_value;
-    new_node->index = 0;
-    new_node->next = NULL;
-    return (new_node);
-}
-
-void set_new_stack_tail(t_stack **stack, t_stack *new)
+void set_stack_new_tail(t_stack **stack, t_stack *newtail)
 {
     t_stack *tail;
 
-    if (!new)
-        return;
-    if (!*stack)
+    if (!stack || !(*stack))
+        *stack = newtail;
+    else
     {
-        *stack = new;
-        return;
+        tail = get_stack_tail(*stack);
+        tail->next = newtail;
     }
-    tail = get_stack_tail(*stack);
-    tail->next = new;
 }
 
 int get_stack_size(t_stack *stack)
 {
-    int size;
     t_stack *tmp;
+    int size;
 
-    size = 0;
-  
-    if (!stack)
-        return (0);
     tmp = stack;
+    size = 0;
     while (tmp)
     {
-        tmp = tmp->next;
         size++;
+        tmp = tmp->next;
     }
     return (size);
+}
+
+int is_sorted(t_stack *stack)
+{
+    t_stack *tmp;
+
+    tmp = stack;
+    while (tmp->next)
+    {
+        if (tmp->value > (tmp->next)->value)
+            return (0);
+        tmp = tmp->next;
+    }
+    return (1);
 }
