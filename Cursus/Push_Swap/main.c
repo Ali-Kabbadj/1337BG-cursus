@@ -44,7 +44,12 @@ int main(int argc, char **argv)
     stack_a = initialize_stack(argc, argv);
     stacksize = get_stack_size(stack_a);
     set_stack_indexes(stack_a);
-    push_swap(&stack_a, &stack_b, stacksize);
+    // push_swap(&stack_a, &stack_b, stacksize);
     printstack(stack_a);
+    push_all_to_stack_b(&stack_a, &stack_b);
+    printf("\n\nAfter push-----\n\n");
+    printstack(stack_a);
+    printf("\n\n-----\n\n");
+    printstack(stack_b);
     return (0);
 }

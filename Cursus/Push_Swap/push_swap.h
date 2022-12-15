@@ -63,4 +63,7 @@ void do_rrr(t_stack **stack_a, t_stack **stack_b);
 /*small sort*/
 int get_max_index(t_stack *stack);
 void small_sort(t_stack **stack_a);
+
+/*Big sort*/
+void push_all_to_stack_b(t_stack **stack_a, t_stack **stack_b);
 #endif
