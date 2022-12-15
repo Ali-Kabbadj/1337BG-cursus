@@ -1,7 +1,9 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
+
 #include <stdlib.h>
 #include <limits.h>
+#include <unistd.h> 
 
 //tmp includes 
 #include <stdio.h>
@@ -57,4 +59,8 @@ void do_rra(t_stack **stack_a);
 void do_rrb(t_stack **stack_b);
 void do_rrr(t_stack **stack_a, t_stack **stack_b);
 
+
+/*small sort*/
+int get_max_index(t_stack *stack);
+void small_sort(t_stack **stack_a);
 #endif

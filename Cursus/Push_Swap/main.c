@@ -4,12 +4,12 @@
 
 void push_swap(t_stack **stack_a, t_stack **stack_b, int stacksize)
 {
-    // if (stacksize == 2 && !is_sorted(stack_a))
-    //     do_sa(stack_a);
-    // else if (stacksize == 3)
-    //     small_sort(stack_a);
+    if (stacksize == 2 && !is_sorted(*stack_a))
+        do_sa(stack_a);
+    else if (stacksize == 3)
+        small_sort(stack_a);
     // else
-    //     sort(stack_a);
+    //     large_sort(stack_a, stack_b, stacksize);
 }
 
 //tmp functions
@@ -44,11 +44,7 @@ int main(int argc, char **argv)
     stack_a = initialize_stack(argc, argv);
     stacksize = get_stack_size(stack_a);
     set_stack_indexes(stack_a);
-    //printstack(stack_a);
+    push_swap(&stack_a, &stack_b, stacksize);
     printstack(stack_a);
-    printf("\n\n-----\n\n");
-    rotate_stack(&stack_a);
-    printstack(stack_a);
-    //push_swap(&stack_a, &stack_b, stacksize);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:39:39 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/12/15 16:44:17 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:10:13 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static void push_stack(t_stack **source, t_stack **dest)
 void do_pa(t_stack **stack_a, t_stack **stack_b)
 {
     push_stack(stack_b, stack_a);
+    write(1,"pa\n",3);
 }
 
 void do_pb(t_stack **stack_a, t_stack **stack_b)
 {
     push_stack(stack_a, stack_b);
+    write(1,"pb\n",3);
 }
 
