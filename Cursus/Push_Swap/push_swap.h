@@ -3,30 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 21:37:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/12/12 21:37:35 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/12/15 06:07:30 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 #include "stdio.h"
 #include "stdlib.h"
-void    push_swap(int *a, int *b, int count);
-int	has_duplicates(int *digits, int count);
-int	is_digits(int *digits, int count, char *argv[]);
-void	sa(int *a);
-void	sb(int *b);
-void	ss(int *a, int *b);
-void	pa(int *a, int *b);
-void	pb(int *a, int *b);
-void	ra(int *a);
-void	rb(int *b);
-void    rr(int *a, int *b);
-void	rra(int *a);
-void	rrb(int *b);
-void    rrr(int *a, int *b);
-void sort_two_to_three(int *a, int *b);
+#include "limits.h"
+
+typedef struct s_stack
+{
+    int value;
+    int index;
+    struct s_stack *next;
+} t_stack;
+
+// typedef struct s_stack
+// {
+//     int value;
+//     int index;
+//     int pos;
+//     int target_pos;
+//     int cost_a;
+//     int cost_b;
+//     struct s_stack *next;
+// } t_stack;
+
+void push_swap(int *a, int *b, int count);
+
+/* Helpers */
+void program_error(t_stack **stack_a, t_stack **stack_b);
+long int ft_atoi(const char *str);
+
+/* Stack Helpers*/
+void free_stack(t_stack **stack);
+t_stack *get_stack_tail(t_stack *stack);
+t_stack *get_stack_tail_precedent(t_stack *stack);
+t_stack *create_new_stack_node(int nb_value);
+void set_new_stack_tail(t_stack **stack, t_stack *new);
+int get_stack_size(t_stack *stack);
+
 #endif
