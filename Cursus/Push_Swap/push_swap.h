@@ -24,9 +24,6 @@ void push_swap(t_stack **a, t_stack **b,int stacksize);
 int ft_atoi(const char *s);
 int char_is_digit(char c);
 
-/* Error handling*/
-void exit_error();
-
 /* Initilizer*/
 t_stack *initialize_stack(int argc, char **argv);
 void set_stack_indexes(t_stack *stack_a);
@@ -64,6 +61,21 @@ void do_rrr(t_stack **stack_a, t_stack **stack_b);
 int get_max_index(t_stack *stack);
 void small_sort(t_stack **stack_a);
 
-/*Big sort*/
+/*Large sort*/
 void push_all_to_stack_b(t_stack **stack_a, t_stack **stack_b);
+void large_sort(t_stack **stack_a,t_stack **stack_b, int stacksize);
+void set_pos(t_stack **stack);
+int get_target_pos(int b_index, int target_pos, t_stack **stack_a);
+
+/*Argument validator*/
+int is_valid_args(int argc, char **argv);
+int is_duplicate(char *s ,int argc, char **argv, int s_index);
+
+/*Argument validator Helper*/
+int nbstrcmp(char *s1 , char *s2);
+int is_integer(char *s);
+
+/*Error Handler*/
+void free_stack(t_stack **stack);
+void exit_program(t_stack **stack_a, t_stack **stack_b);
 #endif

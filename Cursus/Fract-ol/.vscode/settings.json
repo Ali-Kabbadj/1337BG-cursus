@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "fract-ol.h": "c",
+        "keycode_mac.h": "c"
+    }
+}

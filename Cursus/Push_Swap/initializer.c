@@ -32,7 +32,7 @@ t_stack *initialize_stack(int argc, char **argv)
     {
         nb_value = atoi(argv[i]);
         if (nb_value > INT_MAX || nb_value < INT_MIN)
-            exit_error(); //not yet implemented
+            exit_program(&stack_a, NULL);
         if (i == 1)
             stack_a = create_new_stack_node(nb_value);
         else

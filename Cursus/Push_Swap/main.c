@@ -8,8 +8,8 @@ void push_swap(t_stack **stack_a, t_stack **stack_b, int stacksize)
         do_sa(stack_a);
     else if (stacksize == 3)
         small_sort(stack_a);
-    // else
-    //     large_sort(stack_a, stack_b, stacksize);
+    else
+        large_sort(stack_a, stack_b, stacksize);
 }
 
 //tmp functions
@@ -40,16 +40,21 @@ int main(int argc, char **argv)
     t_stack *stack_b;
     int stacksize;
 
+    if (argc <= 2)
+        return(0);
+    if (!is_valid_args(argc, argv))
+        exit_program(&stack_a, &stack_b);
     stack_b = NULL;
     stack_a = initialize_stack(argc, argv);
     stacksize = get_stack_size(stack_a);
     set_stack_indexes(stack_a);
-    // push_swap(&stack_a, &stack_b, stacksize);
+
     printstack(stack_a);
-    push_all_to_stack_b(&stack_a, &stack_b);
-    printf("\n\nAfter push-----\n\n");
+    push_swap(&stack_a, &stack_b, stacksize);
+    printf("\nAfter----\n");
     printstack(stack_a);
-    printf("\n\n-----\n\n");
+    printf("\n\n|||||||||||\n\n");
     printstack(stack_b);
+    
     return (0);
 }
