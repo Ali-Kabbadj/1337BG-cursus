@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/akabbadj/Desktop/1337BG-cursus/Cursus/Fract-ol'
+cc -Wall -Werror -Wextra -Imlx -c test.c -o test.o
+cc -Wall -Werror -Wextra -Imlx -c render_shape.c -o render_shape.o
+cc -Wall -Werror -Wextra -Imlx -c renderer.c -o renderer.o
+cc -Wall -Werror -Wextra -Imlx -c complex.c -o complex.o
+cc test.o render_shape.o renderer.o complex.o -lmlx -framework OpenGL -framework AppKit -o fract-ol
+make: Leaving directory `/Users/akabbadj/Desktop/1337BG-cursus/Cursus/Fract-ol'
+ 

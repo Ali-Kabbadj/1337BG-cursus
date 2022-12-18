@@ -2,6 +2,10 @@
     "files.associations": {
         "mlx.h": "c",
         "fract-ol.h": "c",
-        "keycode_mac.h": "c"
+        "keycode_mac.h": "c",
+        "fractol.h": "c",
+        "stdlib.h": "c",
+        "math.h": "c",
+        "unistd.h": "c"
     }
 }

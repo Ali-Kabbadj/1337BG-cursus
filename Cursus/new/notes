@@ -1,0 +1,62 @@
+if (x > w/2 && y > h/2)
+{
+    x > 0;
+    y < 0; 
+}
+if (x < w/2 && y < h/2)
+{
+    x < 0;
+    y > 0; 
+}
+if (x > w/2 && y < h/2)
+{
+    x > 0;
+    y > 0; 
+}
+if (x < w/2 && y > h/2)
+{
+    x < 0;
+    y < 0; 
+}
+/*
+width formula
+x < w/2 >> (w/2 - x) * Ux / (w/2) 
+x > w/2 >> (x - (w/2)) * Ux / (w/2)
+hight formula 
+y < w/2 >> (h/2 - y) * Uy / (h/2) 
+y > w/2 >> (y - (h/2)) * Uy / (h/2)
+*/
+
+
+void convert_coordenates(float x, float y , t_set *set)
+{
+    set->real = (x) / (WIN_WIDTH / 2) * 2;
+    set->imag = (y) / (WIN_HIGHT / 2) * 2;
+    handle_signe(x , y, set);
+}
+
+
+void convert_coordenates(float x, float y , t_set *set)
+{
+    if (x > WIN_WIDTH / 2 && y > WIN_HIGHT / 2)
+    {
+        set->real = (x - (WIN_WIDTH / 2)) / (WIN_WIDTH / 2) * 2;
+        set->imag = (y - (WIN_HIGHT / 2)) / (WIN_HIGHT / 2) * 2;
+    }
+    if (x < WIN_WIDTH / 2 && y > WIN_HIGHT / 2)
+    {
+        set->real = ((WIN_WIDTH / 2) - x) / (WIN_WIDTH / 2) * 2;
+        set->imag = (y - (WIN_HIGHT / 2)) / (WIN_HIGHT / 2) * 2;
+    }
+    else if (x < WIN_WIDTH / 2 && y < WIN_HIGHT / 2)
+    {
+        set->real = ((WIN_WIDTH / 2) - x) / (WIN_WIDTH / 2) * 2;
+        set->imag = ((WIN_HIGHT / 2) - y) / (WIN_HIGHT / 2) * 2;
+    }
+    else
+    {
+        set->real = (x - (WIN_WIDTH / 2)) / (WIN_WIDTH / 2) * 2;
+        set->imag = ((WIN_HIGHT / 2) - y) / (WIN_HIGHT / 2) * 2;
+    }
+    handle_signe(x , y, set);
+}

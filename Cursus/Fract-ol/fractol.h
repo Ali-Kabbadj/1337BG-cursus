@@ -6,6 +6,14 @@
 #include <unistd.h>
 #include <math.h>
 
+
+typedef struct s_mlx_vars
+{
+    void *mlx_ptr;
+    void *win_ptr;
+    t_data img;
+}   t_mlx_vars;
+
 typedef struct s_data
 {
     void *img;

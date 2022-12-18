@@ -71,7 +71,7 @@ typedef struct s_mlx_vars
 
 t_complex get_next_nb(t_complex nb, int x, int y)
 {
-    nb.real = 1.5 * (x - 1920 / 2) / (0.5 *  1920);
+    nb.real = 0.5 * (x - 1920 / 2) / (0.7 *  1920);;
     nb.imag = (y - 1080 / 2) / (0.5 * 1080);
     return (nb);
 }
@@ -95,17 +95,19 @@ int recursive_check(int x, int y)
     d = 0;
     //d = calculate_distance_from_origine(newnb);
     eterations = 0;
-    while (d <= 4 && eterations < 250)
+    while (d <= 4 && eterations < 50)
     {
         newnb = get_next_nb(newnb , x, y);
         oldnb = newnb;
         newnb.real = oldnb.real * oldnb.real - oldnb.imag *oldnb.imag;
         newnb.imag = 2 * oldnb.real * oldnb.imag;
         newnb = add(newnb , oldnb);
-        newnb = add(newnb , (t_complex){0, 0.65});
+        newnb = add(newnb , (t_complex){-4/2, 0});
         d = calculate_distance_from_origine(newnb);
         eterations++;
     }
+    if (d > 4)
+        return (0);
     return (eterations);
 }
 
@@ -123,15 +125,19 @@ void generate_julia(t_mlx_vars *mlx)
         x = 0;
         while (x <= 1920)
         {
+            
             eterations = recursive_check(x, y);
-            if (eterations && eterations > 50 && eterations < 100)
+            printf("%d\n",eterations);
+            if (eterations)
                 costum_mlx_pixel_put(&(mlx->img), x, y, 0x52FF00);
-            if (eterations && eterations > 100 && eterations < 150)
-                costum_mlx_pixel_put(&(mlx->img), x, y, 0x0700FF);
-            if (eterations && eterations > 150 && eterations < 200)
-                costum_mlx_pixel_put(&(mlx->img), x, y, 0x00FFAC);
-            if (eterations && eterations > 200 && eterations < 250)
-                costum_mlx_pixel_put(&(mlx->img), x, y, 0xFC00FF);
+            // if (eterations && eterations > 50 && eterations < 75)
+            //     costum_mlx_pixel_put(&(mlx->img), x, y, 0x0700FF);
+            // if (eterations && eterations > 75 && eterations < 100)
+            //     costum_mlx_pixel_put(&(mlx->img), x, y, 0x00FFAC);
+            // if (eterations && eterations > 100 && eterations < 125)
+            //     costum_mlx_pixel_put(&(mlx->img), x, y, 0xFC00FF);
+            // else
+            //     costum_mlx_pixel_put(&(mlx->img), x, y, 0x000000);
             x++;
         }
         y++;

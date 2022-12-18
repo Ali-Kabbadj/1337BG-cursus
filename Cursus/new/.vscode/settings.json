@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "fractol.h": "c",
+        "stdio.h": "c",
+        "sets.h": "c",
+        "notes": "c"
+    }
+}
