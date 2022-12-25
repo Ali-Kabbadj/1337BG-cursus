@@ -23,3 +23,15 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | ----------------------------------------- |:-------------------------------:|-------------------------| 
 | [`ft_atoi`](libft/srcs/to/ft_atoi.c)		    | Convert ASCII string to integer |                         | 
 | [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	| Cemory allocation               |                         |  
+
+### Functions from `string.h` library
+
+| Left columns                                | Right columns                       | Prototype               | 
+| ------------------------------------------- |:-----------------------------------:|                         | 
+| [`ft_bzero`](libft/srcs/mem/ft_bzero.c)	  | Write zeroes to a byte string       |                         | 
+| [`ft_memset`](libft/srcs/mem/ft_memset.c)	  | Write a byte to a byte string       |                         | 
+| [`ft_memchr`](libft/srcs/mem/ft_memchr.c)	  | Locate byte in byte string          |                         | 
+| [`ft_memcmp`](libft/srcs/mem/ft_memcmp.c)	  | Compare byte string                 |                         | 
+| [`ft_memmove`](libft/srcs/mem/ft_memmove.c) | Copy byte string                    |                         | 
+| [`ft_memcpy`](libft/srcs/mem/ft_memcpy.c)	  | Copy memory area                    |                         | 
+| [`ft_memccpy`](libft/srcs/mem/ft_memccpy.c) | Copy string until character found   |                         | 
