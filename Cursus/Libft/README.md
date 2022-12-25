@@ -24,7 +24,7 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | [`ft_atoi`](libft/srcs/to/ft_atoi.c)		    | Convert ASCII string to integer |                         | 
 | [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	| Cemory allocation               |                         |  
 
-### Functions from `strings.h` library
+### Functions from `strings.h` library :
 
 | Function                                    | Description                         | Prototype               |
 | ------------------------------------------- |:-----------------------------------:|-------------------------| 
@@ -36,7 +36,7 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | [`ft_memcpy`](libft/srcs/mem/ft_memcpy.c)	  | Copy memory area                    |                         | 
 | [`ft_memccpy`](libft/srcs/mem/ft_memccpy.c) | Copy string until character found   |                         | 
 
-### Functions from `string.h` library
+### Functions from `string.h` library :
 
 | Function                                      | Description                                        | Prototype               |
 | --------------------------------------------- |:--------------------------------------------------:|-------------------------| 
@@ -57,3 +57,45 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | [`ft_strncat`](libft/srcs/str/ft_strncat.c)   | concatenate strings (s2 into s1, size-bounded)     |                         | 
 | [`ft_strlcpy`](libft/srcs/str/ft_strlcpy.c)			| size-bounded string copying                        |                         | 
 | [`ft_strlcat`](libft/srcs/str/ft_strlcat.c)			| size-bounded string concatenation                  |                         | 
+
+
+### Functions from `math.h` library :
+
+| Function                                      | Description                                        | Prototype               |
+| --------------------------------------------- |:--------------------------------------------------:|-------------------------| 
+| [`ft_sqrt`](libft/srcs/math/ft_sqrt.c) *      |	Square root function                               |                         |
+| [`ft_pow`](libft/srcs/math/ft_pow.c) *        |	Power function                                     |                         |
+
+### Non-standard functions
+
+| Function                                            | Description                                                                    | Prototype               |
+| --------------------------------------------------- |:------------------------------------------------------------------------------:|-------------------------| 
+| [`ft_swap`](libft/srcs/mem/ft_swap.c) *             |	Swap value of two integers                                                     |                         |
+| [`ft_putchar`](libft/srcs/put/ft_putchar.c) *       | Output a character to stdout.                                                  |                         |
+| [`ft_putchar_fd`](libft/srcs/put/ft_putchar_fd.c)   |	Output a character to given file.                                              |                         |
+| [`ft_putstr`](libft/srcs/put/ft_putstr.c) *         |	Output string to stdout.                                                       |                         |
+| [`ft_putstr_fd`](libft/srcs/put/ft_putstr_fd.c)     |	Output string to given file.                                                   |                         |
+| [`ft_putendl`](libft/srcs/put/ft_putendl.c) *       |	Output string to stdout with newline.                                          |                         |
+| [`ft_putendl_fd`](libft/srcs/put/ft_putendl_fd.c)   |	Output string to given file with newline.                                      |                         |
+| [`ft_putnbr`](libft/srcs/put/ft_putnbr.c) *         |	Output integer to stdout.                                                      |                         |
+| [`ft_putnbr_fd`](libft/srcs/put/ft_putnbr_fd.c)     |	Output integer to given file.                                                  |                         |
+| [`ft_itoa`](libft/srcs/to/ft_itoa.c)	               |	Convert integer to ASCII string.                                               |                         |
+| [`ft_substr`](libft/srcs/str/ft_substr.c)           |	Extract substring from string.                                                 |                         |
+| [`ft_strtrim`](libft/srcs/str/ft_strtrim.c)		   	   | Trim beginning and end of string with the specified characters.                |                         |
+| [`ft_strjoin`](libft/srcs/str/ft_strjoin.c)		   	   | Concatenate two strings into a new string (with malloc).                       |                         |
+| [`ft_split`](libft/srcs/str/ft_split.c)			          |	Split string, with specified character as delimiter, into an array of strings. |                         |
+| [`ft_strmapi`](libft/srcs/str/ft_strmapi.c)			      | Create new string from modifying string with specified function.               |                         |
+
+### Linked list functions
+
+| Function                                            | Description                                                                    | Prototype               |
+| ----------------------------------------------------- |:----------------------------------------------------------------------------:|-------------------------| 
+| [`ft_lstnew`](libft/srcs/lst/ft_lstnew.c)				         | Create new list.                                                             |                         |  
+| [`ft_lstsize`](libft/srcs/lst/ft_lstsize.c)			  	     | Count elements of a list                                                     |                         |
+| [`ft_lstlast`](libft/srcs/lst/ft_lstlast.c)				       | Find last element of list                                                    |                         |
+| [`ft_lstadd_back`](libft/srcs/lst/ft_lstadd_back.c)		 | Add new element at end of list                                               |                         |
+| [`ft_lstadd_front`](libft/srcs/lst/ft_lstadd_front.c)	| Add new element at beginning of list                                         |                         |
+| [`ft_lstdelone`](libft/srcs/lst/ft_lstdelone.c)				   | Delete element from list                                                     |                         |
+| [`ft_lstclear`](libft/srcs/lst/ft_lstclear.c)				     | Delete sequence of elements of list from a starting point                    |                         |
+| [`ft_lstiter`](libft/srcs/lst/ft_lstiter.c)						     | Apply function to content of all list's elements                             |                         |
+| [`ft_lstmap`](libft/srcs/lst/ft_lstmap.c)					        | Apply function to content of all list's elements into new list               |                         |
