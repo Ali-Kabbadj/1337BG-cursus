@@ -26,9 +26,9 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 
 ### Functions from `string.h` library
 
-| Left columns                                | Right columns                       | Prototype               | 
-| ------------------------------------------- |:-----------------------------------:|                         | 
-| [`ft_bzero`](libft/srcs/mem/ft_bzero.c)	  | Write zeroes to a byte string       |                         | 
+| Function                                    | Description                         | Prototype               |
+| ------------------------------------------- |:-----------------------------------:|-------------------------| 
+| [`ft_bzero`](libft/srcs/mem/ft_bzero.c)	    | Write zeroes to a byte string       |                         | 
 | [`ft_memset`](libft/srcs/mem/ft_memset.c)	  | Write a byte to a byte string       |                         | 
 | [`ft_memchr`](libft/srcs/mem/ft_memchr.c)	  | Locate byte in byte string          |                         | 
 | [`ft_memcmp`](libft/srcs/mem/ft_memcmp.c)	  | Compare byte string                 |                         | 
