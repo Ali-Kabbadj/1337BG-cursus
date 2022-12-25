@@ -24,7 +24,7 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | [`ft_atoi`](libft/srcs/to/ft_atoi.c)		    | Convert ASCII string to integer |                         | 
 | [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	| Cemory allocation               |                         |  
 
-### Functions from `string.h` library
+### Functions from `strings.h` library
 
 | Function                                    | Description                         | Prototype               |
 | ------------------------------------------- |:-----------------------------------:|-------------------------| 
@@ -35,3 +35,25 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
 | [`ft_memmove`](libft/srcs/mem/ft_memmove.c) | Copy byte string                    |                         | 
 | [`ft_memcpy`](libft/srcs/mem/ft_memcpy.c)	  | Copy memory area                    |                         | 
 | [`ft_memccpy`](libft/srcs/mem/ft_memccpy.c) | Copy string until character found   |                         | 
+
+### Functions from `string.h` library
+
+| Function                                      | Description                                        | Prototype               |
+| --------------------------------------------- |:--------------------------------------------------:|-------------------------| 
+| [`ft_strlen`](libft/srcs/str/ft_strlen.c)			 	| find length of string                              |                         | 
+| [`ft_strlen_2`](libft/srcs/str/ft_strlen_2.c) |	find length of 2D array (i.e. splitted string)     |                         | 
+| [`ft_strchr`](libft/srcs/str/ft_strchr.c)				 | locate character in string (first occurrence)      |                         | 
+| [`ft_strrchr`](libft/srcs/str/ft_strrchr.c)			| locate character in string (last occurence)        |                         | 
+| [`ft_strstr`](libft/srcs/str/ft_strstr.c)     | locate a substring in a string                     |                         | 
+| [`ft_strnstr`](libft/srcs/str/ft_strnstr.c)			| locate a substring in a string (size-bounded)      |                         | 
+| [`ft_strcmp`](libft/srcs/str/ft_strcmp.c)     | compare strings                                    |                         | 
+| [`ft_strncmp`](libft/srcs/str/ft_strncmp.c)   |	compare strings (size-bounded)                     |                         | 
+| [`ft_strnrcmp`](libft/srcs/str/ft_strnrcmp.c)	|	reversely compare strings (size-bounded)           |                         | 
+| [`ft_strcpy`](libft/srcs/str/ft_strcpy.c)     | copy strings                                       |                         | 
+| [`ft_strncpy`](libft/srcs/str/ft_strncpy.c)   | copy strings (size-bounded)                        |                         | 
+| [`ft_strdup`](libft/srcs/str/ft_strdup.c)			  | save a copy of a string (with malloc)              |                         | 
+| [`ft_strndup`](libft/srcs/str/ft_strndup.c)   | save a copy of a string (with malloc, size-bounded)|                         | 
+| [`ft_strcat`](libft/srcs/str/ft_strcat.c)     | concatenate strings (s2 into s1)                   |                         | 
+| [`ft_strncat`](libft/srcs/str/ft_strncat.c)   | concatenate strings (s2 into s1, size-bounded)     |                         | 
+| [`ft_strlcpy`](libft/srcs/str/ft_strlcpy.c)			| size-bounded string copying                        |                         | 
+| [`ft_strlcat`](libft/srcs/str/ft_strlcat.c)			| size-bounded string concatenation                  |                         | 
