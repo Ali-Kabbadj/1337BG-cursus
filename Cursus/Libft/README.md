@@ -1,5 +1,6 @@
 # LIBFT
-This is the first project in the 42 (1773 benguerir) school cuscus.It contain a lot of general purpose functions from the standard C Library.
+This is the first project in the 42 (1773 benguerir) school cuscus.
+It contain a lot of general purpose functions from the standard C Library.
 
 ## Tables of content
 
