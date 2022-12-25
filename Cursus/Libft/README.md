@@ -19,7 +19,7 @@ This is the first project in the 42 (1773 benguerir) school cuscus.It contain a 
  
 ### Functions from `stdlib.h` library :
 
-| Left columns                              | Right columns                   |  Prototype              | 
+| Function                                  | Description                     | Prototype               |
 | ----------------------------------------- |:-------------------------------:|-------------------------| 
 | [`ft_atoi`](libft/srcs/to/ft_atoi.c)		    | Convert ASCII string to integer |                         | 
 | [`ft_calloc`](libft/srcs/mem/ft_calloc.c)	| Cemory allocation               |                         |  
