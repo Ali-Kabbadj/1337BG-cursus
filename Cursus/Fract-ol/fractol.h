@@ -6,14 +6,13 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:44:03 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 01:52:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:16:39 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 1000
 
 # include "math.h"
 # include "./minilibx/mlx.h"
@@ -83,8 +82,10 @@ typedef struct		s_fract
     t_fract_vars	*vars;
 }					t_fract;
 
-t_fract	*init_mlx(void);
+t_fract	*init_mlx(char *input_name);
 void		init_fract_type(char *input_name, t_fract *fract);
+void init_hooks(t_fract *fract);
+
 int				put_fract_to_image(t_fract *fract);
 
 int		ft_strcmp(const char *s1, const char *s2);
@@ -92,15 +93,13 @@ void	bzero_tab(unsigned int *tab);
 void	color_input(int key, t_input *inp);
 void	color(t_mlx_var *id, t_fract_vars *var, t_input *inp, int i);
 char			*ft_itoa(int n);
+
 int		mouse_hook(int key, int x, int y, void *fract);
 int		key_hook(int key, void *fract);
 int			julia_hook(int x, int y, void *fract);
 
 void		init_mandelbrot(t_fract *fract);
-void	calc_mandelbrot(t_mlx_var *mlx_vars, t_fract_vars *var, t_input *inputs);
-
 void		init_julia(t_fract *fract);
-void	calc_julia(t_mlx_var *id, t_fract_vars *var, t_input *inp);
 
 int			put_mandelbrot(t_fract *fract);
 int			put_julia(t_fract *fract);

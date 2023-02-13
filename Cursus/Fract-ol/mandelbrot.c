@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 00:42:55 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 01:35:56 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:02:03 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		init_mandelbrot(t_fract *fract)
 	fract->inputs->iteration_max = 50;
 }
 
-void	calc_mandelbrot(t_mlx_var *mlx_vars, t_fract_vars *var, t_input *inputs)
+static void	calc_mandelbrot(t_mlx_var *mlx_vars, t_fract_vars *var, t_input *inputs)
 {
 	int				i;
 	double			tmp;

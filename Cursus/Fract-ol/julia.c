@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 01:39:25 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 02:03:53 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:33:47 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,28 @@ void		init_julia(t_fract *fract)
 	fract->inputs->iteration_max = 50;
 }
 
-void	calc_julia(t_mlx_var *id, t_fract_vars *var, t_input *inp)
+static void	calc_julia(t_mlx_var *mlx_vars, t_fract_vars *fract_vars, t_input *inp)
 {
 	int		i;
 	double	tmp;
 
 	i = 0;
-	var->z_real = var->x / inp->zoom + inp->move_x;
-	var->z_imag = var->y / inp->zoom + inp->move_y;
-	while (var->z_real * var->z_real + var->z_imag *
-			var->z_imag < 4 && i < inp->iteration_max)
+	fract_vars->z_real = fract_vars->x / inp->zoom + inp->move_x;
+	fract_vars->z_imag = fract_vars->y / inp->zoom + inp->move_y;
+	while (fract_vars->z_real * fract_vars->z_real + fract_vars->z_imag * fract_vars->z_imag < 4 && i < inp->iteration_max)
 	{
-		tmp = var->z_real;
-		var->z_real = var->z_real * var->z_real - var->z_imag * var->z_imag + var->const_real;
-		var->z_imag = 2 * var->z_imag * tmp + var->const_imag;
+		tmp = fract_vars->z_real;
+		fract_vars->z_real = fract_vars->z_real * fract_vars->z_real - fract_vars->z_imag * fract_vars->z_imag + fract_vars->const_real;
+		fract_vars->z_imag = 2 * fract_vars->z_imag * tmp + fract_vars->const_imag;
 		i++;
 	}
 	if (inp->color_id != 1)
 		if (i == inp->iteration_max)
-			id->tab[var->y * WIDTH + var->x] = 0;
+			mlx_vars->tab[fract_vars->y * WIDTH + fract_vars->x] = 0;
 		else
-			id->tab[var->y * WIDTH + var->x] = i * inp->color_value;
+			mlx_vars->tab[fract_vars->y * WIDTH + fract_vars->x] = i * inp->color_value;
 	else
-		color(id, var, inp, i);
+		color(mlx_vars, fract_vars, inp, i);
 }
 
 int			put_julia(t_fract *fract)

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 00:04:05 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 01:34:17 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:28:15 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	bzero_tab(unsigned int *tab)
 		i++;
 	}
 }
+
 
 void	color_split(t_mlx_var *id, t_fract_vars *var, t_input *inp, int i)
 {
