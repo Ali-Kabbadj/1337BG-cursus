@@ -5,27 +5,62 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/16 10:47:02 by akabbadj          #+#    #+#              #
-#    Updated: 2022/12/17 15:38:19 by akabbadj         ###   ########.fr        #
+#    Created: 2023/02/12 02:13:30 by akabbadj          #+#    #+#              #
+#    Updated: 2023/02/13 01:57:00 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fract-ol
-CFLAGS = -Wall -Werror -Wextra
+NAME = fractol
 
-SRCS = test.c render_shapes.c renderer.c complex.c 
-OBJS = test.o render_shape.o renderer.o complex.o
+CC = gcc
 
-%.o:%.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+CFLAGS = -Wall -Wextra -Werror -O3
+
+MLX_FLAGS = -framework OpenGL -framework AppKit
 
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+MLX = ./minilibx/libmlx.a
+
+MLX_PATH = ./minilibx
+
+
+
+SRC_NAME = 	hooks.c \
+			initializer.c\
+			main.c \
+			renderer.c \
+			utiles.c \
+			mandelbrot.c \
+			julia.c \
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+
+SRC = $(SRC_NAME)
+
+OBJ = $(OBJ_NAME)
+
+all: $(NAME)
+
+$(NAME): $(OBJ) $(MLX)
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^
+
+sale: $(OBJ) $(MLX)
+	@$(CC) $(MLX_FLAGS) -o $@ $^
+
+
+$(MLX):
+	@make -C $(MLX_PATH)
+
+%.o : %.c $(MLX_PATH)
+	@$(CC) -o $@ -c $< -I $(MLX_PATH)
 
 clean:
-	rm -rf test.o render_shape.o renderer.o
+	@make clean -C $(MLX_PATH)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf fract-ol
-	
+	@rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all, clean, fclean, re

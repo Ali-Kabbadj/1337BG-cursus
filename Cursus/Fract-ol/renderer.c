@@ -1,32 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   renderer.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 00:38:26 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/02/13 01:48:51 by akabbadj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
-#include "shapes.h"
 
-
-void costum_mlx_pixel_put(t_data *data, int x, int y, int color)
+int				put_fract_to_image(t_fract *fract)
 {
-    char *dst;
-
-    dst = data->address + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    *(unsigned int *)dst = color;
-}
-
-void render_background(t_data *data, int color)
-{
-    int x;
-    int y;
-
-    x = 0;
-    y = 0;
-
-    while (y <= 1080)
-    {
-        x = 0;
-        while (x <= 1920)
-        {
-            costum_mlx_pixel_put(data, x, y, color);
-            x++;
-        }
-        y++;
-    }
-    
+	if (fract->mlx_vars->fract == 1)
+		if (!(put_mandelbrot(fract)))
+			return (0);
+	if (fract->mlx_vars->fract == 2)
+		if (!(put_julia(fract)))
+			return (0);
+	// if (fract->mlx_vars->fract == 3)
+	// 	if (!(put_burningship(fract)))
+	// 		return (0);
+	return (1);
 }
