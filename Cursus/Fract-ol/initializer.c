@@ -6,12 +6,13 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 00:05:31 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:45 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:07:39 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "fractol.h"
+#include <stdio.h>
 
 t_fract	*init_mlx(char *input_name)
 {
@@ -33,6 +34,7 @@ t_fract	*init_mlx(char *input_name)
 	fract->mlx_vars->tab = (unsigned int *)mlx_get_data_addr(fract->mlx_vars->img_p,
 			&fract->mlx_vars->bpp, &fract->mlx_vars->line_length, &fract->mlx_vars->endian);
 	fract->inputs->color_id = 1;
+	printf("%d",fract->mlx_vars->tab);
 	return (fract);
 }
 
