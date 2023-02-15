@@ -1,21 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer.c                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 17:52:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:20:36 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:20:41 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "fractol.h"
-
-void render_fract(t_fract *fract)
+void	ft_putchar_fd(char c, int fd)
 {
-    if (fract->vars->id == 1)
-        render_julia(fract);
-	else if (fract->vars->id == 2)
-		render_mandelbrot(fract);
+	write(fd, &c, 1);
 }

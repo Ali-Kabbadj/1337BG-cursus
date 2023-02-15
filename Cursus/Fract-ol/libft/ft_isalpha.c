@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 17:52:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 21:39:01 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/03 22:44:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "fractol.h"
-
-void render_fract(t_fract *fract)
+int	ft_isalpha(int c)
 {
-    if (fract->vars->id == 1)
-        render_julia(fract);
-	else if (fract->vars->id == 2)
-		render_mandelbrot(fract);
+	return (ft_islower(c) || ft_isupper(c));
 }
+/*#include <stdio.h>
+int main()
+{
+	char a;
+	printf("Enter a value:");
+	scanf("%c",&a);
+	if (ft_isalpha(a))
+		printf("%c is an aphabet",a);
+	else
+		printf("%c is not an alphabet",a);
+}*/

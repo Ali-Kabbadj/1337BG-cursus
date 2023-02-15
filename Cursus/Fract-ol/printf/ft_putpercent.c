@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer.c                                         :+:      :+:    :+:   */
+/*   ft_putpercent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 17:52:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:22:03 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:22:06 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include "fractol.h"
-
-void render_fract(t_fract *fract)
+int	ft_putpercent(void)
 {
-    if (fract->vars->id == 1)
-        render_julia(fract);
-	else if (fract->vars->id == 2)
-		render_mandelbrot(fract);
+	write(1, "%", 1);
+	return (1);
 }

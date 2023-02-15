@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 17:52:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/11/17 21:22:45 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/17 21:22:48 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
+#include <stdlib.h>
 
-#include "fractol.h"
-
-void render_fract(t_fract *fract)
+int	ft_putstr(char *str)
 {
-    if (fract->vars->id == 1)
-        render_julia(fract);
-	else if (fract->vars->id == 2)
-		render_mandelbrot(fract);
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

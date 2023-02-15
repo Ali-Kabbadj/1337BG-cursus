@@ -5,73 +5,76 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 00:42:55 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 16:02:03 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/02/15 19:11:05 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <math.h>
+#include <stdio.h>
 
-void		init_mandelbrot(t_fract *fract)
+void init_mandelbrot(t_fract *fract)
 {
-	fract->inputs->move_x = -2;
-	fract->inputs->move_y = -1.5;
-	fract->inputs->zoom = 300;
-	fract->inputs->iteration_max = 50;
+    fract->vars->move_x = -2;
+    fract->vars->move_y = -1.5;
+    fract->vars->max_iteration = 50;
+    fract->vars->iterations = 0;
+    fract->vars->z.z_real = 0;
+    fract->vars->z.z_imag = 0;
+    fract->vars->c.z_real = 0.8;
+    fract->vars->c.z_imag = 1;
+    fract->vars->re_start = -2;
+    fract->vars->re_end = 2;
+    fract->vars->imag_start = -2;
+    fract->vars->imag_end = 2;
 }
 
-static void	calc_mandelbrot(t_mlx_var *mlx_vars, t_fract_vars *var, t_input *inputs)
+void iterate_mandelbrot(t_fract *fract)
 {
-	int				i;
-	double			tmp;
+    int i;
 
-	var->const_real = var->x / inputs->zoom + inputs->move_x;
-	var->const_imag = var->y / inputs->zoom + inputs->move_y;
-	var->z_real = 0;
-	var->z_imag = 0;
-	i = 0;
-	while (var->z_real * var->z_real + var->z_imag *
-			var->z_imag < 4 && i < inputs->iteration_max)
-	{
-		tmp = var->z_real;
-		var->z_real = var->z_real * var->z_real - var->z_imag *
-			var->z_imag + var->const_real;
-		var->z_imag = 2 * tmp * var->z_imag + var->const_imag;
-		i++;
-	}
-	if (inputs->color_id != 1)
-		if (i == inputs->iteration_max)
-			mlx_vars->tab[var->y * WIDTH + var->x] = 0;
-		else
-			mlx_vars->tab[var->y * WIDTH + var->x] = i * inputs->color_value;
-	else
-		color(mlx_vars, var, inputs, i);
+    i = 0;
+    t_complexe z_tmp;
+    while (i <= fract->vars->max_iteration)
+    {
+        z_tmp.z_real = fract->vars->z.z_real;
+        z_tmp.z_imag = fract->vars->z.z_imag;
+        
+        fract->vars->z.z_real = fract->vars->z.z_real * fract->vars->z.z_real - fract->vars->z.z_imag * fract->vars->z.z_imag;
+        fract->vars->z.z_imag = z_tmp.z_real * fract->vars->z.z_imag + fract->vars->z.z_imag * z_tmp.z_real;
+        
+        fract->vars->z.z_real = fract->vars->z.z_real + fract->vars->c.z_real;
+        fract->vars->z.z_imag = fract->vars->z.z_imag + fract->vars->c.z_imag;
+         //printf("%f\n", fract->vars->z.z_real);
+        if (fract->vars->z.z_real * fract->vars->z.z_real + fract->vars->z.z_imag * fract->vars->z.z_imag >= 4 )
+            break;
+        i++;
+    }
+    fract->vars->iterations = i;
+    // printf("%f - %f", z_tmp.z_real, z_tmp.z_imag);
+    // printf("------");
 }
 
-int			put_mandelbrot(t_fract *fract)
+void render_mandelbrot(t_fract *fract)
 {
-	char	*it;
-
-	fract->vars->x = 0;
-	bzero_tab(fract->mlx_vars->tab);
-	while (fract->vars->x < WIDTH)
-	{
-		fract->vars->y = 0;
-		while (fract->vars->y < WIDTH)
-		{
-			calc_mandelbrot(fract->mlx_vars, fract->vars, fract->inputs);
-			fract->vars->y++;
-		}
-		fract->vars->x++;
-	}
-	mlx_put_image_to_window(fract->mlx_vars->mlx_p, fract->mlx_vars->win_p,
-			fract->mlx_vars->img_p, 0, 0);
-	mlx_string_put(fract->mlx_vars->mlx_p, fract->mlx_vars->win_p, 20, 20, 16777215,
-			"ITERATION MAX : ");
-	if (!(it = ft_itoa(fract->inputs->iteration_max)))
-		return (0);
-	mlx_string_put(fract->mlx_vars->mlx_p, fract->mlx_vars->win_p, 180, 20, 16777215, it);
-	free(it);
-	return (1);
+    init_mandelbrot(fract);
+    fract->vars->x = 0;
+    while (fract->vars->x < WIDTH)
+    {
+        fract->vars->y = 0;
+        while (fract->vars->y < HIGHT)
+        {
+            fract->vars->z.z_real = (fract->vars->x *(fract->vars->re_end - fract->vars->re_end))/WIDTH + fract->vars->re_start;
+            fract->vars->z.z_imag = (fract->vars->y *(fract->vars->imag_end - fract->vars->imag_start))/HIGHT;
+            fract->vars->re_start;
+            iterate_mandelbrot(fract);
+            if (fract->vars->iterations < 50)
+                fract->vars->color = 0xFFFFFF;
+            else
+                fract->vars->color = 0x000000;
+            mlx_put_pixel_img(fract);
+            fract->vars->y++;
+        }
+        fract->vars->x++;
+    }
 }

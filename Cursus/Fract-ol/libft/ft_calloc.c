@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderer.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 17:52:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/09 21:43:20 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/04 23:15:52 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "fractol.h"
-
-void render_fract(t_fract *fract)
+void	*ft_calloc(size_t count, size_t size)
 {
-    if (fract->vars->id == 1)
-        render_julia(fract);
-	else if (fract->vars->id == 2)
-		render_mandelbrot(fract);
+	void	*buffer;
+
+	if (size && count > SIZE_MAX / size)
+		return (0);
+	buffer = malloc(count * size);
+	if (!buffer)
+		return (0);
+	ft_bzero(buffer, count * size);
+	return (buffer);
 }
+/*#include <stdio.h>
+int main()
+{
+	size_t a = SIZE_MAX;
+	printf("%p\n" , calloc(a -(a / 2), 1));
+	//printf("%p", ft_calloc(a , 1));
+}*/

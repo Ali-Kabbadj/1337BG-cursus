@@ -21,4 +21,7 @@ clean:
 	rm -f $(NOM) $(OBJ) *~
 	rm -f mlx_app
 
+fclean: clean
+	rm -f libmlx.a
+
 re: clean all

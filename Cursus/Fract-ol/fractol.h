@@ -5,102 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 23:44:03 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/13 19:18:09 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/02/15 19:06:46 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
-# define WIDTH 1000
-
-# include "math.h"
+# include "./libft/libft.h"
 # include "./minilibx/mlx.h"
+# include "./printf/ft_printf.h"
+# include <math.h>
 # include <stdlib.h>
 
-//s_inp is the structure that contains all the input variables
-// it is used to pass the input variables to the functions
-//it_max is the maximum number of iterations
-//pause is a variable that is used to pause the julia fractal
-//color is a variable that is used to change the color of the fractal
-//color_value is a variable that is used to change the color of the fractal
-//zoom is a variable that is used to zoom in and out of the fractal
-//x1 and y1 are variables that are used to move the fractal
-typedef struct		s_input
+# define WIDTH 1000
+# define HIGHT 1000
+
+# define JULIA_ID 1
+# define MANDELBROT_ID 2
+
+# define JULIA_WIN_NAME "Fract-ol : Julia"
+# define MANDELBROT_WIN_NAME "Fract-ol : Mandelbrot"
+
+typedef struct s_img_data
 {
-	int				iteration_max;
-	int				pause;
-	int				color_id;
-	int				color_value;
-	double			zoom;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_lenght;
+	int			endian;
+}				t_img_data;
+
+typedef struct s_mlx_vars
+{
+	void		*win_ptr;
+	void		*mlx_ptr;
+}				t_mlx_vars;
+
+typedef struct s_complexe
+{
+    double      z_real;
+    double      z_imag;
+}               t_complexe;
+
+typedef struct s_vars
+{
+	int			id;
+	int			x;
+	int			y;
 	double			move_x;
 	double			move_y;
-}					t_input;
+	int			color;
+	int			max_iteration;
+	int			iterations;
+	t_complexe	z;
+	t_complexe	c;
+	double re_end;
+	double re_start;
+	double imag_end;
+	double imag_start; 
+}				t_vars;
 
-//s_id is the structure that contains all the mlx variables
-//bpp is the number of bits per pixel
-//sizeline is the size of a line in bytes
-//endian is the endian of the machine
-//fract is the number of the fractal that is being used
-//mlx_p is the mlx pointer
-//win_p is the window pointer
-//img_p is the image pointer
-//tab is the array that contains the pixels of the image
-
-typedef struct		s_mlx_var
+typedef struct s_fract
 {
-	int				bpp;
-	int				line_length;
-	int				endian;
-	int				fract;
-	void			*mlx_p;
-	void			*win_p;
-	void			*img_p;
-	unsigned int	*tab;
-}					t_mlx_var;
+	t_img_data	*img_vars;
+	t_mlx_vars	*mlx_vars;
+	t_vars		*vars;
+}				t_fract;
 
-//s_var is the structure that contains all the variables that are used in the fractal
-//x and y are the coordinates of the pixel
-//y_max is the maximum value of y
-//c_r and c_i are the real and imaginary parts of the constant c
-//z_r and z_i are the real and imaginary parts of the variable z
-typedef struct		s_fract_vars
-{
-	int				x;
-	int				y;
-	int				y_max;
-	double			const_real;
-	double			const_imag;
-	double			z_real;
-	double			z_imag;
-}	                t_fract_vars;
 
-typedef struct		s_fract
-{
-    t_mlx_var		*mlx_vars;
-    t_input			*inputs;
-    t_fract_vars	*vars;
-}					t_fract;
+/* complexe z*/
+double add_real(t_complexe *z1, t_complexe *z2);
+double add_imag(t_complexe *z1, t_complexe *z2);
+double multiply_real(t_complexe *z1, t_complexe *z2);
+double multiply_imag(t_complexe *z1, t_complexe *z2);
+double squared_modulus(t_complexe *z);
 
-t_fract	*init_mlx(char *input_name);
-void		init_fract_type(char *input_name, t_fract *fract);
-void init_hooks(t_fract *fract);
+/* initializer */
+void			init_mlx_vars(t_fract *fract);
+void			init_fract_type(t_fract *fract, char *name);
+void			init_img(t_fract *fract);
+void			init_structs(t_fract *fract);
+void			init_hooks(t_fract *fract);
 
-int				put_fract_to_image(t_fract *fract);
+/* utiles */
+int				ft_strcmp(const char *s1, const char *s2);
+char			*get_win_title(t_fract *fract);
+void			exit_program(t_fract *fract);
+void			dispose_mlx_vars(t_fract *fract);
 
-int		ft_strcmp(const char *s1, const char *s2);
-void	bzero_tab(unsigned int *tab);
-void	color_input(int key, t_input *inp);
-void	color(t_mlx_var *id, t_fract_vars *var, t_input *inp, int i);
-char			*ft_itoa(int n);
+/* mlx */
+void			mlx_put_pixel_img(t_fract *fract);
 
-int		mouse_hook(int key, int x, int y, void *fract);
-int		key_hook(int key, void *fract);
-int			julia_hook(int x, int y, void *fract);
+/* renderer */
+void			render_fract(t_fract *fract);
 
-void		init_mandelbrot(t_fract *fract);
-void		init_julia(t_fract *fract);
-
-int			put_mandelbrot(t_fract *fract);
-int			put_julia(t_fract *fract);
+/* mandelbrot*/
+void render_mandelbrot(t_fract *fract);
+void iterate_mandelbrot(t_fract *fract);
+void init_mandelbrot(t_fract *fract);
 #endif
