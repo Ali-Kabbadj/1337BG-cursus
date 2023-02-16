@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/15 17:53:57 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/02/16 19:12:48 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ LIBFT = $(LIBFT_PATH)/libft.a
 PRINT = $(PRINT_F_PATH)/libftprintf.a
 MLX = $(MLX_PATH)/libmlx.a
 
-SRCS = main.c utiles.c initializer.c julia.c mlx.c renderer.c mandelbrot.c complexe.c
-OBJS = main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o
+SRCS = main.c utiles.c initializer.c julia.c mlx.c renderer.c mandelbrot.c complexe.c hooks.c
+OBJS = main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o
 
 all: $(NAME)
 
@@ -47,7 +47,7 @@ $(NAME): $(OBJS) $(MLX) $(PRINT) $(LIBFT)
 	$(CC) $(OBJS) -L$(MLX_PATH) -lmlx $(LIBFT_PATH)/libft.a $(PRINT_F_PATH)/libftprintf.a $(MLX_FLAGS) -o $(NAME)
 
 clean:
-	@rm -f main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o
+	@rm -f main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o
 	@$(MAKE) -C $(LIBFT_PATH) clean
 	@$(MAKE) -C $(PRINT_F_PATH) clean
 	@$(MAKE) -C $(MLX_PATH) clean

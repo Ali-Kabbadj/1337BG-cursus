@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 18:53:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:01:46 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	init_mlx_vars(t_fract *fract)
 		dispose_mlx_vars(fract);
 }
 
-void init_hooks(t_fract *fract)
+int init_hooks(t_fract *fract)
 {
-	
+	mlx_key_hook(fract->mlx_vars->win_ptr, handle_keypress, fract);
+    mlx_mouse_hook(fract->mlx_vars->win_ptr, handle_mouse_input, fract );
+	return(0);
 }

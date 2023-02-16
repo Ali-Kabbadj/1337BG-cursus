@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 16:36:29 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:47:01 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int	main(int ac, char **av)
 	init_fract_type(fract, av[1]);
 	init_mlx_vars(fract);
 	init_img(fract);
-	render_fract(fract);
-	mlx_put_image_to_window(fract->mlx_vars->mlx_ptr, fract->mlx_vars->win_ptr, fract->img_vars->img, 0, 0);
+	one_time_init(fract);
+	render_fract(fract);	
+	init_hooks(fract);
 	mlx_loop(fract->mlx_vars->mlx_ptr);
 	return (0);
 }

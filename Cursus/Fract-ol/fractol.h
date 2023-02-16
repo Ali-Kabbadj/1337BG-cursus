@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 19:06:46 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:55:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "./printf/ft_printf.h"
 # include <math.h>
 # include <stdlib.h>
+#include <stdio.h>
 
 # define WIDTH 1000
 # define HIGHT 1000
@@ -44,8 +45,8 @@ typedef struct s_mlx_vars
 
 typedef struct s_complexe
 {
-    double      z_real;
-    double      z_imag;
+    float      z_real;
+    float      z_imag;
 }               t_complexe;
 
 typedef struct s_vars
@@ -53,17 +54,21 @@ typedef struct s_vars
 	int			id;
 	int			x;
 	int			y;
-	double			move_x;
-	double			move_y;
+	float			move_x;
+	float			move_y;
 	int			color;
 	int			max_iteration;
 	int			iterations;
 	t_complexe	z;
 	t_complexe	c;
-	double re_end;
-	double re_start;
-	double imag_end;
-	double imag_start; 
+	float re_end;
+	float re_start;
+	float imag_end;
+	float imag_start; 
+	float zoom;
+	float x_re;
+	float x_img;
+	int fist_init;
 }				t_vars;
 
 typedef struct s_fract
@@ -73,6 +78,10 @@ typedef struct s_fract
 	t_vars		*vars;
 }				t_fract;
 
+
+/*Hooks*/
+int handle_keypress(int keycode ,t_fract *fract);
+int handle_mouse_input(int button, int x, int y, t_fract *fract);
 
 /* complexe z*/
 double add_real(t_complexe *z1, t_complexe *z2);
@@ -86,7 +95,8 @@ void			init_mlx_vars(t_fract *fract);
 void			init_fract_type(t_fract *fract, char *name);
 void			init_img(t_fract *fract);
 void			init_structs(t_fract *fract);
-void			init_hooks(t_fract *fract);
+int			init_hooks(t_fract *fract);
+void one_time_init(t_fract *fract);
 
 /* utiles */
 int				ft_strcmp(const char *s1, const char *s2);
@@ -101,7 +111,10 @@ void			mlx_put_pixel_img(t_fract *fract);
 void			render_fract(t_fract *fract);
 
 /* mandelbrot*/
-void render_mandelbrot(t_fract *fract);
+int render_mandelbrot(t_fract *fract);
 void iterate_mandelbrot(t_fract *fract);
 void init_mandelbrot(t_fract *fract);
+float coodinates_converter_x(float x , t_fract *fract);
+float coodinates_converter_y(float y, t_fract *fract);
+
 #endif
