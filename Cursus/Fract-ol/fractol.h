@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/16 21:55:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/17 21:01:05 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_vars
 	float x_re;
 	float x_img;
 	int fist_init;
+	int zoom_in;
 }				t_vars;
 
 typedef struct s_fract
