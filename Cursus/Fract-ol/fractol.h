@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/17 21:01:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:36:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,65 @@
 # include <math.h>
 # include <stdlib.h>
 #include <stdio.h>
+# include <pthread.h>
 
 # define WIDTH 1000
 # define HIGHT 1000
+
+# define THREADS_AMOUNT 4
+# define K_MOUSE_LEFT 1
+# define K_MOUSE_RIGHT 2
+# define K_MOUSE_WHEEL_DOWN 4
+# define K_MOUSE_WHEEL_UP 5
+# define K_LEFT_ARROW 123
+# define K_RIGTH_ARROW 124
+# define K_UP_ARROW 126
+# define K_DOWN_ARROW 125
+# define K_NUM_PLUS 69
+# define K_NUM_MINUS 78
+# define K_NUM_0 82
+
+# define K_NUM_7 89
+# define K_NUM_4 86
+# define K_NUM_8 91
+# define K_NUM_6 88
+# define K_NUM_2 84
+# define K_NUM_9 92
+# define K_NUM_3 85
+# define K_NUM_1 83
+
+# define K_1 18
+# define K_2 19
+# define K_3 20
+# define K_4 21
+# define K_5 23
+# define K_6 22
+# define K_7 26
+# define K_8 28
+
+# define FR_MANDELBROT K_1
+# define FR_JULIA K_2
+# define FR_BSHIP K_3
+# define FR_SPINNER K_4
+# define FR_FISH K_5
+# define FR_FLOWER K_6
+# define FR_HEART K_7
+# define FR_SPLASH K_8
+
+# define K_ESC 53
+# define K_SPACEBAR 49
+# define K_H 4
+# define K_R 15
+# define K_G 5
+# define K_B 11
+# define K_L 37
+# define K_I 34
+
+# define C_RED 0xFF0000
+# define C_GREEN 0x00FF00
+# define C_BLUE 0x0000FF
+# define C_WHITE 0xFFFFFF
+# define C_YELLOW 0xD8CE0F
 
 # define JULIA_ID 1
 # define MANDELBROT_ID 2
@@ -70,6 +126,11 @@ typedef struct s_vars
 	float x_img;
 	int fist_init;
 	int zoom_in;
+	int			col_offset;
+	int			red;
+	int			green;
+	int			blue;
+	
 }				t_vars;
 
 typedef struct s_fract
@@ -117,5 +178,6 @@ void iterate_mandelbrot(t_fract *fract);
 void init_mandelbrot(t_fract *fract);
 float coodinates_converter_x(float x , t_fract *fract);
 float coodinates_converter_y(float y, t_fract *fract);
+void			ft_move_color(t_fract *fract, int key);
 
 #endif

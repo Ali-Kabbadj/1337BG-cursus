@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/17 22:13:36 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:48:15 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ int handle_keypress(int keycode ,t_fract *fract)
 {
     if (keycode == 53)
         exit_program(fract);
-    if (keycode == 126)
-        fract->vars->move_y += 0.01;
-    if (keycode == 125)
-        fract->vars->move_y -= 0.01;
-    if (keycode == 123)
-        fract->vars->move_x += 0.01;
-    if (keycode == 124)
-        fract->vars->move_x -= 0.01;
-    if (keycode == 126 || keycode == 125 || keycode == 123 || keycode == 124)
+    else if (keycode == 126)
+        fract->vars->move_y += 0.09;
+    else if (keycode == 125)
+        fract->vars->move_y -= 0.09;
+    else if (keycode == 123)
+        fract->vars->move_x += 0.09;
+    else if (keycode == 124)
+        fract->vars->move_x -= 0.09;
+    else if (keycode == K_R || keycode == K_G || keycode == K_B)
+        ft_move_color(fract, keycode);
+    if (keycode == 126 || keycode == 125 || keycode == 123 || keycode == 124 || keycode == K_R || keycode == K_G || keycode == K_B)
     {
         mlx_clear_window(fract->mlx_vars->mlx_ptr, fract->mlx_vars->win_ptr);
         render_fract(fract);
@@ -60,11 +62,8 @@ static int default_zoom(t_fract *fract , int x, int y, int button)
     old_img_end = fract->vars->imag_end;
     if (button == 5)
     {
-        if (fract->vars->zoom_in % 10 == 0)
-        {
-            fract->vars->max_iteration += 100; 
-            fract->vars->zoom_in++;
-        }
+        fract->vars->max_iteration += 50; 
+        fract->vars->zoom_in++;
         d_re = fract->vars->zoom * (fract->vars->re_end - coodinates_x(x , fract));
         d_img = fract->vars->zoom * (fract->vars->imag_end - coodinates_y(y, fract));
         s_re = (fract->vars->re_end - fract->vars->re_start) * fract->vars->zoom;
