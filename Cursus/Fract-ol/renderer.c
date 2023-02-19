@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/18 16:28:12 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 02:18:34 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void render_fract(t_fract *fract)
 {
-    // if (fract->vars->id == 1)
-    //     render_julia(fract);
-	 if (fract->vars->id == 2)
-    {
-		  render_mandelbrot(fract);
-    }
+    if (fract->vars->id == 1)
+        render_julia(fract);
+    if (fract->vars->id == 2)
+	    render_mandelbrot(fract);
 }

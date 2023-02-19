@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/18 16:48:15 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 02:13:44 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int handle_keypress(int keycode ,t_fract *fract)
         fract->vars->move_x -= 0.09;
     else if (keycode == K_R || keycode == K_G || keycode == K_B)
         ft_move_color(fract, keycode);
+    else if (keycode == 35)
+    {
+        if (fract->vars->pause_julia == 1)
+            fract->vars->pause_julia = 0;
+        else
+            fract->vars->pause_julia = 1;
+    }
     if (keycode == 126 || keycode == 125 || keycode == 123 || keycode == 124 || keycode == K_R || keycode == K_G || keycode == K_B)
     {
         mlx_clear_window(fract->mlx_vars->mlx_ptr, fract->mlx_vars->win_ptr);
@@ -105,6 +112,32 @@ int handle_mouse_input(int button, int x, int y, t_fract *fract)
         render_fract(fract);
     }
 }
+
+int julia_hook(t_fract *fract)
+{
+    int *x, *y;
+
+    x = malloc(sizeof(int));
+    y = malloc(sizeof(int));
+    
+    *x = 0;
+    *y = 0;
+    if (fract->vars->pause_julia == 0)
+    {
+        mlx_mouse_get_pos(fract->mlx_vars->win_ptr, x, y);
+        if (*x < WIDTH && *y < HIGHT)
+        {
+            fract->vars->c.z_real = coodinates_converter_x(*x, fract);
+            fract->vars->c.z_imag = coodinates_converter_y(*y, fract);
+            mlx_clear_window(fract->mlx_vars->mlx_ptr, fract->mlx_vars->win_ptr);
+            render_julia(fract);
+        }
+    }
+    free(x);
+    free(y);
+    return(0);
+}
+
 /* 
 up 126
 down 125

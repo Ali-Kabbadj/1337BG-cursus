@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/18 16:36:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 02:18:59 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@
 # define K_L 37
 # define K_I 34
 
-# define C_RED 0xFF0000
-# define C_GREEN 0x00FF00
-# define C_BLUE 0x0000FF
+# define C_RED 0xAA0000
+# define C_GREEN 0x00AA00
+# define C_BLUE 0x0000AA
 # define C_WHITE 0xFFFFFF
 # define C_YELLOW 0xD8CE0F
 
@@ -130,6 +130,8 @@ typedef struct s_vars
 	int			red;
 	int			green;
 	int			blue;
+	float		smoothing;
+	int		pause_julia;
 	
 }				t_vars;
 
@@ -144,6 +146,7 @@ typedef struct s_fract
 /*Hooks*/
 int handle_keypress(int keycode ,t_fract *fract);
 int handle_mouse_input(int button, int x, int y, t_fract *fract);
+int julia_hook(t_fract *fract);
 
 /* complexe z*/
 double add_real(t_complexe *z1, t_complexe *z2);
@@ -159,8 +162,12 @@ void			init_img(t_fract *fract);
 void			init_structs(t_fract *fract);
 int			init_hooks(t_fract *fract);
 void one_time_init(t_fract *fract);
+void init_vars(t_fract *fract);
 
 /* utiles */
+void			ft_move_color(t_fract *fract, int key);
+float	coodinates_converter_x(float x, t_fract *fract);
+float	coodinates_converter_y(float y, t_fract *fract);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*get_win_title(t_fract *fract);
 void			exit_program(t_fract *fract);
@@ -179,5 +186,11 @@ void init_mandelbrot(t_fract *fract);
 float coodinates_converter_x(float x , t_fract *fract);
 float coodinates_converter_y(float y, t_fract *fract);
 void			ft_move_color(t_fract *fract, int key);
+void set_pixel_color(t_fract *fract, int iterations, t_complexe z);
+void	one_time_init_mandelbrot(t_fract *fract);
 
+/*julia*/
+void iterate_julia(t_fract *fract);
+void init_julia(t_fract *fract);
+int render_julia(t_fract *fract);
 #endif

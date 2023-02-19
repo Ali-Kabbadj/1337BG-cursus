@@ -6,16 +6,16 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/18 16:45:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:19:40 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	one_time_init(t_fract *fract)
+void	one_time_init_mandelbrot(t_fract *fract)
 {
 	fract->vars->zoom = 0.7;
-	fract->vars->max_iteration = 50;
+	fract->vars->max_iteration = 100;
 	fract->vars->re_start = -2;
 	fract->vars->re_end = 2;
 	fract->vars->imag_start = -2;
@@ -27,17 +27,7 @@ void	one_time_init(t_fract *fract)
 	fract->vars->red = 9;
 	fract->vars->green = 9;
 	fract->vars->blue = 25;
-}
-
-
-void			ft_move_color(t_fract *fract, int key)
-{
-	if (key == K_R)
-		fract->vars->red++;
-	if (key == K_G)
-		fract->vars->green++;
-	if (key == K_B)
-		fract->vars->blue++;
+	fract->vars->smoothing = 0;
 }
 
 
@@ -47,67 +37,54 @@ void	init_mandelbrot(t_fract *fract)
 	fract->vars->z.z_imag = 0;
 }
 
-float	coodinates_converter_x(float x, t_fract *fract)
-{
-	return (x * (fract->vars->re_end - fract->vars->re_start) / WIDTH
-		+ fract->vars->re_start + fract->vars->move_x);
-}
 
-float	coodinates_converter_y(float y, t_fract *fract)
+void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
-	return (fract->vars->imag_end - (y * (fract->vars->imag_end
-				- fract->vars->imag_start) / HIGHT + fract->vars->move_y));
+	double		k;
+	float ni;
+	float na;
+	
+	//ni = iterations + ((log(log(2)) - log(log(sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag)))))/(log(fract->vars->smoothing));
+	//ni = iterations + ((log(log(2)) - log(log(sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag)))))/(log(2));
+	//ni = iterations + ((log2(log2(2)) - log2(log2(sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag)))))/(log2(fract->vars->smoothing));
+	//ni = iterations + (log2(log2(4)) - log(log(z.z_real * z.z_real + z.z_imag * z.z_imag))) / log2(a);
+	//ni = a;
+	ni = iterations  + (((log(log(2)) - log(log(z.z_real * z.z_real + z.z_imag * z.z_imag))) / log(2)));
+	//ni  = log(log(2)) / log(z.z_real * z.z_real + z.z_imag * z.z_imag) / log(pow(2.718 , z.z_real * z.z_real + z.z_imag * z.z_imag) * - 1);
+	//printf("%f - \n ",ni);
+	//printf("%f\n\n\n", ni);
+	//k  = iterations * a;   
+	// if (iterations != fract->vars->max_iteration)
+	// 	fract->vars->color = (int)(fract->vars->red * k) | (int)(fract->vars->green * k) << 8 |
+	// 		(int)(fract->vars->blue * k) << 16;
+	//ni = a;
+	if (iterations != fract->vars->max_iteration)
+		fract->vars->color = (int)(fract->vars->red * ni) | (int)(fract->vars->green * ni) << 8 |
+			(int)(fract->vars->blue * ni) << 16;
+	else
+		fract->vars->color = 0x000000;
 }
-
 
 void	iterate_mandelbrot(t_fract *fract)
 {
 	int		i;
 	float	a;
-	int		cnt;
-	int		max_cnt;
-	double		k;
+	int		iterations ;
+	float	e;
 
-	// float tmp_re;
 	i = 0;
 	a = 0;
-	// tmp_re = 0;
-	// fract->vars->x_re = coodinates_converter_x(fract->vars->x, fract);
-	// fract->vars->x_img = coodinates_converter_y(fract->vars->y, fract);
-	// while (i < fract->vars->max_iteration)
-	// {
-	//     tmp_re = fract->vars->z.z_real;
-	//     fract->vars->z.z_real = tmp_re * tmp_re - fract->vars->z.z_imag
-	//	* fract->vars->z.z_imag + fract->vars->x_re;
-	//     fract->vars->z.z_imag = 2 * tmp_re * fract->vars->z.z_imag
-	//	+ fract->vars->x_img;
-	//     printf("%f\n", (2 * fabs(fract->vars->z.z_real)
-	//			* log(fabs(fract->vars->z.z_real)) ) / (tmp_re * tmp_re
-	//			- fract->vars->z.z_imag * fract->vars->z.z_imag));
-	//     printf("%f\n\n\n", (2 * fabs(fract->vars->z.z_imag)
-				// * log(fabs(fract->vars->z.z_imag)) ) / (2 * tmp_re
-				// * fract->vars->z.z_imag + fract->vars->x_img));
-	//     if (fract->vars->z.z_real * fract->vars->z.z_real
-			// + fract->vars->z.z_imag * fract->vars->z.z_imag > 4)
-	//         break ;
-	//     i++;
-	// }
-	// if (i ==fract->vars->max_iteration )
-	//     fract->vars->color = 0x000000;
-	// else
-	//     fract->vars->color = 0xFFFFFF;
+	e = 2.718;
 	t_complexe  z, z_new, dz, dz_new;
-	cnt = 1;
-	max_cnt = 100;
+	iterations = 1;
 	fract->vars->x_re = coodinates_converter_x(fract->vars->x, fract);
 	fract->vars->x_img = coodinates_converter_y(fract->vars->y, fract);
-	// c.z_real = coodinates_converter_x(fract->vars->x, fract);
-	// c.z_imag = coodinates_converter_y(fract->vars->y, fract);
 	z.z_real = 0;
 	z.z_imag = 0;
 	dz.z_real = 1;
 	dz.z_imag = 0;
-	while (cnt < fract->vars->max_iteration)
+	//fract->vars->smoothing = 0;
+	while (iterations < fract->vars->max_iteration)
 	{
 		z_new.z_real = z.z_real * z.z_real - z.z_imag * z.z_imag + fract->vars->x_re;
 		z_new.z_imag = 2 * z.z_real * z.z_imag + fract->vars->x_img;
@@ -116,19 +93,18 @@ void	iterate_mandelbrot(t_fract *fract)
 		z.z_real = z_new.z_real;
 		z.z_imag = z_new.z_imag;
 		dz.z_real = dz_new.z_real;
-		dz.z_imag = dz_new.z_imag;
+		dz.z_imag = dz_new.z_imag;	
+		//fract->vars->smoothing += pow(e, sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag) * -1);
+		//printf("%f\n",fract->vars->smoothing);
 		if (z.z_real * z.z_real + z.z_imag * z.z_imag > 4)
 			break ;
-		cnt++;
+		
+		iterations++;
 	}
 	//a = ( sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag) * log(sqrt(z.z_real * z.z_real + z.z_imag * z.z_imag)) ) / sqrt(dz.z_real * dz.z_real + dz.z_imag * dz.z_imag);
-	k = cnt * log(2);
-	if (cnt != fract->vars->max_iteration)
-		fract->vars->color = (int)(fract->vars->red * k) | (int)(fract->vars->green * k) << 8 |
-			(int)(fract->vars->blue * k) << 16;
-	else
-		fract->vars->color = 0x000000;
-	
+	//a = iterations + 2 - log((log(z.z_real * z.z_real + z.z_imag * z.z_imag)/fract->vars->smoothing));
+	//a = log(z.z_real * z.z_real + z.z_imag * z.z_imag) / pow(2, iterations);
+	set_pixel_color(fract, iterations, z);
 }
 
 int	render_mandelbrot(t_fract *fract)

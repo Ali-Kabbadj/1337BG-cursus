@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/16 21:01:46 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 02:18:19 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,14 @@ int init_hooks(t_fract *fract)
 {
 	mlx_key_hook(fract->mlx_vars->win_ptr, handle_keypress, fract);
     mlx_mouse_hook(fract->mlx_vars->win_ptr, handle_mouse_input, fract );
+	mlx_loop_hook(fract->mlx_vars->mlx_ptr, julia_hook, fract);
 	return(0);
+}
+
+void init_vars(t_fract *fract)
+{
+	if (fract->vars->id == 1)
+        init_julia(fract);
+    if (fract->vars->id == 2)
+        one_time_init_mandelbrot(fract);
 }

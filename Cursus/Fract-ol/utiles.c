@@ -6,11 +6,33 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/15 16:57:19 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:34:02 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void			ft_move_color(t_fract *fract, int key)
+{
+	if (key == K_R)
+		fract->vars->red++;
+	if (key == K_G)
+		fract->vars->green++;
+	if (key == K_B)
+		fract->vars->blue++;
+}
+
+float	coodinates_converter_x(float x, t_fract *fract)
+{
+	return (x * (fract->vars->re_end - fract->vars->re_start) / WIDTH
+		+ fract->vars->re_start + fract->vars->move_x);
+}
+
+float	coodinates_converter_y(float y, t_fract *fract)
+{
+	return (fract->vars->imag_end - (y * (fract->vars->imag_end
+				- fract->vars->imag_start) / HIGHT + fract->vars->move_y));
+}
 
 void	exit_program(t_fract *fract)
 {
