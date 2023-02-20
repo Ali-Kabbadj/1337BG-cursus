@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/16 19:12:48 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/02/20 04:08:50 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,9 @@ $(MLX):
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS) $(MLX) $(PRINT) $(LIBFT)
-	$(CC) $(OBJS) -L$(MLX_PATH) -lmlx $(LIBFT_PATH)/libft.a $(PRINT_F_PATH)/libftprintf.a $(MLX_FLAGS) -o $(NAME)
-
+	@$(CC) $(OBJS) -lm -L$(MLX_PATH) -lmlx $(LIBFT_PATH)/libft.a $(PRINT_F_PATH)/libftprintf.a $(MLX_FLAGS) -o $(NAME)
+	@$(MAKE) clean
+	
 clean:
 	@rm -f main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o
 	@$(MAKE) -C $(LIBFT_PATH) clean

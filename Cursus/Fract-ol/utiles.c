@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/19 00:34:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 03:35:32 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,29 @@
 void			ft_move_color(t_fract *fract, int key)
 {
 	if (key == K_R)
-		fract->vars->red++;
+		fract->vars.colors.red++;
 	if (key == K_G)
-		fract->vars->green++;
+		fract->vars.colors.green++;
 	if (key == K_B)
-		fract->vars->blue++;
+		fract->vars.colors.blue++;
 }
 
 float	coodinates_converter_x(float x, t_fract *fract)
 {
-	return (x * (fract->vars->re_end - fract->vars->re_start) / WIDTH
-		+ fract->vars->re_start + fract->vars->move_x);
+	return (x * (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) / WIDTH
+		+ fract->vars.complex_axis.x_start + fract->vars.move_x);
 }
 
 float	coodinates_converter_y(float y, t_fract *fract)
 {
-	return (fract->vars->imag_end - (y * (fract->vars->imag_end
-				- fract->vars->imag_start) / HIGHT + fract->vars->move_y));
+	return (fract->vars.complex_axis.y_end - (y * (fract->vars.complex_axis.y_end
+				- fract->vars.complex_axis.y_start) / HIGHT + fract->vars.move_y));
 }
 
 void	exit_program(t_fract *fract)
 {
-	if (fract->mlx_vars != NULL)
-		free(fract->mlx_vars);
-	if (fract->vars != NULL)
-		free(fract->vars);
-	if (fract->img_vars != NULL)
-		free(fract->img_vars);
+	mlx_destroy_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
+	mlx_destroy_image(fract->mlx_vars.mlx_ptr, fract->img_vars.img);
 	if (fract != NULL)
 		free(fract);
 	exit(0);
@@ -49,9 +45,9 @@ void	exit_program(t_fract *fract)
 
 char	*get_win_title(t_fract *fract)
 {
-	if (fract->vars->id == JULIA_ID)
+	if (fract->vars.id == JULIA_ID)
 		return (JULIA_WIN_NAME);
-	else if (fract->vars->id == MANDELBROT_ID)
+	else if (fract->vars.id == MANDELBROT_ID)
 		return (MANDELBROT_WIN_NAME);
 }
 
@@ -67,7 +63,20 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 void	dispose_mlx_vars(t_fract *fract)
 {
-	mlx_destroy_window(fract->mlx_vars->mlx_ptr, fract->mlx_vars->win_ptr);
-	free(fract->mlx_vars->mlx_ptr);
+	mlx_destroy_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
+	free(fract->mlx_vars.mlx_ptr);
 	exit_program(fract);
+}
+
+void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
+{
+	double		k;
+	float ni;
+	
+	ni = iterations  + ( ( (log(log(2)) - log(log(sqrt_root_modulus(z)))) / log(2) ) );
+	if (iterations != fract->vars.max_iteration)
+		fract->vars.colors.color = (int)(fract->vars.colors.red * ni) | (int)(fract->vars.colors.green * ni) << 8 |
+			(int)(fract->vars.colors.blue * ni) << 16;
+	else
+		fract->vars.colors.color = 0x000000;
 }

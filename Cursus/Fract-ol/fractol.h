@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/19 02:18:59 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 04:15:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "./minilibx/mlx.h"
 # include "./printf/ft_printf.h"
 # include <math.h>
-# include <stdlib.h>
-#include <stdio.h>
 # include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 # define WIDTH 1000
 # define HIGHT 1000
@@ -86,111 +86,126 @@
 
 typedef struct s_img_data
 {
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			line_lenght;
-	int			endian;
-}				t_img_data;
+	void				*img;
+	char				*addr;
+	int					bpp;
+	int					line_lenght;
+	int					endian;
+}						t_img_data;
 
 typedef struct s_mlx_vars
 {
-	void		*win_ptr;
-	void		*mlx_ptr;
-}				t_mlx_vars;
+	void				*win_ptr;
+	void				*mlx_ptr;
+}						t_mlx_vars;
 
 typedef struct s_complexe
 {
-    float      z_real;
-    float      z_imag;
-}               t_complexe;
+	float				real;
+	float				imag;
+}						t_complexe;
+
+typedef struct s_win_plane
+{
+	int					x;
+	int					y;
+}						t_win_plane;
+
+typedef struct s_complex_plane
+{
+	double				x_re;
+	double				y_imag;
+	double				x_end;
+	double				x_start;
+	double				y_end;
+	double				y_start;
+}						t_complexe_plane;
+
+typedef struct s_color
+{
+	int					color;
+	int					red;
+	int					green;
+	int					blue;
+}						t_color;
 
 typedef struct s_vars
 {
-	int			id;
-	int			x;
-	int			y;
-	float			move_x;
-	float			move_y;
-	int			color;
-	int			max_iteration;
-	int			iterations;
-	t_complexe	z;
-	t_complexe	c;
-	float re_end;
-	float re_start;
-	float imag_end;
-	float imag_start; 
-	float zoom;
-	float x_re;
-	float x_img;
-	int fist_init;
-	int zoom_in;
-	int			col_offset;
-	int			red;
-	int			green;
-	int			blue;
-	float		smoothing;
-	int		pause_julia;
-	
-}				t_vars;
+	int					id;
+	float				move_x;
+	float				move_y;
+	int					max_iteration;
+	int					iterations;
+	t_complexe			z;
+	t_complexe			c;
+	t_win_plane			win_axis;
+	t_color				colors;
+	t_complexe_plane	complex_axis;
+	float				zoom;
+	int					zoom_in;
+	int					pause_julia;
+
+}						t_vars;
 
 typedef struct s_fract
 {
-	t_img_data	*img_vars;
-	t_mlx_vars	*mlx_vars;
-	t_vars		*vars;
-}				t_fract;
-
+	t_img_data			img_vars;
+	t_mlx_vars			mlx_vars;
+	t_vars				vars;
+}						t_fract;
 
 /*Hooks*/
-int handle_keypress(int keycode ,t_fract *fract);
-int handle_mouse_input(int button, int x, int y, t_fract *fract);
-int julia_hook(t_fract *fract);
+int						handle_keypress(int keycode, t_fract *fract);
+int						handle_mouse_input(int button, int x, int y,
+							t_fract *fract);
+int						julia_hook(t_fract *fract);
 
 /* complexe z*/
-double add_real(t_complexe *z1, t_complexe *z2);
-double add_imag(t_complexe *z1, t_complexe *z2);
-double multiply_real(t_complexe *z1, t_complexe *z2);
-double multiply_imag(t_complexe *z1, t_complexe *z2);
-double squared_modulus(t_complexe *z);
+double					add_real(t_complexe *z1, t_complexe *z2);
+double					add_imag(t_complexe *z1, t_complexe *z2);
+double					multiply_real(t_complexe z1, t_complexe z2);
+double					multiply_imag(t_complexe z1, t_complexe z2);
+double					sqrt_root_modulus(t_complexe z);
 
 /* initializer */
-void			init_mlx_vars(t_fract *fract);
-void			init_fract_type(t_fract *fract, char *name);
-void			init_img(t_fract *fract);
-void			init_structs(t_fract *fract);
-int			init_hooks(t_fract *fract);
-void one_time_init(t_fract *fract);
-void init_vars(t_fract *fract);
+void					init_mlx_vars(t_fract *fract);
+void					init_fract_type(t_fract *fract, char *name);
+void					init_img(t_fract *fract);
+void					init_structs(t_fract *fract);
+int						init_hooks(t_fract *fract);
+void					one_time_init(t_fract *fract);
+void					init_vars(t_fract *fract);
 
 /* utiles */
-void			ft_move_color(t_fract *fract, int key);
-float	coodinates_converter_x(float x, t_fract *fract);
-float	coodinates_converter_y(float y, t_fract *fract);
-int				ft_strcmp(const char *s1, const char *s2);
-char			*get_win_title(t_fract *fract);
-void			exit_program(t_fract *fract);
-void			dispose_mlx_vars(t_fract *fract);
+void					ft_move_color(t_fract *fract, int key);
+float					coodinates_converter_x(float x, t_fract *fract);
+float					coodinates_converter_y(float y, t_fract *fract);
+int						ft_strcmp(const char *s1, const char *s2);
+char					*get_win_title(t_fract *fract);
+void					exit_program(t_fract *fract);
+void					dispose_mlx_vars(t_fract *fract);
+void					set_pixel_color(t_fract *fract, int iterations,
+							t_complexe z);
 
 /* mlx */
-void			mlx_put_pixel_img(t_fract *fract);
+void					mlx_put_pixel_img(t_fract *fract);
 
 /* renderer */
-void			render_fract(t_fract *fract);
+void					render_fract(t_fract *fract);
 
 /* mandelbrot*/
-int render_mandelbrot(t_fract *fract);
-void iterate_mandelbrot(t_fract *fract);
-void init_mandelbrot(t_fract *fract);
-float coodinates_converter_x(float x , t_fract *fract);
-float coodinates_converter_y(float y, t_fract *fract);
-void			ft_move_color(t_fract *fract, int key);
-void set_pixel_color(t_fract *fract, int iterations, t_complexe z);
-void	one_time_init_mandelbrot(t_fract *fract);
+int						render_mandelbrot(t_fract *fract);
+void					iterate_mandelbrot(t_fract *fract);
+void					init_mandelbrot(t_fract *fract);
+float					coodinates_converter_x(float x, t_fract *fract);
+float					coodinates_converter_y(float y, t_fract *fract);
+void					ft_move_color(t_fract *fract, int key);
+void					set_pixel_color(t_fract *fract, int iterations,
+							t_complexe z);
+void					init_mandelbrot(t_fract *fract);
 
 /*julia*/
-void iterate_julia(t_fract *fract);
-void init_julia(t_fract *fract);
-int render_julia(t_fract *fract);
+void					iterate_julia(t_fract *fract);
+void					init_julia(t_fract *fract);
+int						render_julia(t_fract *fract);
 #endif
