@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 04:28:27 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:21:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	render_mandelbrot(t_fract *fract)
 // 	int			i;
 
 // 	win->dx = (win->max_val.x - win->min_val.x) / (WIDTH);
-// 	win->dy = (win->max_val.y - win->min_val.y) / (HEIGHT);
+// 	win->dy = (win->max_val.y - win->min_val.y) / (HIGHT);
 // 	i = 0;
 // 	while (i < THREADS_AMOUNT - 1)
 // 	{

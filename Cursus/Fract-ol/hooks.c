@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 03:44:04 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:04:00 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int julia_hook(t_fract *fract)
             fract->vars.c.imag = coodinates_converter_y(y, fract);
             mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
             render_julia(fract);
+            printf("move julia");
         }
     }
     return(0);

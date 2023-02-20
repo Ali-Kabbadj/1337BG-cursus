@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:58:53 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 04:51:18 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:22:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ t_fract *rerender(t_fract *fract)
 int render_julia(t_fract *fract)
 {
     fract->vars.win_axis.x = 0;
-    if (fract->vars.zoom_in % 10 == 0 && fract->vars.zoom_in > 1)
-        fract = rerender(fract);
     while (fract->vars.win_axis.x < WIDTH)
     {
         fract->vars.win_axis.y = 0;
@@ -106,6 +104,9 @@ int render_julia(t_fract *fract)
 			fract->img_vars.img, 0, 0);
     return (0);
 }
+
+
+
 
 
 
