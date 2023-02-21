@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 04:15:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/21 00:23:23 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,8 @@ void					set_pixel_color(t_fract *fract, int iterations,
 void					init_mandelbrot(t_fract *fract);
 
 /*julia*/
-void					iterate_julia(t_fract *fract);
+void					iterate_julia(void *fract);
 void					init_julia(t_fract *fract);
-int						render_julia(t_fract *fract);
+//int						render_julia(t_fract *fract);
+void pthread_julia(t_fract *fract);
 #endif
