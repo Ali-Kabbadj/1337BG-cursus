@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 03:35:32 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/21 10:09:28 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,36 @@ void	dispose_mlx_vars(t_fract *fract)
 	exit_program(fract);
 }
 
+
 void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
-	double		k;
-	float ni;
-	
-	ni = iterations  + ( ( (log(log(2)) - log(log(sqrt_root_modulus(z)))) / log(2) ) );
-	if (iterations != fract->vars.max_iteration)
-		fract->vars.colors.color = (int)(fract->vars.colors.red * ni) | (int)(fract->vars.colors.green * ni) << 8 |
-			(int)(fract->vars.colors.blue * ni) << 16;
+	float red;
+	float green;
+	float blue;
+
+	red = fract->vars.colors.red;
+	green = fract->vars.colors.green;
+	blue = fract->vars.colors.blue;
+
+	float smooth_color = iterations + 1 - log(log(sqrt(z.real * z.real + z.imag * z.imag))) / log(2);
+	red = fract->vars.colors.red * smooth_color;
+	green = fract->vars.colors.green * smooth_color;
+	blue = fract->vars.colors.blue * smooth_color;
+	if (iterations == fract->vars.max_iteration)
+	{
+		fract->vars.colors.color= 0x000000;
+		return;
+	}
 	else
-		fract->vars.colors.color = 0x000000;
+	{
+		fract->vars.colors.color = ((int)red << 16) | ((int)green << 8) | (int)blue;
+	}
+	
 }
+
+
+
+	
+	
+	
+	

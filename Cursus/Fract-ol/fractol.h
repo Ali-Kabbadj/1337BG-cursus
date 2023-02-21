@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/21 00:23:23 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/21 08:25:38 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1000
 # define HIGHT 1000
-
+# define THREADS 12
 # define THREADS_AMOUNT 4
 # define K_MOUSE_LEFT 1
 # define K_MOUSE_RIGHT 2
@@ -113,12 +113,12 @@ typedef struct s_win_plane
 
 typedef struct s_complex_plane
 {
-	double				x_re;
-	double				y_imag;
-	double				x_end;
-	double				x_start;
-	double				y_end;
-	double				y_start;
+	float				x_re;
+	float				y_imag;
+	float				x_end;
+	float				x_start;
+	float				y_end;
+	float				y_start;
 }						t_complexe_plane;
 
 typedef struct s_color
@@ -161,11 +161,11 @@ int						handle_mouse_input(int button, int x, int y,
 int						julia_hook(t_fract *fract);
 
 /* complexe z*/
-double					add_real(t_complexe *z1, t_complexe *z2);
-double					add_imag(t_complexe *z1, t_complexe *z2);
-double					multiply_real(t_complexe z1, t_complexe z2);
-double					multiply_imag(t_complexe z1, t_complexe z2);
-double					sqrt_root_modulus(t_complexe z);
+float					add_real(t_complexe *z1, t_complexe *z2);
+float					add_imag(t_complexe *z1, t_complexe *z2);
+float					multiply_real(t_complexe z1, t_complexe z2);
+float					multiply_imag(t_complexe z1, t_complexe z2);
+float					sqrt_root_modulus(t_complexe z);
 
 /* initializer */
 void					init_mlx_vars(t_fract *fract);
@@ -205,8 +205,10 @@ void					set_pixel_color(t_fract *fract, int iterations,
 void					init_mandelbrot(t_fract *fract);
 
 /*julia*/
-void					iterate_julia(void *fract);
+void					iteration_on_one_point_julia(t_fract *fract);
 void					init_julia(t_fract *fract);
-//int						render_julia(t_fract *fract);
-void pthread_julia(t_fract *fract);
+void *iterate_julia_multithreading(t_fract *fract);
+int render_julia(t_fract *fract);
+void *iterate_julia(void *param);
+void clear_mlx_and_fract_then_reconstruct(t_fract *fract);
 #endif

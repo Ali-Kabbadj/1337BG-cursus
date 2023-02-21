@@ -6,11 +6,14 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/21 00:24:11 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:23:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+#include <stdio.h>
+#include <string.h>
 
 int handle_keypress(int keycode ,t_fract *fract)
 {
@@ -51,62 +54,80 @@ static float coodinates_y(float y, t_fract *fract)
     return(fract->vars.complex_axis.y_end - (y * (fract->vars.complex_axis.y_end - fract->vars.complex_axis.y_start) / HIGHT));
 }
 
-
-static int default_zoom(t_fract *fract , int x, int y, int button)
+//clear mlx memory and data and create a new window with the old data
+static void reset(t_fract *fract)
 {
-    float d_re;
-    float d_img;
-    float s_re;
-    float s_img;
-    float old_re_start;
-    float old_re_end;
-    float old_img_start;
-    float old_img_end;
+    //t_fract *new_fract;
+    
+    mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
+    mlx_destroy_image(fract->mlx_vars.mlx_ptr, fract->img_vars.img);
+    
+    // new_fract = malloc(sizeof(t_fract));
+    
+    // memcpy((void *)new_fract, (void *)fract, sizeof(t_fract ));
+    
+   // new_fract->img_vars.img = mlx_new_image(new_fract->mlx_vars.mlx_ptr, WIDTH, HIGHT);
+    //new_fract->img_vars.addr = mlx_get_data_addr(new_fract->img_vars.img, &new_fract->img_vars.bpp, &new_fract->img_vars.line_lenght, &new_fract->img_vars.endian);
+    
+    
+	init_img(fract);
+    //copy the old data to the new struct using memcpy
+    //free(fract);
+    //retreive the old data from the old struct
+    render_fract(fract);
+}
 
-    old_re_start = fract->vars.complex_axis.x_start;
-    old_re_end = fract->vars.complex_axis.x_end;
-    old_img_start = fract->vars.complex_axis.y_start;
-    old_img_end = fract->vars.complex_axis.y_end;
+
+// zoom indefinitly where the mouse is in 2D
+static void zoom(t_fract *fract, int x, int y, int button)
+{
+    float zoom_factor;
+    float mouse_x;
+    float mouse_y;
+    float x_start;
+    float x_end;
+    float y_start;
+    float y_end;
+    mouse_x = coodinates_x(x, fract) ;
+    mouse_y = coodinates_y(y, fract);
+    x_start = fract->vars.complex_axis.x_start;
+    x_end = fract->vars.complex_axis.x_end;
+    y_start = fract->vars.complex_axis.y_start;
+    y_end = fract->vars.complex_axis.y_end;
     if (button == 5)
     {
-        fract->vars.max_iteration += 50; 
-        fract->vars.zoom_in++;
-        d_re = fract->vars.zoom * (fract->vars.complex_axis.x_end - coodinates_x(x , fract));
-        d_img = fract->vars.zoom * (fract->vars.complex_axis.y_end - coodinates_y(y, fract));
-        s_re = (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) * fract->vars.zoom;
-        s_img = (fract->vars.complex_axis.y_end - fract->vars.complex_axis.y_start) * fract->vars.zoom;
-        fract->vars.complex_axis.x_end = coodinates_x(x, fract) + d_re;
-        fract->vars.complex_axis.y_end = coodinates_y(y, fract) + d_img;
-        fract->vars.complex_axis.x_start = fract->vars.complex_axis.x_end - s_re;
-        fract->vars.complex_axis.y_start = fract->vars.complex_axis.y_end - s_img;
-    }else if (button == 4)
-    {
-        if (fract->vars.max_iteration > 50)
-            if (fract->vars.zoom_in % 10 == 0)
-            {
-                fract->vars.max_iteration -= 100; 
-                fract->vars.zoom_in--;
-            }
-        if (fract->vars.max_iteration < 50)
-            fract->vars.max_iteration = 50;
-        d_re = (1/fract->vars.zoom) * (fract->vars.complex_axis.x_end - coodinates_x(x , fract));
-        d_img = (1/fract->vars.zoom) * (fract->vars.complex_axis.y_end - coodinates_y(y, fract));
-        s_re = (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) * (1/fract->vars.zoom);
-        s_img =  (fract->vars.complex_axis.y_end - fract->vars.complex_axis.y_start) * (1/fract->vars.zoom);
-        fract->vars.complex_axis.x_end = coodinates_x(x, fract) + d_re;
-        fract->vars.complex_axis.y_end = coodinates_y(y, fract) + d_img;
-        fract->vars.complex_axis.x_start = fract->vars.complex_axis.x_end - s_re;
-        fract->vars.complex_axis.y_start = fract->vars.complex_axis.y_end - s_img;
+        fract->vars.max_iteration += 100;
+        zoom_factor = 0.9;
+        
+        fract->vars.complex_axis.x_start = mouse_x + zoom_factor * (x_start - mouse_x);
+        fract->vars.complex_axis.x_end = mouse_x + zoom_factor * (x_end - mouse_x);
+        fract->vars.complex_axis.y_start = mouse_y + zoom_factor * (y_start - mouse_y);
+        fract->vars.complex_axis.y_end = mouse_y + zoom_factor * (y_end - mouse_y) ;
+        
+        render_fract(fract);
     }
-    
+    else if (button == 4)
+    {
+        zoom_factor = 1.1;
+        fract->vars.complex_axis.x_start = mouse_x + zoom_factor * (x_start - mouse_x);
+        fract->vars.complex_axis.x_end = mouse_x + zoom_factor * (x_end - mouse_x);
+        fract->vars.complex_axis.y_start = mouse_y + zoom_factor * (y_start - mouse_y);
+        fract->vars.complex_axis.y_end = mouse_y + zoom_factor * (y_end - mouse_y);
+    }
 }
+
+
+
+
+
+
 
 
 int handle_mouse_input(int button, int x, int y, t_fract *fract)
 {
     if (button == 5 || button == 4)
     {
-        default_zoom(fract, x, y, button);
+        zoom(fract, x, y, button);
         mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
         render_fract(fract);
     }
@@ -126,7 +147,7 @@ int julia_hook(t_fract *fract)
             fract->vars.c.real = coodinates_converter_x(x, fract);
             fract->vars.c.imag = coodinates_converter_y(y, fract);
             mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
-            pthread_julia(fract);
+            render_julia(fract);
         }
     }
     return(0);
