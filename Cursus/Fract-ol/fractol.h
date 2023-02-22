@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 11:49:32 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/22 22:15:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,4 +240,5 @@ void reset_mandelbrot(t_fract *fract);
 
 /*handle input*/
 int handle_input(int ac , char **cmd_input, t_fract *fract);
+void handel_args(int ac, char **cmd_input);
 #endif

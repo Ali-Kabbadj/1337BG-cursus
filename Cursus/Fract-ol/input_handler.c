@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 09:55:08 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 12:43:04 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/22 22:14:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int handle_input(int ac , char **cmd_input, t_fract *fract)
     if (ac < 2)
         return (NO_ARGS_ERROR);
     handle_fractal_name(cmd_input, fract);
+    handel_args(ac,cmd_input);
     // if (fract->vars.id == JULIA_ID)
     //     res = handle_julia_input();
     // else if (fract->vars.id == MANDELBROT_ID)
@@ -93,19 +94,30 @@ int handle_input(int ac , char **cmd_input, t_fract *fract)
     return (res);   
 }
 
-static int handle_color_input(int ac, char **cmd_input, int idx)
+static void set_color(char *color)
+{
+    if (!ft_strncmp(color , "red", 3))
+        printf("red\n");
+    else if(!ft_strncmp(color , "green" ,5))
+        printf("green\n");
+    else if (!ft_strncmp(color, "blue", 4))
+        printf("blue\n");
+}
+
+static void handel_color_input(int ac, char **cmd_input, int idx)
 {
     int i;
 
     i = idx;
-    while (ft_strcmp(cmd_input[i], "--") > 0 || i == ac)
+    while (!ft_strncmp(cmd_input[i] , "red", 3) || !ft_strncmp(cmd_input[i] , "green" ,5) || !ft_strncmp(cmd_input[i] , "blue", 4) || i < ac)
     {
-        /* code */
+        set_color(cmd_input[i]);
+        i++;
     }
     
 }
 
-static void handel_args(int ac, char **cmd_input)
+void handel_args(int ac, char **cmd_input)
 {
     int i;
 
@@ -113,7 +125,10 @@ static void handel_args(int ac, char **cmd_input)
     while (i <= ac)
     {
         if (!ft_strcmp(cmd_input[i], "--colors"))
+        {
+            i++;
             handel_color_input(ac , cmd_input, i);
+        }
         i++;
     }
     
