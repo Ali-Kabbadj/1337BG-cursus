@@ -6,15 +6,15 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/20 04:08:50 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/02/22 11:07:51 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-CC = cc
+CC = gcc
 
-# CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra 
 
 MLX_FLAGS = -framework OpenGL -framework Appkit
 
@@ -26,8 +26,8 @@ LIBFT = $(LIBFT_PATH)/libft.a
 PRINT = $(PRINT_F_PATH)/libftprintf.a
 MLX = $(MLX_PATH)/libmlx.a
 
-SRCS = main.c utiles.c initializer.c julia.c mlx.c renderer.c mandelbrot.c complexe.c hooks.c
-OBJS = main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o
+SRCS = main.c utiles.c initializer.c julia.c mlx.c renderer.c mandelbrot.c complexe.c hooks.c utiles2.c input_handler.c
+OBJS = main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o utiles2.o input_handler.o
 
 all: $(NAME)
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJS) $(MLX) $(PRINT) $(LIBFT)
 	@$(MAKE) clean
 	
 clean:
-	@rm -f main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o
+	@rm -f main.o utiles.o initializer.o julia.o mlx.o renderer.o mandelbrot.o complexe.o hooks.o utiles2.o input_handler.o
 	@$(MAKE) -C $(LIBFT_PATH) clean
 	@$(MAKE) -C $(PRINT_F_PATH) clean
 	@$(MAKE) -C $(MLX_PATH) clean

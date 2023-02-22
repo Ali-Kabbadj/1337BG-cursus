@@ -6,21 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 03:15:21 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/22 04:20:11 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	init_structs(t_fract *fract)
-{
-	// fract->mlx_vars = malloc(sizeof(t_mlx_vars));
-	// fract->vars = malloc(sizeof(t_vars));
-	// fract->img_vars = malloc(sizeof(t_img_data));
-	// if (fract->mlx_vars == NULL || fract->vars == NULL
-	// 	|| fract->img_vars == NULL)
-	// 	exit_program(fract);
-}
 
 void	init_fract_type(t_fract *fract, char *name)
 {
@@ -32,8 +22,7 @@ void	init_fract_type(t_fract *fract, char *name)
 
 void	init_img(t_fract *fract)
 {
-	fract->img_vars.img = mlx_new_image(fract->mlx_vars.mlx_ptr, WIDTH,
-			HIGHT);
+	fract->img_vars.img = mlx_new_image(fract->mlx_vars.mlx_ptr, WIDTH, HIGHT);
 	fract->img_vars.addr = mlx_get_data_addr(fract->img_vars.img,
 			&(fract->img_vars.bpp), &(fract->img_vars.line_lenght),
 			&(fract->img_vars.endian));
@@ -50,19 +39,19 @@ void	init_mlx_vars(t_fract *fract)
 		dispose_mlx_vars(fract);
 }
 
-int init_hooks(t_fract *fract)
+int	init_hooks(t_fract *fract)
 {
 	mlx_key_hook(fract->mlx_vars.win_ptr, handle_keypress, fract);
-    mlx_mouse_hook(fract->mlx_vars.win_ptr, handle_mouse_input, fract );
+	mlx_mouse_hook(fract->mlx_vars.win_ptr, handle_mouse_input, fract);
 	if (fract->vars.id == 1)
 		mlx_loop_hook(fract->mlx_vars.mlx_ptr, julia_hook, fract);
-	return(0);
+	return (0);
 }
 
-void init_vars(t_fract *fract)
+void	init_vars(t_fract *fract)
 {
 	if (fract->vars.id == 1)
-        init_julia(fract);
-    if (fract->vars.id == 2)
-        init_mandelbrot(fract);
+		init_julia(fract);
+	if (fract->vars.id == 2)
+		init_mandelbrot(fract);
 }
