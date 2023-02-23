@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx.c                                              :+:      :+:    :+:   */
+/*   formulas.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:03:33 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/20 03:20:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/02/23 09:08:09 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/02/23 09:30:18 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void mlx_put_pixel_img(t_fract *fract)
+void mandelbrot_julia_formula(t_complexe *z, t_complexe c)
 {
-    char *dst;
+	double tmp_z_re;
+	
+	tmp_z_re = z->real;
+	z->real = z->real * z->real - z->imag * z->imag + c.real;
+	z->imag = 2 * tmp_z_re * z->imag + c.imag;
+}
 
-    dst = fract->img_vars.addr + (fract->vars.win_axis.y * fract->img_vars.line_lenght + fract->vars.win_axis.x * (fract->img_vars.bpp / 8));
-    *(unsigned int *)dst = fract->vars.colors.color;
+double sqrt_root_modulus(t_complexe z)
+{
+    return(sqrt(z.real * z.real + z.imag * z.imag)); 
 }

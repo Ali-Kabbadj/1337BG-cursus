@@ -6,13 +6,13 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 04:51:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/23 00:26:46 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 09:56:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void reset_julia(t_fract *fract)
+static void reset_julia(t_fract *fract)
 {
     fract->vars.move_x = 0;
     fract->vars.move_y = 0;
@@ -24,7 +24,7 @@ void reset_julia(t_fract *fract)
     fract->vars.max_iteration = 50;
 }
 
-void reset_mandelbrot(t_fract *fract)
+static void reset_mandelbrot(t_fract *fract)
 {
     fract->vars.move_x = 0;
     fract->vars.move_y = 0;
@@ -33,4 +33,12 @@ void reset_mandelbrot(t_fract *fract)
     fract->vars.complex_axis.x_end = MANDELBROT_X_END;
     fract->vars.complex_axis.y_start = MANDELBROT_Y_START;
     fract->vars.complex_axis.y_end = MANDELBROT_Y_END;
+}
+
+void reset_fract(t_fract *fract)
+{
+    if (fract->vars.id == JULIA_ID)
+            reset_julia(fract);
+    else if (fract->vars.id == MANDELBROT_ID)
+        reset_mandelbrot(fract);
 }

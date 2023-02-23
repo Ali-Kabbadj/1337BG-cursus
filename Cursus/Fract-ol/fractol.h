@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/23 00:41:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:39:18 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,17 @@
 # define K_MOUSE_RIGHT 2
 # define K_MOUSE_WHEEL_DOWN 4
 # define K_MOUSE_WHEEL_UP 5
+
 # define K_LEFT_ARROW 123
 # define K_RIGTH_ARROW 124
 # define K_UP_ARROW 126
 # define K_DOWN_ARROW 125
+
+#define K_C_CHAR 35
+#define K_I_CHAR 234
+#define K_O_CHAR 31
+
+
 # define K_NUM_PLUS 69
 # define K_NUM_MINUS 78
 # define K_NUM_0 82
@@ -161,7 +168,6 @@ typedef struct s_vars
 	t_color				colors;
 	t_complexe_plane	complex_axis;
 	double				zoom;
-	int					zoom_in;
 	int					pause_julia;
 	double 		move;
 
@@ -175,70 +181,60 @@ typedef struct s_fract
 	void  				(*iterate)(void *);
 }						t_fract;
 
-/*Hooks*/
-int						handle_keypress(int keycode, t_fract *fract);
-int						handle_mouse_input(int button, int x, int y,
-							t_fract *fract);
-int						julia_hook(t_fract *fract);
-
-/* complexe z*/
-double					add_real(t_complexe *z1, t_complexe *z2);
-double					add_imag(t_complexe *z1, t_complexe *z2);
-double					multiply_real(t_complexe z1, t_complexe z2);
-double					multiply_imag(t_complexe z1, t_complexe z2);
-double					sqrt_root_modulus(t_complexe z);
-
-/* initializer */
-void					init_mlx_vars(t_fract *fract);
-void					init_fract_type(t_fract *fract, char *name);
-void					init_img(t_fract *fract);
-int						init_hooks(t_fract *fract);
-void					one_time_init(t_fract *fract);
-void					init_vars(t_fract *fract);
-
-/* utiles */
-void					ft_move_color(t_fract *fract, int key);
-double					coodinates_converter_x(double x, t_fract *fract);
-double					coodinates_converter_y(double y, t_fract *fract);
-int						ft_strcmp(const char *s1, const char *s2);
-char					*get_win_title(t_fract *fract);
-void					exit_program(t_fract *fract);
-void					dispose_mlx_vars(t_fract *fract);
-void					set_pixel_color(t_fract *fract, int iterations,
-							t_complexe z);
-
-/* mlx */
-void					mlx_put_pixel_img(t_fract *fract);
-
-/* renderer */
-void					render_fract(t_fract *fract);
-
-/* mandelbrot*/
-int						render_mandelbrot(t_fract *fract);
-void iterate_mandelbrot_on_one_point(t_fract *fract);
-void	*iterate_mandelbrot(void *param);
-void					init_mandelbrot(t_fract *fract);
-double					coodinates_converter_x(double x, t_fract *fract);
-double					coodinates_converter_y(double y, t_fract *fract);
-void					ft_move_color(t_fract *fract, int key);
-void					set_pixel_color(t_fract *fract, int iterations,
-							t_complexe z);
-void					init_mandelbrot(t_fract *fract);
-
 /*julia*/
-void					iteration_julia_on_one_point(t_fract *fract);
-void					init_julia(t_fract *fract);
-void *iterate_multithreading(t_fract *fract);
 int render_julia(t_fract *fract);
 void *iterate_julia(void *param);
-void clear_mlx_and_fract_then_reconstruct(t_fract *fract);
+void init_julia(t_fract *fract);
 
+/*mandelbrot*/
+int render_mandelbrot(t_fract *fract);
+void	*iterate_mandelbrot(void *param);
+void	init_mandelbrot(t_fract *fract);
 
-/*utiles2*/
-void reset_julia(t_fract *fract);
-void reset_mandelbrot(t_fract *fract);
+/*initilizer*/
+void	init_fract_type(t_fract *fract, char *name);
+void	init_img(t_fract *fract);
+void	init_mlx_vars(t_fract *fract);
+int	init_hooks(t_fract *fract);
+void	init_vars(t_fract *fract);
 
-/*handle input*/
-int handle_input(int ac , char **cmd_input, t_fract *fract);
-void handel_args(int ac, char **cmd_input);
+/*zoom*/
+void	handle_zoom(t_fract *fract, int x, int y, int button);
+
+/*hooks*/
+int handle_keypress(int keycode ,t_fract *fract);
+int handle_mouse_input(int button, int x, int y, t_fract *fract);
+int julia_hook(t_fract *fract);
+
+/*hooks helpers*/
+void	controlle_iteration_nb(t_fract *fract, int keycode);
+void	move_fract(t_fract *fract, int keycode);
+void	pause_upause(t_fract *fract);
+
+/*utiles*/
+int	exit_program(t_fract *fract);
+char	*get_win_title(t_fract *fract);
+int	ft_strcmp(const char *s1, const char *s2);
+int	ft_strcmp(const char *s1, const char *s2);
+
+/*utiles 2*/
+void reset_fract(t_fract *fract);
+
+/*utiles 3*/
+double	coodinates_converter_x(double x, t_fract *fract);
+double	coodinates_converter_y(double y, t_fract *fract);
+void			ft_move_color(t_fract *fract, int key);
+void set_pixel_color(t_fract *fract, int iterations, t_complexe z);
+
+/*renderer*/
+void render_fract(t_fract *fract);
+void mlx_put_pixel_img(t_fract *fract);
+void *iterate_multithreading(t_fract *fract);
+
+/*input handler*/
+void handle_input(int ac ,char **cmd_input, t_fract *fract);
+
+/*formulas*/
+void mandelbrot_julia_formula(t_complexe *z, t_complexe c);
+double sqrt_root_modulus(t_complexe z);
 #endif

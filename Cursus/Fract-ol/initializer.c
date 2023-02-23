@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 04:20:11 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:41:28 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,17 @@ void	init_mlx_vars(t_fract *fract)
 	fract->mlx_vars.win_ptr = mlx_new_window(fract->mlx_vars.mlx_ptr, WIDTH,
 			HIGHT, get_win_title(fract));
 	if (fract->mlx_vars.win_ptr == NULL)
-		dispose_mlx_vars(fract);
+		exit_program(fract);
 }
 
+/* https://stackoverflowteams.com/c/42network/questions/164/166#166 */
 int	init_hooks(t_fract *fract)
 {
 	mlx_key_hook(fract->mlx_vars.win_ptr, handle_keypress, fract);
 	mlx_mouse_hook(fract->mlx_vars.win_ptr, handle_mouse_input, fract);
 	if (fract->vars.id == 1)
 		mlx_loop_hook(fract->mlx_vars.mlx_ptr, julia_hook, fract);
+	mlx_hook(fract->mlx_vars.win_ptr, 17, 1L << 17, exit_program, fract);
 	return (0);
 }
 
