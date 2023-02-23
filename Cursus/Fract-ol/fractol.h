@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 22:15:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:41:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ typedef struct s_mlx_vars
 
 typedef struct s_complexe
 {
-	long double				real;
-	long double				imag;
+	double				real;
+	double				imag;
 }						t_complexe;
 
 typedef struct s_win_plane
@@ -132,27 +132,27 @@ typedef struct s_win_plane
 
 typedef struct s_complex_plane
 {
-	long double				x_re;
-	long double				y_imag;
-	long double				x_end;
-	long double				x_start;
-	long double				y_end;
-	long double				y_start;
+	double				x_re;
+	double				y_imag;
+	double				x_end;
+	double				x_start;
+	double				y_end;
+	double				y_start;
 }						t_complexe_plane;
 
 typedef struct s_color
 {
 	int					color;
-	int					red;
-	int					green;
-	int					blue;
+	unsigned char		red;
+	unsigned char		green;
+	unsigned char		blue;
 }						t_color;
 
 typedef struct s_vars
 {
 	int					id;
-	long double				move_x;
-	long double				move_y;
+	double				move_x;
+	double				move_y;
 	int					max_iteration;
 	int					iterations;
 	t_complexe			z;
@@ -160,10 +160,10 @@ typedef struct s_vars
 	t_win_plane			win_axis;
 	t_color				colors;
 	t_complexe_plane	complex_axis;
-	long double				zoom;
+	double				zoom;
 	int					zoom_in;
 	int					pause_julia;
-	long double 		move;
+	double 		move;
 
 }						t_vars;
 
@@ -182,11 +182,11 @@ int						handle_mouse_input(int button, int x, int y,
 int						julia_hook(t_fract *fract);
 
 /* complexe z*/
-long double					add_real(t_complexe *z1, t_complexe *z2);
-long double					add_imag(t_complexe *z1, t_complexe *z2);
-long double					multiply_real(t_complexe z1, t_complexe z2);
-long double					multiply_imag(t_complexe z1, t_complexe z2);
-long double					sqrt_root_modulus(t_complexe z);
+double					add_real(t_complexe *z1, t_complexe *z2);
+double					add_imag(t_complexe *z1, t_complexe *z2);
+double					multiply_real(t_complexe z1, t_complexe z2);
+double					multiply_imag(t_complexe z1, t_complexe z2);
+double					sqrt_root_modulus(t_complexe z);
 
 /* initializer */
 void					init_mlx_vars(t_fract *fract);
@@ -198,8 +198,8 @@ void					init_vars(t_fract *fract);
 
 /* utiles */
 void					ft_move_color(t_fract *fract, int key);
-long double					coodinates_converter_x(long double x, t_fract *fract);
-long double					coodinates_converter_y(long double y, t_fract *fract);
+double					coodinates_converter_x(double x, t_fract *fract);
+double					coodinates_converter_y(double y, t_fract *fract);
 int						ft_strcmp(const char *s1, const char *s2);
 char					*get_win_title(t_fract *fract);
 void					exit_program(t_fract *fract);
@@ -218,8 +218,8 @@ int						render_mandelbrot(t_fract *fract);
 void iterate_mandelbrot_on_one_point(t_fract *fract);
 void	*iterate_mandelbrot(void *param);
 void					init_mandelbrot(t_fract *fract);
-long double					coodinates_converter_x(long double x, t_fract *fract);
-long double					coodinates_converter_y(long double y, t_fract *fract);
+double					coodinates_converter_x(double x, t_fract *fract);
+double					coodinates_converter_y(double y, t_fract *fract);
 void					ft_move_color(t_fract *fract, int key);
 void					set_pixel_color(t_fract *fract, int iterations,
 							t_complexe z);

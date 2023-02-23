@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 06:19:29 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:18:27 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_mandelbrot(t_fract *fract)
 
 static void mandelbrot_formula(t_complexe *z, t_complexe c)
 {
-	long double tmp_z_re;
+	double tmp_z_re;
 	
 	tmp_z_re = z->real;
 	z->real = z->real * z->real - z->imag * z->imag + c.real;
@@ -79,6 +79,7 @@ void	*iterate_mandelbrot(void *param)
 		}
 		i++;
 	}
+	free(fract_copy);
 	return (0);
 }
 

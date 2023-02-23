@@ -6,18 +6,18 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:21:48 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 01:15:17 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:18:27 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-long double add_real(t_complexe *z1, t_complexe *z2)
+double add_real(t_complexe *z1, t_complexe *z2)
 {
     return (z1->real + z2->real);
 }
 
-long double add_imag(t_complexe *z1, t_complexe *z2)
+double add_imag(t_complexe *z1, t_complexe *z2)
 {
     return (z1->imag + z2->imag);
 }
@@ -31,18 +31,18 @@ long double add_imag(t_complexe *z1, t_complexe *z2)
 //     return(z);
 // }
 
-long double multiply_real(t_complexe z1, t_complexe z2)
+double multiply_real(t_complexe z1, t_complexe z2)
 {
     return(z1.real * z2.real - z1.imag * z2.imag);
 }
 
-long double multiply_imag(t_complexe z1, t_complexe z2)
+double multiply_imag(t_complexe z1, t_complexe z2)
 {
     return(z1.real * z2.imag + z2.real * z1.imag);
 }
 
 
-long double sqrt_root_modulus(t_complexe z)
+double sqrt_root_modulus(t_complexe z)
 {
     return(sqrt(z.real * z.real + z.imag * z.imag)); 
 }

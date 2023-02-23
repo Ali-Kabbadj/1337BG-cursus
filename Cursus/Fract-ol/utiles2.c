@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 04:51:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 04:55:45 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:26:46 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void reset_julia(t_fract *fract)
     fract->vars.complex_axis.x_end = JULIA_X_END;
     fract->vars.complex_axis.y_start = JULIA_Y_START;
     fract->vars.complex_axis.y_end = JULIA_Y_END;
+    fract->vars.max_iteration = 50;
 }
 
 void reset_mandelbrot(t_fract *fract)

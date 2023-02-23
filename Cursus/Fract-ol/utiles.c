@@ -6,29 +6,45 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 11:25:51 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:35:19 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+//shift color uniformely while keeping the same color
+
+
+
 void			ft_move_color(t_fract *fract, int key)
 {
 	if (key == K_R)
-		fract->vars.colors.red++;
+	{
+		fract->vars.colors.red += 24;
+		fract->vars.colors.green = -24;
+		fract->vars.colors.blue -= 24;
+	}	
 	if (key == K_G)
-		fract->vars.colors.green++;
+	{
+		fract->vars.colors.red -= 24;
+		fract->vars.colors.green = +24;
+		fract->vars.colors.blue -= 24;
+	}	
 	if (key == K_B)
-		fract->vars.colors.blue++;
+	{
+		fract->vars.colors.red -= 24;
+		fract->vars.colors.green = -24;
+		fract->vars.colors.blue += 24;
+	}	
 }
 
-long double	coodinates_converter_x(long double x, t_fract *fract)
+double	coodinates_converter_x(double x, t_fract *fract)
 {
 	return (x * (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) / WIDTH
 		+ fract->vars.complex_axis.x_start + fract->vars.move_x);
 }
 
-long double	coodinates_converter_y(long double y, t_fract *fract)
+double	coodinates_converter_y(double y, t_fract *fract)
 {
 	return (fract->vars.complex_axis.y_end - (y * (fract->vars.complex_axis.y_end
 				- fract->vars.complex_axis.y_start) / HIGHT + fract->vars.move_y));
@@ -74,10 +90,10 @@ void	dispose_mlx_vars(t_fract *fract)
 
 void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
-	long double red;
-	long double green;
-	long double blue;
-	long double smooth_color;
+	unsigned char red;
+	unsigned char green;
+	unsigned char blue;
+	double smooth_color;
 	
 	red = 0;
 	green = 0;
@@ -90,13 +106,19 @@ void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 	red = fract->vars.colors.red;
 	green = fract->vars.colors.green;
 	blue = fract->vars.colors.blue;
-	smooth_color = iterations + 1 - log(log(sqrt(z.real * z.real + z.imag * z.imag))) / log(2);
+	smooth_color = iterations +  ((log(log(4))-log(log(sqrt(z.real * z.real + z.imag * z.imag)))) / log(2));
 	red = fract->vars.colors.red * smooth_color;
 	green = fract->vars.colors.green * smooth_color;
 	blue = fract->vars.colors.blue * smooth_color;
-	fract->vars.colors.color = ((int)red << 16) | ((int)green << 8) | (int)blue;
+	fract->vars.colors.color = red << 16 | green << 8 | blue;
 	
 }
+
+
+
+
+
+
 
 
 

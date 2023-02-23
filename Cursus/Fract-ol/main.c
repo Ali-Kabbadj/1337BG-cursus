@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 11:12:44 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/22 23:38:07 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	main(int ac, char **av)
 	// 	ft_printf("Syntax : ./fractol <julia> or <mandelbrot>");
 	// 	return (0);
 	// }
-	
+	printf("%d",ac);
 	fract = malloc(sizeof(t_fract));
-	handle_input(ac, av, fract);
+	//handle_input(ac, av, fract);
 	if (!fract)
 		return (0);
 	init_fract_type(fract, av[1]);

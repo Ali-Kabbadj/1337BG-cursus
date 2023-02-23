@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/22 06:09:30 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/23 00:35:58 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int handle_keypress(int keycode ,t_fract *fract)
 {
+    //printf("%d\n", keycode);
     if (keycode == 53)
         exit_program(fract);
     else if (keycode == 8)
@@ -43,7 +44,11 @@ int handle_keypress(int keycode ,t_fract *fract)
         else
             fract->vars.pause_julia = 1;
     }
-    if (keycode == 8 || keycode == 126 || keycode == 125 || keycode == 123 || keycode == 124 || keycode == K_R || keycode == K_G || keycode == K_B)
+    if (keycode == 234)
+        fract->vars.iterations += 10;
+    else if (keycode == 31)
+        fract->vars.iterations -= 10;
+    if (keycode == 8 || keycode == 126 || keycode == 125 || keycode == 123 || keycode == 124 || keycode == K_R || keycode == K_G || keycode == K_B || keycode == 234 || keycode == 31)
     {
         mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
         render_fract(fract);
@@ -51,24 +56,25 @@ int handle_keypress(int keycode ,t_fract *fract)
     return (0);
 }
 
-static long double coodinates_x(long double x , t_fract *fract)
+static double coodinates_x(double x , t_fract *fract)
 {
     return(x * (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) / WIDTH + fract->vars.complex_axis.x_start);
 }
 
-static long double coodinates_y(long double y, t_fract *fract)
+static double coodinates_y(double y, t_fract *fract)
 {
     return(fract->vars.complex_axis.y_end - (y * (fract->vars.complex_axis.y_end - fract->vars.complex_axis.y_start) / HIGHT));
 }
 
 static void zoom(t_fract *fract, int x, int y, int button)
 {
-    long double mouse_x;
-    long double mouse_y;
-    long double x_start;
-    long double x_end;
-    long double y_start;
-    long double y_end;
+    double mouse_x;
+    double mouse_y;
+    double x_start;
+    double x_end;
+    double y_start;
+    double y_end;
+    //pthread_t thread[THREADS];
     
     mouse_x = coodinates_x(x, fract);
     mouse_y = coodinates_y(y, fract);
@@ -78,7 +84,7 @@ static void zoom(t_fract *fract, int x, int y, int button)
     y_end = fract->vars.complex_axis.y_end;
     if (button == 5)
     {
-        fract->vars.max_iteration += 10;
+        fract->vars.max_iteration += 5;
         fract->vars.zoom = 0.9;
         fract->vars.complex_axis.x_start = mouse_x + fract->vars.zoom * (x_start - mouse_x);
         fract->vars.complex_axis.x_end = mouse_x + fract->vars.zoom * (x_end - mouse_x);
@@ -91,7 +97,7 @@ static void zoom(t_fract *fract, int x, int y, int button)
         fract->vars.zoom = 1.1;
         if (fract->vars.max_iteration > 50 && fract->vars.max_iteration - 10 >= 50)
         {
-            fract->vars.max_iteration -= 10;
+            fract->vars.max_iteration -= 1;
             fract->vars.move *= 1/0.9;
         }
         fract->vars.complex_axis.x_start = mouse_x + fract->vars.zoom * (x_start - mouse_x);
