@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning_ship_julia.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:45:38 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/02/25 11:46:59 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/02/25 16:44:05 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	iterate_mandelbrot_on_one_point(t_fract *fract)
+static void	burning_ship_julia_formula(t_complexe *z, t_complexe c)
 {
-	fract->vars.z.real = 0;
-	fract->vars.z.imag = 0;
-	fract->vars.c.real = coodinates_converter_x(fract->vars.win_axis.x, fract);
-	fract->vars.c.imag = coodinates_converter_y(fract->vars.win_axis.y, fract);
+	double	temp;
+
+	temp = z->real;
+	z->real = z->real * z->real - z->imag * z->imag - c.real;
+	z->imag = fabs(2 * z->imag * temp - c.imag);
+}
+
+static void	iteration_burning_ship_julia_on_one_point(t_fract *fract)
+{
+	fract->vars.z.real = coodinates_converter_y(fract->vars.win_axis.y, fract);
+	fract->vars.z.imag = coodinates_converter_x(fract->vars.win_axis.x, fract);
 	while (fract->vars.iterations < fract->vars.max_iteration
 		&& absolute_value(fract->vars.z) <= 40)
 	{
-		mandelbrot_julia_formula(&fract->vars.z, fract->vars.c);
+		burning_ship_julia_formula(&fract->vars.z, fract->vars.c);
 		fract->vars.iterations++;
 	}
 	set_pixel_color(fract, fract->vars.iterations, fract->vars.z);
@@ -29,7 +36,7 @@ static void	iterate_mandelbrot_on_one_point(t_fract *fract)
 	mlx_put_pixel_img(fract);
 }
 
-int	render_mandelbrot(t_fract *fract)
+int	render_burning_ship_julia(t_fract *fract)
 {
 	fract->vars.win_axis.x = 0;
 	while (fract->vars.win_axis.x < WIDTH)
@@ -37,7 +44,7 @@ int	render_mandelbrot(t_fract *fract)
 		fract->vars.win_axis.y = 0;
 		while (fract->vars.win_axis.y < HIGHT)
 		{
-			iterate_mandelbrot_on_one_point(fract);
+			iteration_burning_ship_julia_on_one_point(fract);
 			fract->vars.win_axis.y++;
 		}
 		fract->vars.win_axis.x++;

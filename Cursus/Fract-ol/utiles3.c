@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:51:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/23 09:52:24 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:51:07 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 double	coodinates_converter_x(double x, t_fract *fract)
 {
-	return (x * (fract->vars.complex_axis.x_end - fract->vars.complex_axis.x_start) / WIDTH + fract->vars.complex_axis.x_start + fract->vars.move_x);
+	return (x * (fract->vars.complex_axis.x_end
+			- fract->vars.complex_axis.x_start) / WIDTH
+		+ fract->vars.complex_axis.x_start + fract->vars.move_x);
 }
 
 double	coodinates_converter_y(double y, t_fract *fract)
 {
-	return (fract->vars.complex_axis.y_end - (y * (fract->vars.complex_axis.y_end - fract->vars.complex_axis.y_start) / HIGHT + fract->vars.move_y));
+	return (fract->vars.complex_axis.y_end - (y
+			* (fract->vars.complex_axis.y_end
+				- fract->vars.complex_axis.y_start) / HIGHT
+			+ fract->vars.move_y));
 }
-
-void			ft_move_color(t_fract *fract, int key)
+void ft_move_color(t_fract *fract, int key)
 {
 	if (key == K_R)
 		fract->vars.colors.red += 1;
@@ -32,24 +36,25 @@ void			ft_move_color(t_fract *fract, int key)
 		fract->vars.colors.blue += 1;
 }
 
-void set_pixel_color(t_fract *fract, int iterations, t_complexe z)
+void	set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
 	unsigned char red;
 	unsigned char green;
 	unsigned char blue;
 	double smooth_color;
-	
+
 	red = 0;
 	green = 0;
 	blue = 0;
 	if (iterations == fract->vars.max_iteration)
 	{
-		fract->vars.colors.color= 0x000000;
-		return;
+		fract->vars.colors.color = 0x000000;
+		return ;
 	}
-	smooth_color = iterations +  ((log(log(4))-log(log(sqrt_root_modulus(z)))) / log(2));
+	smooth_color = iterations + (log(log(20))
+			- (log(log(sqrt(absolute_value(z))))) / log(2));
 	red = fract->vars.colors.red * smooth_color;
 	green = fract->vars.colors.green * smooth_color;
 	blue = fract->vars.colors.blue * smooth_color;
-	fract->vars.colors.color = red  | green << 16 | blue << 8;
+	fract->vars.colors.color = red | green << 8 | blue << 16;
 }
