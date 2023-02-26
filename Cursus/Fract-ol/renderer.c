@@ -6,12 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:45:54 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:36:29 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 void	render_fract(t_fract *fract)
 {
 	if (fract->vars.id == JULIA_ID)
@@ -30,8 +29,8 @@ void	render_fract(t_fract *fract)
 				ft_strjoin(ft_itoa(fract->vars.colors.red), ft_strjoin(" , ",
 						ft_strjoin(ft_itoa(fract->vars.colors.green),
 							ft_strjoin(" , ",
-								ft_strjoin(ft_itoa(fract->vars.colors.blue),
-									")")))))));
+								ft_strjoin(ft_itoa(fract->vars.colors.blue),ft_strjoin(",",ft_strjoin(
+									ft_itoa(fract->vars.colors.transparency),",")))))))));
 }
 
 void	rerender_fract(t_fract *fract)

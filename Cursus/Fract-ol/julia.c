@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:58:53 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:44:51 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:56:02 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	iteration_julia_on_one_point(t_fract *fract)
 	mlx_put_pixel_img(fract);
 }
 
-int	render_julia(t_fract *fract)
+void	render_julia(t_fract *fract)
 {
 	fract->vars.win_axis.x = 0;
 	while (fract->vars.win_axis.x < WIDTH)
@@ -43,5 +43,4 @@ int	render_julia(t_fract *fract)
 	mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
 	mlx_put_image_to_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr,
 			fract->img_vars.img, 0, 0);
-	return (0);
 }

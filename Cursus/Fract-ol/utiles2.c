@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 04:51:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:46:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:49:25 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	default_shared(t_fract *fract)
 	fract->vars.move = 0.09;
 	fract->vars.color_turn = 0;
 	fract->vars.pause_color_cycle = 0;
+	fract->vars.colors.transparency = 50;
 }
 
 static void	default_julia(t_fract *fract)
@@ -52,8 +53,6 @@ static void	default_burning_ship(t_fract *fract)
 	fract->vars.complex_axis.x_end = BURNING_SHIP_X_END;
 	fract->vars.complex_axis.y_start = BURNING_SHIP_Y_START;
 	fract->vars.complex_axis.y_end = BURNING_SHIP_Y_END;
-	fract->vars.c.real = -1.762;
-	fract->vars.c.imag = -0.028;
 }
 
 static void	default_burning_ship_julia(t_fract *fract)
@@ -62,8 +61,8 @@ static void	default_burning_ship_julia(t_fract *fract)
 	fract->vars.complex_axis.x_end = BURNING_SHIP_JULIA_X_END;
 	fract->vars.complex_axis.y_start = BURNING_SHIP_JULIA_Y_START;
 	fract->vars.complex_axis.y_end = BURNING_SHIP_JULIA_Y_END;
-	fract->vars.c.real = -1.762;
-	fract->vars.c.imag = -0.028;
+	fract->vars.c.real = -0.5;
+	fract->vars.c.imag = 0.15;
 	fract->vars.pause_julia = 0;
 }
 

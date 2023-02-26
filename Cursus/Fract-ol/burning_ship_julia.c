@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 11:46:59 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:44:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:56:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	burning_ship_julia_formula(t_complexe *z, t_complexe c)
 	double	temp;
 
 	temp = z->real;
-	z->real = z->real * z->real - z->imag * z->imag - c.real;
-	z->imag = fabs(2 * z->imag * temp - c.imag);
+	z->real = fabs(z->real * z->real) - fabs(z->imag * z->imag) + c.real;
+	z->imag = 2 * fabs(z->imag) * fabs(temp)  + c.imag;
 }
 
 static void	iteration_burning_ship_julia_on_one_point(t_fract *fract)
 {
-	fract->vars.z.real = coodinates_converter_y(fract->vars.win_axis.y, fract);
-	fract->vars.z.imag = coodinates_converter_x(fract->vars.win_axis.x, fract);
+	fract->vars.z.real = coodinates_converter_x(fract->vars.win_axis.x, fract);
+	fract->vars.z.imag = coodinates_converter_y(fract->vars.win_axis.y, fract);
 	while (fract->vars.iterations < fract->vars.max_iteration
 		&& absolute_value(fract->vars.z) <= 40)
 	{
@@ -36,7 +36,7 @@ static void	iteration_burning_ship_julia_on_one_point(t_fract *fract)
 	mlx_put_pixel_img(fract);
 }
 
-int	render_burning_ship_julia(t_fract *fract)
+void	render_burning_ship_julia(t_fract *fract)
 {
 	fract->vars.win_axis.x = 0;
 	while (fract->vars.win_axis.x < WIDTH)

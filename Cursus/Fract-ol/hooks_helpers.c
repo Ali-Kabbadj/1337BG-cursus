@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:26:12 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 09:53:28 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:23:36 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	controlle_iteration_nb(t_fract *fract, int keycode)
 {
 	if (keycode == K_I)
-		fract->vars.max_iteration += 10;
-	else if (keycode == K_O && fract->vars.max_iteration - 10 >= 10)
-		fract->vars.max_iteration -= 10;
+		fract->vars.max_iteration += 5;
+	else if (keycode == K_O && fract->vars.max_iteration - 5 >= 10)
+		fract->vars.max_iteration -= 5;
 }
 
 void	move_fract(t_fract *fract, int keycode)

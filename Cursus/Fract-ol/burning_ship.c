@@ -6,22 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 11:03:32 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:44:11 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:58:20 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static void	burning_ship_formula(t_complexe *z, t_fract *fract)
-{
-	double	temp;
-
-	temp = z->real;
-	z->real = z->real * z->real - z->imag * z->imag
-		- coodinates_converter_x(fract->vars.win_axis.x, fract);
-	z->imag = fabs(2 * z->imag * temp)
-		- coodinates_converter_y(fract->vars.win_axis.y, fract);
-}
 
 static void	iteration_burning_ship_on_one_point(t_fract *fract)
 {

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 17:08:38 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:57:05 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@
 # define K_B 11
 # define K_L 37
 # define K_I 34
+# define K_T 17
 
 # define C_RED 0xAA0000
 # define C_GREEN 0x00AA00
@@ -166,7 +167,8 @@ typedef struct s_complex_plane
 
 typedef struct s_color
 {
-	int					color;
+	unsigned int					color;
+	unsigned int		transparency;
 	unsigned char		red;
 	unsigned char		green;
 	unsigned char		blue;
@@ -200,16 +202,16 @@ typedef struct s_fract
 }						t_fract;
 
 /*julia*/
-int						render_julia(t_fract *fract);
+void						render_julia(t_fract *fract);
 
 /*mandelbrot*/
-int						render_mandelbrot(t_fract *fract);
+void						render_mandelbrot(t_fract *fract);
 
 /*burning ship*/
-int						render_burning_ship(t_fract *fract);
+void						render_burning_ship(t_fract *fract);
 
 /*burning ship julia*/
-int						render_burning_ship_julia(t_fract *fract);
+void						render_burning_ship_julia(t_fract *fract);
 
 /*initilizer*/
 void					init_fract_type(t_fract *fract, char *name);
@@ -259,6 +261,7 @@ void					handle_input(int ac, char **cmd_input, t_fract *fract);
 
 /*formulas*/
 void					mandelbrot_julia_formula(t_complexe *z, t_complexe c);
+void					burning_ship_julia_formula(t_complexe *z, t_complexe c);
 double					absolute_value(t_complexe z);
 
 void					draw_dragon_curve(t_fract *fract);

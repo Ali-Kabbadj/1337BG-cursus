@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:44:35 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:52:53 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	handle_keypress(int keycode, t_fract *fract)
 	else if (keycode == K_LEFT_ARROW || keycode == K_RIGTH_ARROW
 			|| keycode == K_UP_ARROW || keycode == K_DOWN_ARROW)
 		move_fract(fract, keycode);
-	else if (keycode == K_R || keycode == K_G || keycode == K_B)
+	else if (keycode == K_T || keycode == K_R || keycode == K_G || keycode == K_B)
 		ft_move_color(fract, keycode);
 	else if (keycode == K_P || keycode == K_SPACEBAR)
 		pause_upause(fract, keycode);
