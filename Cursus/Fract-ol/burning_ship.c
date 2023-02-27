@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 11:03:32 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/26 14:58:20 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:43:40 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	iteration_burning_ship_on_one_point(t_fract *fract)
 	fract->vars.z.real = 0;
 	fract->vars.z.imag = 0;
 	while (fract->vars.iterations < fract->vars.max_iteration
-		&& absolute_value(fract->vars.z) <= 40)
+		&& absolute_value(fract->vars.z) <= 400)
 	{
 		burning_ship_formula(&fract->vars.z, fract);
 		fract->vars.iterations++;
@@ -27,7 +27,7 @@ static void	iteration_burning_ship_on_one_point(t_fract *fract)
 	mlx_put_pixel_img(fract);
 }
 
-int	render_burning_ship(t_fract *fract)
+void	render_burning_ship(t_fract *fract)
 {
 	fract->vars.win_axis.x = 0;
 	while (fract->vars.win_axis.x < WIDTH)
@@ -43,5 +43,4 @@ int	render_burning_ship(t_fract *fract)
 	mlx_clear_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr);
 	mlx_put_image_to_window(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr,
 			fract->img_vars.img, 0, 0);
-	return (0);
 }

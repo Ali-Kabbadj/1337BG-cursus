@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/26 13:23:45 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:38:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*get_win_title(t_fract *fract)
 		return (BURNING_SHIP_WIN_NAME);
 	else if (fract->vars.id == BURNING_SHIP_JULIA_ID)
 		return (BURNING_SHIP_JULIA_WIN_NAME);
+	else if (fract->vars.id == CUSTOM_JULIA_ID)
+		return (CUSTOM_JULIA_WIN_NAME);
 	return (0);
 }
 
@@ -50,4 +52,20 @@ int	ft_strcmp(const char *s1, const char *s2)
 	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+void	default_shared(t_fract *fract)
+{
+	fract->vars.zoom = 0.9;
+	fract->vars.max_iteration = 20;
+	fract->vars.move_x = 0;
+	fract->vars.move_y = 0;
+	fract->vars.iterations = 0;
+	fract->vars.move = 0.09;
+	fract->vars.color_turn = 0;
+	fract->vars.pause_color_cycle = 0;
+	fract->vars.colors.transparency = 50;
+	fract->vars.colors.red = 250;
+	fract->vars.colors.green = 80;
+	fract->vars.colors.blue = 40;
 }

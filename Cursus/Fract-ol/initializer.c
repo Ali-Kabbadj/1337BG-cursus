@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:44:41 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:21:20 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	init_fract_type(t_fract *fract, char *name)
 		fract->vars.id = BURNING_SHIP_ID;
 	else if (ft_strcmp(name, "burning_ship_julia") == 0)
 		fract->vars.id = BURNING_SHIP_JULIA_ID;
+	else if (ft_strcmp(name, "custom_julia") == 0)
+		fract->vars.id = CUSTOM_JULIA_ID;
 }
 
 void	init_img(t_fract *fract)
@@ -38,7 +40,7 @@ void	init_mlx_vars(t_fract *fract)
 	fract->mlx_vars.mlx_ptr = mlx_init();
 	if (fract->mlx_vars.mlx_ptr == NULL)
 		exit_program(fract);
-	fract->mlx_vars.win_ptr = mlx_new_window(fract->mlx_vars.mlx_ptr, WIDTH,
+	fract->mlx_vars.win_ptr = mlx_new_window(fract->mlx_vars.mlx_ptr, CUSTOM_WIDTH,
 			HIGHT, get_win_title(fract));
 	if (fract->mlx_vars.win_ptr == NULL)
 		exit_program(fract);

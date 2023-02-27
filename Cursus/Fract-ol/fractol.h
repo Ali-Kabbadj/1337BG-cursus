@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/26 14:57:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:28:12 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 
 # define WIDTH 1000
+# define CUSTOM_WIDTH 1300
 # define HIGHT 1000
 
 /*errors*/
@@ -29,7 +30,7 @@
 # define WRONG_FRACT_NAME -2
 
 /* error messages*/
-# define WRONG_NAME_MSSG "It appears that there is something wrong with the fractal name!"
+# define WRONG_NAME_MSSG "Something wrong with the fractal name!"
 
 /*fractals default start and end values*/
 # define JULIA_X_START -2
@@ -37,8 +38,8 @@
 # define JULIA_Y_START -1.5
 # define JULIA_Y_END 1.5
 
-# define MANDELBROT_X_START -2
-# define MANDELBROT_X_END 2
+# define MANDELBROT_X_START -2.5
+# define MANDELBROT_X_END 1.5
 # define MANDELBROT_Y_START -2
 # define MANDELBROT_Y_END 2
 
@@ -47,10 +48,10 @@
 # define BURNING_SHIP_Y_START -1;
 # define BURNING_SHIP_Y_END 2;
 
-# define BURNING_SHIP_JULIA_X_START -2;
-# define BURNING_SHIP_JULIA_X_END 2;
-# define BURNING_SHIP_JULIA_Y_START -1.5;
-# define BURNING_SHIP_JULIA_Y_END 1.5;
+# define CUSTOM_JULIA_X_START -2.5;
+# define CUSTOM_JULIA_X_END 2.5;
+# define CUSTOM_JULIA_Y_START -2;
+# define CUSTOM_JULIA_Y_END 2;
 
 /*keys*/
 # define K_MOUSE_LEFT 1
@@ -123,11 +124,14 @@
 # define MANDELBROT_ID 2
 # define BURNING_SHIP_ID 3
 # define BURNING_SHIP_JULIA_ID 4
+# define CUSTOM_JULIA_ID 5
 
 # define JULIA_WIN_NAME "Fract-ol : Julia"
 # define MANDELBROT_WIN_NAME "Fract-ol : Mandelbrot"
 # define BURNING_SHIP_WIN_NAME "Fract-ol : Burning Ship"
 # define BURNING_SHIP_JULIA_WIN_NAME "Fract-ol : Burning Ship Julia"
+# define CUSTOM_JULIA_WIN_NAME "Fract-ol : Custom Julia"
+
 typedef struct s_img_data
 {
 	void				*img;
@@ -168,7 +172,7 @@ typedef struct s_complex_plane
 typedef struct s_color
 {
 	unsigned int					color;
-	unsigned int		transparency;
+	unsigned char		transparency;
 	unsigned char		red;
 	unsigned char		green;
 	unsigned char		blue;
@@ -213,6 +217,9 @@ void						render_burning_ship(t_fract *fract);
 /*burning ship julia*/
 void						render_burning_ship_julia(t_fract *fract);
 
+/*custom julia*/
+void						render_custom_julia(t_fract *fract);
+
 /*initilizer*/
 void					init_fract_type(t_fract *fract, char *name);
 void					init_img(t_fract *fract);
@@ -239,7 +246,7 @@ int						exit_program(t_fract *fract);
 char					*get_win_title(t_fract *fract);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strcmp(const char *s1, const char *s2);
-
+void					default_shared(t_fract *fract);
 /*utiles 2*/
 void					default_fract(t_fract *fract);
 
@@ -262,7 +269,7 @@ void					handle_input(int ac, char **cmd_input, t_fract *fract);
 /*formulas*/
 void					mandelbrot_julia_formula(t_complexe *z, t_complexe c);
 void					burning_ship_julia_formula(t_complexe *z, t_complexe c);
+void					burning_ship_formula(t_complexe *z,t_fract *fract);
+void					custom_julia_formula(t_complexe *z, t_complexe c);
 double					absolute_value(t_complexe z);
-
-void					draw_dragon_curve(t_fract *fract);
 #endif

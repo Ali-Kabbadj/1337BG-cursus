@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:24:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/26 14:58:05 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:49:11 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	iterate_mandelbrot_on_one_point(t_fract *fract)
 	fract->vars.c.real = coodinates_converter_x(fract->vars.win_axis.x, fract);
 	fract->vars.c.imag = coodinates_converter_y(fract->vars.win_axis.y, fract);
 	while (fract->vars.iterations < fract->vars.max_iteration
-		&& absolute_value(fract->vars.z) <= 40)
+		&& absolute_value(fract->vars.z) <= 400)
 	{
 		mandelbrot_julia_formula(&fract->vars.z, fract->vars.c);
 		fract->vars.iterations++;

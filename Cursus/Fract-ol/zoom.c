@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:14:48 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/25 16:46:48 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:31:48 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static double	mouse_x_complexe(double x, t_fract *fract)
 {
-	return (x * (fract->vars.complex_axis.x_end
+	return ((x - 300)  * (fract->vars.complex_axis.x_end
 			- fract->vars.complex_axis.x_start) / WIDTH
 		+ fract->vars.complex_axis.x_start);
 }
