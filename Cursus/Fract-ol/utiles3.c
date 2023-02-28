@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:51:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 16:22:21 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/28 06:26:02 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ double	coodinates_converter_y(double y, t_fract *fract)
 				- fract->vars.complex_axis.y_start) / HIGHT
 			+ fract->vars.move_y));
 }
+
 void ft_move_color(t_fract *fract, int key)
 {
 	if (key == K_R)
@@ -34,10 +35,10 @@ void ft_move_color(t_fract *fract, int key)
 		fract->vars.colors.green += 1;
 	else if (key == K_B)
 		fract->vars.colors.blue += 1;
-	else if (key == K_T)
+	else if (key == K_A)
 		fract->vars.colors.transparency += 1;
-}
 
+}
 void	set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
 	unsigned char red;
@@ -61,5 +62,5 @@ void	set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 	red = fract->vars.colors.red * smooth_color;
 	green = fract->vars.colors.green * smooth_color;
 	blue = fract->vars.colors.blue * smooth_color;
-	fract->vars.colors.color = transparency << 24 | red  | green << 8 | blue << 16;
+	fract->vars.colors.color = (transparency << 24) | (red << 16)| (green << 8) | blue;
 }

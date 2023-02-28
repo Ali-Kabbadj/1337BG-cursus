@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/27 19:24:09 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/02/28 08:00:11 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ LIBFT = $(LIBFT_PATH)/libft.a
 PRINT = $(PRINT_F_PATH)/libftprintf.a
 MLX = $(MLX_PATH)/libmlx.a
 
-SRCS = main.c utiles.c \
-	initializer.c julia.c renderer.c \
-	mandelbrot.c hooks.c utiles2.c utiles3.c \
-	input_handler.c formulas.c zoom.c hooks_helpers.c \
-	burning_ship.c burning_ship_julia.c custom_julia.c
+SRCS = main.c input_handler.c \
+	initializer.c renderer.c \
+	utiles.c utiles2.c utiles3.c \
+	hooks.c hooks_helpers.c zoom.c \
+	iteration.c  formulas.c
 	
 OBJS = $(SRCS:.c=.o)
 

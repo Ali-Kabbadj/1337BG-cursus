@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:14:48 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 20:31:48 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:40:35 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static double	mouse_x_complexe(double x, t_fract *fract)
 {
-	return ((x - 300)  * (fract->vars.complex_axis.x_end
+	return ((x - (CUSTOM_WIDTH - WIDTH))  * (fract->vars.complex_axis.x_end
 			- fract->vars.complex_axis.x_start) / WIDTH
 		+ fract->vars.complex_axis.x_start);
 }
@@ -26,7 +26,7 @@ static double	mouse_y_complexe(double y, t_fract *fract)
 				- fract->vars.complex_axis.y_start) / HIGHT));
 }
 
-static void	cal_bouderies(t_fract *fract, double mouse_x, double mouse_y)
+static void	cal_bouderies_x_y_center(t_fract *fract, double mouse_x, double mouse_y)
 {
 	double	x_start;
 	double	x_end;
@@ -59,5 +59,5 @@ void	handle_zoom(t_fract *fract, int x, int y, int button)
 		fract->vars.zoom = 0.9;
 	else
 		fract->vars.zoom = 1.1;
-	cal_bouderies(fract, mouse_x, mouse_y);
+	cal_bouderies_x_y_center(fract, mouse_x, mouse_y);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 16:38:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/28 05:11:10 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ void	default_shared(t_fract *fract)
 	fract->vars.move = 0.09;
 	fract->vars.color_turn = 0;
 	fract->vars.pause_color_cycle = 0;
-	fract->vars.colors.transparency = 50;
-	fract->vars.colors.red = 250;
-	fract->vars.colors.green = 80;
-	fract->vars.colors.blue = 40;
+	fract->vars.colors.transparency = 0;
+	// fract->vars.colors.red = 250;
+	// fract->vars.colors.green = 80;
+	// fract->vars.colors.blue = 40;
+	fract->vars.colors.red = 0;
+	fract->vars.colors.green = 0;
+	fract->vars.colors.blue = 0;
 }

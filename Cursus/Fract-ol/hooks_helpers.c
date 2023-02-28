@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:26:12 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/26 14:23:36 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/28 07:59:24 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	move_fract(t_fract *fract, int keycode)
 	else if (keycode == K_RIGTH_ARROW)
 		fract->vars.move_x += fract->vars.move;
 }
+
+
 
 void	pause_upause(t_fract *fract, int keycode)
 {

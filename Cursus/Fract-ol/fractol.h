@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 20:28:12 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/02/28 07:59:53 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@
 # define K_ESC 53
 # define K_SPACEBAR 49
 # define K_H 4
+# define K_A 0
 # define K_R 15
 # define K_G 5
 # define K_B 11
@@ -171,7 +172,7 @@ typedef struct s_complex_plane
 
 typedef struct s_color
 {
-	unsigned int					color;
+	int					color;
 	unsigned char		transparency;
 	unsigned char		red;
 	unsigned char		green;
@@ -205,20 +206,6 @@ typedef struct s_fract
 	t_vars				vars;
 }						t_fract;
 
-/*julia*/
-void						render_julia(t_fract *fract);
-
-/*mandelbrot*/
-void						render_mandelbrot(t_fract *fract);
-
-/*burning ship*/
-void						render_burning_ship(t_fract *fract);
-
-/*burning ship julia*/
-void						render_burning_ship_julia(t_fract *fract);
-
-/*custom julia*/
-void						render_custom_julia(t_fract *fract);
 
 /*initilizer*/
 void					init_fract_type(t_fract *fract, char *name);
@@ -261,7 +248,6 @@ void					set_pixel_color(t_fract *fract, int iterations,
 void					render_fract(t_fract *fract);
 void					rerender_fract(t_fract *fract);
 void					mlx_put_pixel_img(t_fract *fract);
-void					*iterate_multithreading(t_fract *fract);
 
 /*input handler*/
 void					handle_input(int ac, char **cmd_input, t_fract *fract);
@@ -269,7 +255,11 @@ void					handle_input(int ac, char **cmd_input, t_fract *fract);
 /*formulas*/
 void					mandelbrot_julia_formula(t_complexe *z, t_complexe c);
 void					burning_ship_julia_formula(t_complexe *z, t_complexe c);
-void					burning_ship_formula(t_complexe *z,t_fract *fract);
+void 					burning_ship_formula(t_complexe *z , t_complexe c);
 void					custom_julia_formula(t_complexe *z, t_complexe c);
 double					absolute_value(t_complexe z);
+void	cal_bouderies(t_fract *fract, double mouse_x, double mouse_y);
+
+void render(t_fract *fract);
+void iteration(t_fract *fract);
 #endif
