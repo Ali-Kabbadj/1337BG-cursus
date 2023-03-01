@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:26:12 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:42:52 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:38:30 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	pause_upause(t_fract *fract, int keycode)
 			fract->vars.pause_color_cycle = 0;
 		else
 			fract->vars.pause_color_cycle = 1;
+	}
+	else if (keycode == K_7)
+	{
+		if (fract->vars.mouse_zoom_to_center == 1)
+			fract->vars.mouse_zoom_to_center = 0;
+		else
+			fract->vars.mouse_zoom_to_center = 1;
 	}
 }
 

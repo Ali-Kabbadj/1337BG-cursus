@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   formulas.h                                         :+:      :+:    :+:   */
+/*   zoom.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 10:28:30 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 17:29:13 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/03/01 17:20:03 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/03/01 17:30:38 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMULAS_H
-# define FORMULAS_H
+#ifndef ZOOM_H
+# define ZOOM_H
 # include "structs.h"
 
-void	mandelbrot_julia_formula(t_complexe *z, t_complexe c);
-void	burning_ship_julia_formula(t_complexe *z, t_complexe c);
-void	burning_ship_formula(t_complexe *z, t_complexe c);
-void	custom_julia_formula(t_complexe *z, t_complexe c);
-double	absolute_value(t_complexe z);
+void	cal_local_zoom(t_fract *fract, double mouse_x, double mouse_y);
+void	cal_centered_zoom(t_fract *fract);
+void	handle_mouse_zoom(t_fract *fract, int x, int y, int button);
+void	handle_keyboard_zoom(t_fract *fract, int keycode);
 #endif

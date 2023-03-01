@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/03/01 13:22:56 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/03/01 17:30:17 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS = main.c input_handler.c \
 	utiles.c defaults.c utiles2.c \
 	hooks.c hooks_helpers.c zoom.c \
 	iteration.c  formulas.c sidebar.c \
-	sidebar_helper.c
+	sidebar_helper.c zoom_helpers.c
 	
 OBJS = $(SRCS:.c=.o)
 
