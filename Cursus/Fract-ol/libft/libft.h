@@ -6,12 +6,13 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 03:58:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:08:52 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:12:47 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
 

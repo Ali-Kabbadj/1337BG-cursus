@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:51:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 16:00:49 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:20:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ static void	decide_color(t_fract *fract)
 		| (red << 16) | (green << 8) | blue;
 }
 
-void	set_pixel(t_fract *fract)
+void	set_pixel_color(t_fract *fract)
 {
 	if (fract->vars.iterations == fract->vars.max_iteration)
 	{
 		fract->vars.colors.color = BLACK;
 		return ;
 	}
-	decide_color_scheme(fract);
+	decide_color(fract);
 }

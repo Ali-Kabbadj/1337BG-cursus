@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/14 16:29:06 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/03/01 16:19:41 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-NAME = ç.a
+NAME = libft.a
 
 all: $(NAME)
 

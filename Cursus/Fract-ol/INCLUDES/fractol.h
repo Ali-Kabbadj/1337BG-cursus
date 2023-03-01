@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 15:54:41 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:13:24 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "sidebar.h"
 # include "structs.h"
 # include <math.h>
+# include <stdlib.h>
 
 void	handle_mouse_zoom(t_fract *fract, int x, int y, int button);
 int		exit_program(t_fract *fract);
