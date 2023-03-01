@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/02/28 08:00:11 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/03/01 00:17:16 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ MLX = $(MLX_PATH)/libmlx.a
 
 SRCS = main.c input_handler.c \
 	initializer.c renderer.c \
-	utiles.c utiles2.c utiles3.c \
+	utiles.c defaults.c utiles3.c \
 	hooks.c hooks_helpers.c zoom.c \
 	iteration.c  formulas.c
 	

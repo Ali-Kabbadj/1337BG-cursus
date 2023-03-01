@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 06:25:41 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 01:34:53 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,21 @@
 int	handle_keypress(int keycode, t_fract *fract)
 {
 	if (keycode == K_ESC)
-	{
 		exit_program(fract);
-		return (0);
-	}
 	if (keycode == K_C)
-		default_fract(fract);
+		reset_fract(fract);
 	else if (keycode == K_LEFT_ARROW || keycode == K_RIGTH_ARROW
 			|| keycode == K_UP_ARROW || keycode == K_DOWN_ARROW)
 		move_fract(fract, keycode);
-	else if (keycode == K_A || keycode == K_R || keycode == K_G || keycode == K_B)
+	else if (keycode == K_A || keycode == K_R || keycode == K_G || keycode == K_B || keycode == K_S || keycode == K_D || keycode == K_F || keycode == K_Q)
 		ft_move_color(fract, keycode);
 	else if (keycode == K_P || keycode == K_SPACEBAR)
 		pause_upause(fract, keycode);
 	else if (keycode == K_I || keycode == K_O)
 		controlle_iteration_nb(fract, keycode);
-	rerender_fract(fract);
+	else if (keycode == K_1 || keycode == K_2 || keycode == K_3 || keycode == K_4 || keycode == K_5)
+		switch_fract(fract, keycode);
+	render_fract(fract);
 	return (0);
 }
 
@@ -38,22 +37,12 @@ int	handle_mouse_input(int button, int x, int y, t_fract *fract)
 {
 	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
 		handle_zoom(fract, x, y, button);
-	rerender_fract(fract);
+	render_fract(fract);
 	return (0);
 }
 
-int	loop_hook(t_fract *fract)
+static void color_cycle(t_fract *fract)
 {
-	int x, y;
-	x = 0;
-	y = 0;
-	if ((fract->vars.id == JULIA_ID || fract->vars.id == BURNING_SHIP_JULIA_ID || fract->vars.id == CUSTOM_JULIA_ID)
-		&& fract->vars.pause_julia == 1)
-	{
-		mlx_mouse_get_pos(fract->mlx_vars.win_ptr, &x, &y);
-		fract->vars.c.real = coodinates_converter_x(x, fract);
-		fract->vars.c.imag = coodinates_converter_y(y, fract);
-	}
 	if (fract->vars.pause_color_cycle == 0)
 	{
 		if (fract->vars.color_turn == 0)
@@ -72,6 +61,22 @@ int	loop_hook(t_fract *fract)
 			fract->vars.color_turn = 0;
 		}
 	}
-	rerender_fract(fract);
+}
+
+int	loop_hook(t_fract *fract)
+{
+	int x, y;
+	x = 0;
+	y = 0;
+	if ((fract->vars.id == JULIA_ID || fract->vars.id == BURNING_SHIP_JULIA_ID || fract->vars.id == CUSTOM_JULIA_ID)
+		&& fract->vars.pause_julia == 1)
+	{
+		mlx_mouse_get_pos(fract->mlx_vars.win_ptr, &x, &y);
+		fract->vars.c.real = coodinates_converter_x(x, fract);
+		fract->vars.c.imag = coodinates_converter_y(y, fract);
+	}
+	text_flashing_color(fract);
+	color_cycle(fract);
+	render_fract(fract);
 	return (0);
 }

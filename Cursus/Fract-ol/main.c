@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 17:51:36 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 00:08:25 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	if (!fract)
 		return (0);
 	init_fract_type(fract, av[1]);
+	init_fract_name(fract);
 	init_mlx_vars(fract);
 	init_img(fract);
 	init_vars(fract);

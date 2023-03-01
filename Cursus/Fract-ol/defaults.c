@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utiles2.c                                          :+:      :+:    :+:   */
+/*   defaults.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 04:51:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 16:38:44 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 00:57:00 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	default_julia(t_fract *fract)
+static void	default_julias(t_fract *fract)
 {
 	fract->vars.complex_axis.x_start = JULIA_X_START;
 	fract->vars.complex_axis.x_end = JULIA_X_END;
@@ -23,7 +23,7 @@ static void	default_julia(t_fract *fract)
 		fract->vars.c.real = 0.37;
 		fract->vars.c.imag = 0.1;
 	}
-	else 
+	else if (fract->vars.id == BURNING_SHIP_JULIA_ID)
 	{
 		fract->vars.c.real = -1.7;
 		fract->vars.c.imag = -0.05;
@@ -58,15 +58,20 @@ static void default_custom_julia(t_fract *fract)
 	fract->vars.pause_julia = 0;
 }
 
-void	default_fract(t_fract *fract)
+void	init_vars(t_fract *fract)
 {
 	default_shared(fract);
 	if (fract->vars.id == JULIA_ID || fract->vars.id == BURNING_SHIP_JULIA_ID)
-		default_julia(fract);
+		default_julias(fract);
 	else if (fract->vars.id == MANDELBROT_ID)
 		default_mandelbrot(fract);
 	else if (fract->vars.id == BURNING_SHIP_ID)
 		default_burning_ship(fract);
 	else if (fract->vars.id == CUSTOM_JULIA_ID)
 		default_custom_julia(fract);
+}
+
+void reset_fract(t_fract *fract)
+{
+	init_vars(fract);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 07:59:53 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 01:29:13 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@
 # define K_UP_ARROW 126
 # define K_DOWN_ARROW 125
 
-# define K_P 35
-# define K_L 37
-# define K_I 34
-# define K_O 31
-# define K_C 8
 
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
@@ -77,14 +72,14 @@
 # define K_NUM_MINUS 78
 # define K_NUM_0 82
 
-# define K_NUM_7 89
-# define K_NUM_4 86
-# define K_NUM_8 91
-# define K_NUM_6 88
-# define K_NUM_2 84
-# define K_NUM_9 92
-# define K_NUM_3 85
-# define K_NUM_1 83
+// # define K_NUM_7 89
+// # define K_NUM_4 86
+// # define K_NUM_8 91
+// # define K_NUM_6 88
+// # define K_NUM_2 84
+// # define K_NUM_9 92
+// # define K_NUM_3 85
+// # define K_NUM_1 83
 
 # define K_1 18
 # define K_2 19
@@ -95,31 +90,24 @@
 # define K_7 26
 # define K_8 28
 
-# define FR_MANDELBROT K_1
-# define FR_JULIA K_2
-# define FR_BSHIP K_3
-# define FR_SPINNER K_4
-# define FR_FISH K_5
-# define FR_FLOWER K_6
-# define FR_HEART K_7
-# define FR_SPLASH K_8
-
 # define K_ESC 53
 # define K_SPACEBAR 49
+
 # define K_H 4
 # define K_A 0
 # define K_R 15
 # define K_G 5
 # define K_B 11
+# define K_P 35
 # define K_L 37
 # define K_I 34
+# define K_O 31
+# define K_C 8
 # define K_T 17
-
-# define C_RED 0xAA0000
-# define C_GREEN 0x00AA00
-# define C_BLUE 0x0000AA
-# define C_WHITE 0xFFFFFF
-# define C_YELLOW 0xD8CE0F
+# define K_S 1
+# define K_D 2
+# define K_F 3
+# define K_Q 12
 
 # define JULIA_ID 1
 # define MANDELBROT_ID 2
@@ -127,11 +115,6 @@
 # define BURNING_SHIP_JULIA_ID 4
 # define CUSTOM_JULIA_ID 5
 
-# define JULIA_WIN_NAME "Fract-ol : Julia"
-# define MANDELBROT_WIN_NAME "Fract-ol : Mandelbrot"
-# define BURNING_SHIP_WIN_NAME "Fract-ol : Burning Ship"
-# define BURNING_SHIP_JULIA_WIN_NAME "Fract-ol : Burning Ship Julia"
-# define CUSTOM_JULIA_WIN_NAME "Fract-ol : Custom Julia"
 
 typedef struct s_img_data
 {
@@ -196,12 +179,14 @@ typedef struct s_vars
 	int					pause_color_cycle;
 	double				move;
 	int					color_turn;
-
+	char 				*name;
+	int 				text_color;
 }						t_vars;
 
 typedef struct s_fract
 {
 	t_img_data			img_vars;
+	t_img_data			img;
 	t_mlx_vars			mlx_vars;
 	t_vars				vars;
 }						t_fract;
@@ -235,7 +220,7 @@ int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strcmp(const char *s1, const char *s2);
 void					default_shared(t_fract *fract);
 /*utiles 2*/
-void					default_fract(t_fract *fract);
+void reset_fract(t_fract *fract);
 
 /*utiles 3*/
 double					coodinates_converter_x(double x, t_fract *fract);
@@ -262,4 +247,8 @@ void	cal_bouderies(t_fract *fract, double mouse_x, double mouse_y);
 
 void render(t_fract *fract);
 void iteration(t_fract *fract);
+void init_fract_name(t_fract *fract);
+void switch_fract(t_fract *fract, int keycode);
+void mouse_pointer_availability(t_fract *fract);
+void text_flashing_color(t_fract *fract);
 #endif

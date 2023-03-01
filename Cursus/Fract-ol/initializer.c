@@ -6,11 +6,25 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/27 20:21:20 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 00:17:51 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void init_fract_name(t_fract *fract)
+{
+	if (fract->vars.id == JULIA_ID)
+		fract->vars.name = "JULIA";
+	else if (fract->vars.id == MANDELBROT_ID)
+		fract->vars.name = "MANDELBROT";
+	else if (fract->vars.id == BURNING_SHIP_ID)
+		fract->vars.name = "BURNING SHIP";
+	else if (fract->vars.id == BURNING_SHIP_JULIA_ID)
+		fract->vars.name = "BURNING SHIP JULIA";
+	else if (fract->vars.id == CUSTOM_JULIA_ID)
+		fract->vars.name = "CUSTOM JULIA";
+}
 
 void	init_fract_type(t_fract *fract, char *name)
 {
@@ -33,6 +47,8 @@ void	init_img(t_fract *fract)
 												&(fract->img_vars.bpp),
 												&(fract->img_vars.line_lenght),
 												&(fract->img_vars.endian));
+	fract->img.img = mlx_new_image(fract->mlx_vars.mlx_ptr, CUSTOM_WIDTH - WIDTH, 1000);
+	fract->img.addr = mlx_get_data_addr(fract->img.img, &fract->img.bpp, &fract->img.line_lenght, &fract->img.endian);
 }
 
 void	init_mlx_vars(t_fract *fract)
@@ -41,7 +57,7 @@ void	init_mlx_vars(t_fract *fract)
 	if (fract->mlx_vars.mlx_ptr == NULL)
 		exit_program(fract);
 	fract->mlx_vars.win_ptr = mlx_new_window(fract->mlx_vars.mlx_ptr, CUSTOM_WIDTH,
-			HIGHT, get_win_title(fract));
+		HIGHT, "FRACTOL");
 	if (fract->mlx_vars.win_ptr == NULL)
 		exit_program(fract);
 }
@@ -55,7 +71,3 @@ int	init_hooks(t_fract *fract)
 	return (0);
 }
 
-void	init_vars(t_fract *fract)
-{
-	default_fract(fract);
-}

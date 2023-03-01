@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:51:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 06:26:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 01:00:32 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,15 @@ void ft_move_color(t_fract *fract, int key)
 		fract->vars.colors.blue += 1;
 	else if (key == K_A)
 		fract->vars.colors.transparency += 1;
-
+	else if (key == K_S)
+		fract->vars.colors.red -= 1;
+	else if (key == K_D)
+		fract->vars.colors.green -= 1;
+	else if (key == K_F)
+		fract->vars.colors.blue -= 1;
+	else if (key == K_Q)
+		fract->vars.colors.transparency -= 1;
+	
 }
 void	set_pixel_color(t_fract *fract, int iterations, t_complexe z)
 {
