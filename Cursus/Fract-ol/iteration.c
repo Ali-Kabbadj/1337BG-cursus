@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 11:46:59 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 14:17:43 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:54:14 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	iteration(t_fract *fract)
 		else if (fract->vars.id == BURNING_SHIP_ID)
 			burning_ship_formula(&fract->vars.z, fract->vars.c);
 		fract->vars.iterations++;
+		if (fract->vars.switch_color_formula == 1)
+			fract->vars.e_z += 1 / pow(2.718,
+					sqrt(absolute_value(fract->vars.z)));
 	}
-	set_pixel_color(fract, fract->vars.iterations, fract->vars.z);
+	set_pixel_color(fract);
 	mlx_put_pixel_img(fract);
 }

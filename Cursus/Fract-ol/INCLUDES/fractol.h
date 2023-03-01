@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:22:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:24:23 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:54:41 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	reset_fract(t_fract *fract);
 double	coodinates_converter_x(double x, t_fract *fract);
 double	coodinates_converter_y(double y, t_fract *fract);
 void	ft_move_color(t_fract *fract, int key);
-void	set_pixel_color(t_fract *fract, int iterations, t_complexe z);
+void	set_pixel_color(t_fract *fract);
 void	render_fract(t_fract *fract);
 void	rerender_fract(t_fract *fract);
 void	mlx_put_pixel_img(t_fract *fract);

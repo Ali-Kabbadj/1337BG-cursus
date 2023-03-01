@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:44:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:22:00 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	default_shared(t_fract *fract)
 	fract->vars.colors.green = 0;
 	fract->vars.colors.blue = 0;
 	fract->vars.text_color = RED;
+	fract->vars.e_z = 0;
+	fract->vars.switch_color_formula = 0;
 }
 
 void	reset_fract(t_fract *fract)

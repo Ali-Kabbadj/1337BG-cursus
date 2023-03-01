@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:17:29 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:41:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:42:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_menu1(t_fract *fract)
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 190,
 		BLACK, "---------------------------------------");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 210,
-		BLACK, "   WHEEL |        ZOOM");
+		BLACK, "  WHEELS |        ZOOM");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 230,
 		BLACK, "     I   |        INCREASE ITERATION");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 250,
@@ -97,11 +97,15 @@ void	put_menu4(t_fract *fract)
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 610,
 		BLACK, "     5   |        CUSTOM JULIA");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 630,
-		BLACK, "     P   |        PAUSE JULIAS MOUSE HOOK");
+		BLACK, "     6   |        SMOOTH COLORING ON/OFF");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 650,
-		BLACK, "   SPACE |        PAUSE COLOR ANIMATION");
+		BLACK, "     P   |        PAUSE JULIAS MOUSE HOOK");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 670,
+		BLACK, "   SPACE |        PAUSE COLOR ANIMATION");
+	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 690,
+		BLACK, "    +/-  |        CENTERED ZOOM");
+	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 1010,
 		BLACK, "    ESC  |        EXIT");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 990,
+	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 1030,
 		BLACK, "   made  with  love  by  akabbadj  <3 ");
 }

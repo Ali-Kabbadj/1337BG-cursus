@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:14:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:24:53 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:20:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef struct s_vars
 	int					color_turn;
 	char				*name;
 	int					text_color;
+	double				e_z;
+	int					switch_color_formula;
 }						t_vars;
 
 typedef struct s_fract

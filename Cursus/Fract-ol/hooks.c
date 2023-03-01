@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:59:28 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:49:10 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:45:07 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	text_flashing_color(t_fract *fract)
 	}
 	counter++;
 }
-
 
 int	handle_keypress(int keycode, t_fract *fract)
 {
@@ -53,6 +52,8 @@ int	handle_keypress(int keycode, t_fract *fract)
 	else if (keycode == K_PLUS || keycode == K_MINUS
 		|| keycode == K_NUM_PLUS || keycode == K_NUM_MINUS)
 		handle_keyboard_zoom(fract, keycode);
+	else if (keycode == 22)
+		fract->vars.switch_color_formula = ! fract->vars.switch_color_formula;
 	render_fract(fract);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:25:59 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 14:20:46 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:20:20 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@
 
 # define ZOOM_IN 0.9
 # define ZOOM_OUT 1.1
+# define EXP 2.718
 #endif 
