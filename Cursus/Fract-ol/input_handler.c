@@ -6,11 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 09:55:08 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 07:59:31 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:23:39 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./INCLUDES/fractol.h"
 
 static int	check_fract_name(char *fract_name)
 {
@@ -23,22 +23,22 @@ static int	check_fract_name(char *fract_name)
 
 static void	print_manual(char *error_message, t_fract *fract)
 {
-	ft_printf("##################################################################\n");
-	ft_printf("#                                                                #\n");
-	ft_printf("#  ERROR : %s                #\n", error_message);
-	ft_printf("#                                                                #\n");
-	ft_printf("###################### FRACT-OL Manual ###########################\n");
-	ft_printf("#                                                                #\n");
-	ft_printf("#  usage : ./fractol <name>                                      #\n");
-	ft_printf("#                                                                #\n");
-	ft_printf("#  available fractals names :                                    #\n");
-	ft_printf("#   | julia                                                      #\n");
-	ft_printf("#   | mandelbrot                                                 #\n");
-	ft_printf("#   | burning_ship                                               #\n");
-	ft_printf("#   | burning_ship_julia                                         #\n");
-	ft_printf("#   | custom_julia                                               #\n");
-	ft_printf("#                                                                #\n");
-	ft_printf("##################################################################\n");
+	ft_printf("####################################################\n");
+	ft_printf("#                                                  #\n");
+	ft_printf("#  ERROR : %s  #\n", error_message);
+	ft_printf("#                                                  #\n");
+	ft_printf("###################### FRACT-OL Manual #############\n");
+	ft_printf("#                                                  #\n");
+	ft_printf("#  usage : ./fractol <name>                        #\n");
+	ft_printf("#                                                  #\n");
+	ft_printf("#  available fractals names :                      #\n");
+	ft_printf("#   | julia                                        #\n");
+	ft_printf("#   | mandelbrot                                   #\n");
+	ft_printf("#   | burning_ship                                 #\n");
+	ft_printf("#   | burning_ship_julia                           #\n");
+	ft_printf("#   | custom_julia                                 #\n");
+	ft_printf("#                                                  #\n");
+	ft_printf("####################################################\n");
 	exit_program(fract);
 }
 

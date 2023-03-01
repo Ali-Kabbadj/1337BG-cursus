@@ -6,11 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:08:09 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 07:59:21 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:53:24 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./INCLUDES/fractol.h"
 
 void	mandelbrot_julia_formula(t_complexe *z, t_complexe c)
 {
@@ -27,7 +27,7 @@ void	burning_ship_julia_formula(t_complexe *z, t_complexe c)
 
 	temp = z->real;
 	z->real = fabs(z->real * z->real) - fabs(z->imag * z->imag) + c.real;
-	z->imag = 2 * fabs(z->imag * temp)  + c.imag;
+	z->imag = 2 * fabs(z->imag * temp) + c.imag;
 }
 
 void	custom_julia_formula(t_complexe *z, t_complexe c)
@@ -36,10 +36,10 @@ void	custom_julia_formula(t_complexe *z, t_complexe c)
 
 	temp = z->real;
 	z->real = fabs(z->real * z->real - z->imag * z->imag) + c.real;
-	z->imag = 2 * fabs(z->imag * temp)  + c.imag;
+	z->imag = 2 * fabs(z->imag * temp) + c.imag;
 }
 
-void burning_ship_formula(t_complexe *z , t_complexe c)
+void	burning_ship_formula(t_complexe *z, t_complexe c)
 {
 	double	temp;
 

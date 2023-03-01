@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sidebar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 10:34:07 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/03/01 10:43:28 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/03/01 13:24:45 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./INCLUDES/fractol.h"
+#ifndef SIDEBAR_H
+# define SIDEBAR_H
+# include "structs.h"
 
-int	main(int ac, char **av)
-{
-	t_fract	*fract;
-
-	fract = malloc(sizeof(t_fract));
-	handle_input(ac, av, fract);
-	if (!fract)
-		return (0);
-	init_fract_type(fract, av[1]);
-	init_fract_name(fract);
-	init_mlx_vars(fract);
-	init_img(fract);
-	init_vars(fract);
-	init_hooks(fract);
-	render_fract(fract);
-	mlx_loop(fract->mlx_vars.mlx_ptr);
-	return (0);
-}
+void	put_sidebar(t_fract *fract);
+void	put_color_info(t_fract *fract);
+void	put_menu1(t_fract *fract);
+void	put_menu2(t_fract *fract);
+void	put_menu3(t_fract *fract);
+void	put_menu4(t_fract *fract);
+#endif

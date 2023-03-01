@@ -6,16 +6,16 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:14:48 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/02/28 22:47:09 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:47:35 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./INCLUDES/fractol.h"
 
 static double	mouse_x_complexe(double x, t_fract *fract)
 {
-	return ((x - (CUSTOM_WIDTH - WIDTH))  * (fract->vars.complex_axis.x_end
-			- fract->vars.complex_axis.x_start) / WIDTH
+	return ((x - (WIN_WIDTH - IMAGE_WIDTH)) * (fract->vars.complex_axis.x_end
+			- fract->vars.complex_axis.x_start) / WIN_WIDTH
 		+ fract->vars.complex_axis.x_start);
 }
 
@@ -23,10 +23,11 @@ static double	mouse_y_complexe(double y, t_fract *fract)
 {
 	return (fract->vars.complex_axis.y_end - (y
 			* (fract->vars.complex_axis.y_end
-				- fract->vars.complex_axis.y_start) / HIGHT));
+				- fract->vars.complex_axis.y_start) / IMAGE_HIGHT));
 }
 
-static void	cal_bouderies_x_y_center(t_fract *fract, double mouse_x, double mouse_y)
+static void	cal_bouderies_x_y_center(t_fract *fract, double mouse_x,
+		double mouse_y)
 {
 	double	x_start;
 	double	x_end;
@@ -48,16 +49,25 @@ static void	cal_bouderies_x_y_center(t_fract *fract, double mouse_x, double mous
 	fract->vars.move *= fract->vars.zoom;
 }
 
-void	handle_zoom(t_fract *fract, int x, int y, int button)
+void	handle_keyboard_zoom(t_fract *fract, int keycode)
 {
-	double mouse_x;
-	double mouse_y;
+	if (keycode == K_NUM_PLUS || keycode == K_PLUS)
+		fract->vars.zoom = ZOOM_IN;
+	else if (keycode == K_NUM_MINUS || keycode == K_MINUS)
+		fract->vars.zoom = ZOOM_OUT;
+	cal_bouderies_x_y_center(fract, 0, 0);
+}
+
+void	handle_mouse_zoom(t_fract *fract, int x, int y, int button)
+{
+	double	mouse_x;
+	double	mouse_y;
 
 	mouse_x = mouse_x_complexe(x, fract);
 	mouse_y = mouse_y_complexe(y, fract);
 	if (button == MOUSE_SCROLL_DOWN)
-		fract->vars.zoom = 0.9;
+		fract->vars.zoom = ZOOM_IN;
 	else
-		fract->vars.zoom = 1.1;
+		fract->vars.zoom = ZOOM_OUT;
 	cal_bouderies_x_y_center(fract, mouse_x, mouse_y);
 }

@@ -6,11 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:26:12 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 01:08:33 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:42:52 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./INCLUDES/fractol.h"
 
 void	controlle_iteration_nb(t_fract *fract, int keycode)
 {
@@ -32,8 +32,6 @@ void	move_fract(t_fract *fract, int keycode)
 		fract->vars.move_x += fract->vars.move;
 }
 
-
-
 void	pause_upause(t_fract *fract, int keycode)
 {
 	if (keycode == K_P)
@@ -52,20 +50,9 @@ void	pause_upause(t_fract *fract, int keycode)
 	}
 }
 
-void mouse_pointer_availability(t_fract *fract)
+void	switch_fract(t_fract *fract, int keycode)
 {
-	if (fract->vars.id == JULIA_ID || fract->vars.id == BURNING_SHIP_JULIA_ID || fract->vars.id == CUSTOM_JULIA_ID)
-	{
-		mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 700, 0xFF0000, "Mouse pointer manpulation is available");
-		mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 700, 0xFFFFFF, "Mouse pointer manpulation is available");
-		mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 700, 0xFF0000, "Click P to pause/unpause pointer influence");
-		mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 700, 0xFFFFFF, "Click P to pause/unpause pointer influence");
-	}
-}
-
-void switch_fract(t_fract *fract, int keycode)
-{
-	int old_id;
+	int	old_id;
 
 	old_id = fract->vars.id;
 	if (keycode == K_1 && fract->vars.id != 1)
@@ -79,8 +66,5 @@ void switch_fract(t_fract *fract, int keycode)
 	else if (keycode == K_5 && fract->vars.id != 5)
 		fract->vars.id = CUSTOM_JULIA_ID;
 	if (old_id != fract->vars.id)
-	{
-		init_fract_name(fract);
 		reset_fract(fract);
-	}
 }

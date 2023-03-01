@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   formulas.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 10:34:07 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/03/01 10:28:30 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/03/01 13:56:08 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./INCLUDES/fractol.h"
+#ifndef FORMULAS_H
+# define FORMULAS_H
+# include "structs.h"
 
-int	main(int ac, char **av)
-{
-	t_fract	*fract;
-
-	fract = malloc(sizeof(t_fract));
-	handle_input(ac, av, fract);
-	if (!fract)
-		return (0);
-	init_fract_type(fract, av[1]);
-	init_fract_name(fract);
-	init_mlx_vars(fract);
-	init_img(fract);
-	init_vars(fract);
-	init_hooks(fract);
-	render_fract(fract);
-	mlx_loop(fract->mlx_vars.mlx_ptr);
-	return (0);
-}
+void	mandelbrot_julia_formula(t_complexe *z, t_complexe c);
+void	burning_ship_julia_formula(t_complexe *z, t_complexe c);
+void	burning_ship_formula(t_complexe *z, t_complexe c);
+void	custom_julia_formula(t_complexe *z, t_complexe c);
+double	absolute_value(t_complexe z);
+#endif

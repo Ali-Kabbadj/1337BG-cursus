@@ -6,7 +6,7 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 15:46:51 by akabbadj          #+#    #+#              #
-#    Updated: 2023/03/01 00:17:16 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/03/01 13:22:56 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,10 @@ MLX = $(MLX_PATH)/libmlx.a
 
 SRCS = main.c input_handler.c \
 	initializer.c renderer.c \
-	utiles.c defaults.c utiles3.c \
+	utiles.c defaults.c utiles2.c \
 	hooks.c hooks_helpers.c zoom.c \
-	iteration.c  formulas.c
+	iteration.c  formulas.c sidebar.c \
+	sidebar_helper.c
 	
 OBJS = $(SRCS:.c=.o)
 
@@ -49,7 +50,6 @@ $(NAME): $(OBJS) $(MLX) $(PRINT) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(PRINT) $(MLX_FLAGS) -o $(NAME)
 	$(MAKE) clean
 
-	
 clean:
 	rm -f $(OBJS)
 	$(MAKE) -C $(LIBFT_PATH) clean 

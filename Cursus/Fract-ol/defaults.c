@@ -6,11 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 04:51:41 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 00:57:00 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:29:59 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./INCLUDES/fractol.h"
 
 static void	default_julias(t_fract *fract)
 {
@@ -47,7 +47,7 @@ static void	default_burning_ship(t_fract *fract)
 	fract->vars.complex_axis.y_end = BURNING_SHIP_Y_END;
 }
 
-static void default_custom_julia(t_fract *fract)
+static void	default_custom_julia(t_fract *fract)
 {
 	fract->vars.complex_axis.x_start = CUSTOM_JULIA_X_START;
 	fract->vars.complex_axis.x_end = CUSTOM_JULIA_X_END;
@@ -69,9 +69,4 @@ void	init_vars(t_fract *fract)
 		default_burning_ship(fract);
 	else if (fract->vars.id == CUSTOM_JULIA_ID)
 		default_custom_julia(fract);
-}
-
-void reset_fract(t_fract *fract)
-{
-	init_vars(fract);
 }
