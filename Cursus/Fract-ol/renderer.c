@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:29:49 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 13:43:27 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:53:36 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ void	render_fract(t_fract *fract)
 	put_sidebar(fract);
 }
 
-void	mlx_put_pixel_img(t_fract *fract)
+void	mlx_put_pixel_img(t_img_data *img_vars, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = fract->img_vars.addr + (fract->vars.win_axis.y
-			* fract->img_vars.line_lenght + fract->vars.win_axis.x
-			* (fract->img_vars.bpp / 8));
-	*(unsigned int *)dst = fract->vars.colors.color;
+	dst = img_vars->addr + (y * img_vars->line_lenght + x
+			* (img_vars->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 void	render(t_fract *fract)

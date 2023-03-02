@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:08:09 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 12:53:24 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:22:11 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	burning_ship_julia_formula(t_complexe *z, t_complexe c)
 	double	temp;
 
 	temp = z->real;
-	z->real = fabs(z->real * z->real) - fabs(z->imag * z->imag) + c.real;
+	z->real = z->real * z->real - z->imag * z->imag + c.real;
 	z->imag = 2 * fabs(z->imag * temp) + c.imag;
 }
 
@@ -44,8 +44,8 @@ void	burning_ship_formula(t_complexe *z, t_complexe c)
 	double	temp;
 
 	temp = z->real;
-	z->real = z->real * z->real - z->imag * z->imag - c.real;
-	z->imag = fabs(2 * z->imag * temp) - c.imag;
+	z->real = z->real * z->real - z->imag * z->imag + c.real;
+	z->imag = 2 * fabs(z->imag * temp) + c.imag;
 }
 
 double	absolute_value(t_complexe z)

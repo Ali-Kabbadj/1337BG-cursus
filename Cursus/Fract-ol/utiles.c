@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:41:37 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 16:47:58 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:03:30 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ void	default_shared(t_fract *fract)
 
 void	reset_fract(t_fract *fract)
 {
-	init_fract_name(fract);
 	init_vars(fract);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 11:46:59 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 15:54:14 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:15:49 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	iteration(t_fract *fract)
 					sqrt(absolute_value(fract->vars.z)));
 	}
 	set_pixel_color(fract);
-	mlx_put_pixel_img(fract);
+	mlx_put_pixel_img(&fract->img_vars, fract->vars.win_axis.x,
+		fract->vars.win_axis.y, fract->vars.colors.color);
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 09:55:08 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 12:23:39 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:32:35 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ static void	print_manual(char *error_message, t_fract *fract)
 
 void	handle_input(int ac, char **cmd_input, t_fract *fract)
 {
-	if (ac < 2 || check_fract_name(cmd_input[1]) != NO_ERROR)
+	if (ac < 2 || check_fract_name(cmd_input[1]) == WRONG_FRACT_NAME)
 		print_manual(WRONG_NAME_MSSG, fract);
 }

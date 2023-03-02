@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utiles3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 15:38:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/02 13:18:17 by akabbadj         ###   ########.fr       */
+/*   Created: 2023/03/02 13:00:29 by akabbadj          #+#    #+#             */
+/*   Updated: 2023/03/02 13:25:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./INCLUDES/fractol.h"
 
-int	main(int ac, char **av)
+void	put_int_to_win(t_fract *fract, int x, int y, int nb)
 {
-	t_fract	*fract;
+	char	*str_nb;
 
-	fract = malloc(sizeof(t_fract));
-	handle_input(ac, av, fract);
-	if (!fract)
-		return (0);
-	init_fract_type(fract, av[1]);
-	init_mlx_vars(fract);
-	init_img(fract);
-	init_vars(fract);
-	init_hooks(fract);
-	render_fract(fract);
-	mlx_loop(fract->mlx_vars.mlx_ptr);
-	return (0);
+	str_nb = ft_itoa(nb);
+	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, x, y,
+		BLACK, str_nb);
+	free(str_nb);
 }

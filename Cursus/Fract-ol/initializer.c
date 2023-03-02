@@ -6,25 +6,25 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:09:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 12:27:44 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:45:32 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./INCLUDES/fractol.h"
 
-void	init_fract_name(t_fract *fract)
-{
-	if (fract->vars.id == JULIA_ID)
-		fract->vars.name = "JULIA";
-	else if (fract->vars.id == MANDELBROT_ID)
-		fract->vars.name = "MANDELBROT";
-	else if (fract->vars.id == BURNING_SHIP_ID)
-		fract->vars.name = "BURNING SHIP";
-	else if (fract->vars.id == BURNING_SHIP_JULIA_ID)
-		fract->vars.name = "BURNING SHIP JULIA";
-	else if (fract->vars.id == CUSTOM_JULIA_ID)
-		fract->vars.name = "CUSTOM JULIA";
-}
+// void	init_fract_name(t_fract *fract)
+// {
+// 	// if (fract->vars.id == JULIA_ID)
+// 	// 	fract->vars.name = "JULIA";
+// 	// else if (fract->vars.id == MANDELBROT_ID)
+// 	// 	fract->vars.name = "MANDELBROT";
+// 	// else if (fract->vars.id == BURNING_SHIP_ID)
+// 	// 	fract->vars.name = "BURNING SHIP";
+// 	// else if (fract->vars.id == BURNING_SHIP_JULIA_ID)
+// 	// 	fract->vars.name = "BURNING SHIP JULIA";
+// 	// else if (fract->vars.id == CUSTOM_JULIA_ID)
+// 	// 	fract->vars.name = "CUSTOM JULIA";
+// }
 
 void	init_fract_type(t_fract *fract, char *name)
 {
@@ -69,6 +69,6 @@ void	init_hooks(t_fract *fract)
 {
 	mlx_key_hook(fract->mlx_vars.win_ptr, handle_keypress, fract);
 	mlx_mouse_hook(fract->mlx_vars.win_ptr, handle_mouse_input, fract);
-	mlx_hook(fract->mlx_vars.win_ptr, 17, 1L << 17, exit_program, fract);
+	mlx_hook(fract->mlx_vars.win_ptr, 17, 0, exit_program, fract);
 	mlx_loop_hook(fract->mlx_vars.mlx_ptr, loop_hook, fract);
 }

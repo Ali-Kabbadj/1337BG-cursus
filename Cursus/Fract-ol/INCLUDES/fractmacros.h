@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:25:59 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 15:20:20 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 09:03:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@
 # define MANDELBROT_Y_START -2
 # define MANDELBROT_Y_END 2
 
-# define BURNING_SHIP_X_START -1.5
-# define BURNING_SHIP_X_END 2
-# define BURNING_SHIP_Y_START -1
-# define BURNING_SHIP_Y_END 2
+# define BURNING_SHIP_X_START 1.5
+# define BURNING_SHIP_X_END -2
+# define BURNING_SHIP_Y_START 1
+# define BURNING_SHIP_Y_END -2
 
 # define CUSTOM_JULIA_X_START -2.5
 # define CUSTOM_JULIA_X_END 2.5

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:17:29 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 17:13:46 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:20:41 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,16 @@ void	put_color_info(t_fract *fract)
 		BLACK, "------------------ ARGB ---------------");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 70,
 		BLACK, "ALPHA : ");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 265, 70,
-		BLACK, ft_itoa(fract->vars.colors.transparency));
+	put_int_to_win(fract, 265, 70, fract->vars.colors.transparency);
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 90,
 		RED, "RED   : ");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 265, 90,
-		BLACK, ft_itoa(fract->vars.colors.red));
+	put_int_to_win(fract, 265, 90, fract->vars.colors.red);
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 110,
 		GREEN, "GREEN : ");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 265, 110,
-		BLACK, ft_itoa(fract->vars.colors.green));
+	put_int_to_win(fract, 265, 110, fract->vars.colors.green);
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 130,
 		BLUE, "BLUE  : ");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 265, 130,
-		BLACK, ft_itoa(fract->vars.colors.blue));
+	put_int_to_win(fract, 265, 130, fract->vars.colors.blue);
 }
 
 void	put_menu1(t_fract *fract)
@@ -99,7 +95,7 @@ void	put_menu4(t_fract *fract)
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 630,
 		BLACK, "     6   |        SMOOTH COLORING ON/OFF");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 650,
-		BLACK, "     7   |        PAUSE / UNPAUSE CENTERED ZOOM");
+		BLACK, "     7   |        CENTERED ZOOM ON/OFF");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 670,
 		BLACK, "     P   |        PAUSE JULIAS MOUSE HOOK");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 690,
@@ -108,6 +104,6 @@ void	put_menu4(t_fract *fract)
 		BLACK, "    +/-  |        CENTERED ZOOM");
 	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 730,
 		BLACK, "    ESC  |        EXIT");
-	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 10, 1030,
-		BLACK, "   made  with  love  by  akabbadj  <3 ");
+	mlx_string_put(fract->mlx_vars.mlx_ptr, fract->mlx_vars.win_ptr, 25, 978,
+		BLACK, "   MADE WITH LOVE BY AKABBADJ  <3 ");
 }
