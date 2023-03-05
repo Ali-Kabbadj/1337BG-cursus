@@ -63,7 +63,7 @@ void small_sort(t_stack **stack_a);
 
 /*Large sort*/
 void push_all_to_stack_b(t_stack **stack_a, t_stack **stack_b);
-void large_sort(t_stack **stack_a,t_stack **stack_b, int stacksize);
+void large_sort(t_stack **stack_a, t_stack **stack_b);
 void set_pos(t_stack **stack);
 int get_target_pos(int b_index, int target_pos, t_stack **stack_a);
 

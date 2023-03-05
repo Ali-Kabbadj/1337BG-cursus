@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 07:25:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:53:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 21:39:01 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/03 22:44:56 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void free_stack(t_stack **stack)
+int	ft_isalpha(int c)
 {
-    (void)stack;
+	return (ft_islower(c) || ft_isupper(c));
 }
-
-void exit_program(t_stack **stack_a, t_stack **stack_b)
+/*#include <stdio.h>
+int main()
 {
-    if (stack_a == NULL || *stack_a)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b)
-        free_stack(stack_b);
-    write(2,"Error\n",6);
-    exit(1);
-}
+	char a;
+	printf("Enter a value:");
+	scanf("%c",&a);
+	if (ft_isalpha(a))
+		printf("%c is an aphabet",a);
+	else
+		printf("%c is not an alphabet",a);
+}*/

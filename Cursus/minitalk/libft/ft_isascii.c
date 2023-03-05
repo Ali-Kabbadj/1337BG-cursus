@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 07:25:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:53:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 21:59:54 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/04 03:06:11 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void free_stack(t_stack **stack)
+int	ft_isascii(int c)
 {
-    (void)stack;
+	return (c >= 0 && c <= 127);
 }
-
-void exit_program(t_stack **stack_a, t_stack **stack_b)
+/*#include <stdio.h>
+int main()
 {
-    if (stack_a == NULL || *stack_a)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b)
-        free_stack(stack_b);
-    write(2,"Error\n",6);
-    exit(1);
-}
+	char c;
+	printf("Enter a value : ");
+	scanf("%c", &c);
+	if (ft_isascii(c))
+		printf("%c is an ascii value", c);
+	else
+		printf("%c is not an ascii value", c);
+}*/

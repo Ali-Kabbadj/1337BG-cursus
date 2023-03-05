@@ -9,7 +9,7 @@ void push_swap(t_stack **stack_a, t_stack **stack_b, int stacksize)
     else if (stacksize == 3)
         small_sort(stack_a);
     else
-        large_sort(stack_a, stack_b, stacksize);
+        large_sort(stack_a, stack_b);
 }
 
 //tmp functions

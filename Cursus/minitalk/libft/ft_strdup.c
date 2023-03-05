@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 07:25:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:53:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/14 03:42:23 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/04 01:28:21 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void free_stack(t_stack **stack)
+char	*ft_strdup(const char *s1)
 {
-    (void)stack;
-}
+	char	*res;
+	size_t	slen;
 
-void exit_program(t_stack **stack_a, t_stack **stack_b)
-{
-    if (stack_a == NULL || *stack_a)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b)
-        free_stack(stack_b);
-    write(2,"Error\n",6);
-    exit(1);
+	slen = ft_strlen(s1) + 1;
+	res = malloc(slen * sizeof(char));
+	if (!res)
+		return (0);
+	ft_bzero(res, slen);
+	return ((char *)ft_memmove(res, s1, slen));
 }

@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:45:36 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/12/16 10:38:50 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:52:06 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int get_target_pos(int b_index, int target_pos, t_stack **stack_a)
     return (target_pos);
 }
 
-void large_sort(t_stack **stack_a, t_stack **stack_b,int stacksize)
+void large_sort(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *tmp_b;
     

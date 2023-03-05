@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 07:25:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:53:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/07 00:48:50 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/02 22:54:28 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void free_stack(t_stack **stack)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    (void)stack;
-}
+	size_t	i;
 
-void exit_program(t_stack **stack_a, t_stack **stack_b)
-{
-    if (stack_a == NULL || *stack_a)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b)
-        free_stack(stack_b);
-    write(2,"Error\n",6);
-    exit(1);
+	i = 0;
+	while (i < n)
+	{
+		if (*((unsigned char *)s + i) == (unsigned char)c)
+			return (((void *)s + i));
+		i++;
+	}
+	return (NULL);
 }

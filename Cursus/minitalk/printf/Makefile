@@ -3,33 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
+#    By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/05 17:41:35 by akabbadj          #+#    #+#              #
-#    Updated: 2023/03/05 18:03:22 by akabbadj         ###   ########.fr        #
+#    Created: 2022/11/17 21:23:50 by akabbadj          #+#    #+#              #
+#    Updated: 2022/11/17 21:23:54 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+NAME = libftprintf.a
 
-NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = ft_printf.c ft_putunsigned.c ft_puthex.c ft_putptr.c ft_putpercent.c ft_putnbr.c ft_putstr.c ft_putchar.c ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_strdup.c ft_memmove.c
+OBJS = $(SRCS:.c=.o)
+
+$(NAME): $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 all : $(NAME)
 
-SRCS = swap.c stack_helpers.c small_sort.c rotate.c \
-	reverse_rotate.c push.c main.c large_sort.c initializer.c  \
-	helpers.c error_handler.c args_validator.c args_validator_utiles.c
-
-OBJS = $(SRCS:.c=.o)
-
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	$(MAKE) clean
-
 clean :
-	rm -f $(OBJS)
+	rm -rf $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
-	
+	rm -rf $(NAME)
+
 re : fclean all
+
+.PHONY:		all clean fclean re

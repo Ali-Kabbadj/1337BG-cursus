@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 07:25:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:53:21 by akabbadj         ###   ########.fr       */
+/*   Created: 2022/10/06 22:42:29 by akabbadj          #+#    #+#             */
+/*   Updated: 2022/11/04 23:13:16 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-
-void free_stack(t_stack **stack)
+void	ft_bzero(void *s, size_t n)
 {
-    (void)stack;
-}
-
-void exit_program(t_stack **stack_a, t_stack **stack_b)
-{
-    if (stack_a == NULL || *stack_a)
-        free_stack(stack_a);
-    if (stack_b == NULL || *stack_b)
-        free_stack(stack_b);
-    write(2,"Error\n",6);
-    exit(1);
+	if (n > 0)
+		ft_memset(s, '\0', n);
 }
