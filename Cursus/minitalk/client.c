@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:37:39 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/06 19:50:44 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:12:55 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,28 @@
 #include <signal.h>
 #include <stdio.h>
 
-int pause_pros;
-
 void handle_server_notif(int sig)
 {
     static int bytes_cnt;
-    if(sig == SIGUSR2)
+    static int bit;
+    
+    if (sig == SIGUSR1)
     {
-        (void)sig;
-        bytes_cnt++;
-        ft_printf("server has recieved %d byte(s)\n",bytes_cnt);
+        bit++;
+        ft_printf("Server has recieved %d bit",bit);
+        ft_printf(" of byte No %d.\n",bytes_cnt);
+        if (bit == 8)
+        {
+            bytes_cnt++;
+            bit = 0;
+            ft_printf("\n\n");
+        }
     }
-    else if (sig == SIGUSR1)
-        pause_pros = !pause_pros;
+    else if (sig == SIGUSR2)
+    {
+        ft_printf("Something When wrong on the server's side");
+        exit(0);
+    }    
 }
 
 static int ft_check_pid(char *PID)
@@ -52,11 +61,13 @@ void send_bits(int c, int i, int PID)
         send_bits(c ,i, PID);
         if ((c & (1 << i)) == 0)
             kill(PID, SIGUSR1);
-        else    
+        else
             kill(PID, SIGUSR2);
-        usleep(300);
+        usleep(22500);
     }
 }
+
+
 
 void check_args(int ac, char **av)
 {
@@ -72,27 +83,23 @@ void check_args(int ac, char **av)
     }
 }
 
+
+
 int main(int ac, char **av)
 {
     int PID;
     int i;
-    int len;
     
-    signal(SIGUSR2, handle_server_notif);
-    signal(SIGUSR1, handle_server_notif);
     check_args(ac, av);
     i = 0;
     PID = ft_atoi(av[1]); 
-    len = ft_strlen(av[2]);
-    send_bits(len, -1, PID);
+    signal(SIGUSR2, handle_server_notif);
+    signal(SIGUSR1, handle_server_notif);
     while (av[2][i])
     {
-        if (!pause_pros)
-        {
-            send_bits(av[2][i], -1, PID);
-            i++;
-        }else
-            usleep(300);
+        send_bits(av[2][i], -1, PID);
+        i++;
     }
     send_bits('\n', -1, PID);
+    return (0);
 }
