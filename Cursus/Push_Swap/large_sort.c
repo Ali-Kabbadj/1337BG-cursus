@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:45:36 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/05 17:52:06 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:53:06 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void push_all_to_stack_b(t_stack **stack_a, t_stack **stack_b)
         if ((*stack_a)->index < stacksize / 2)
         {
             do_pb(stack_a,stack_b);
+            stacksize--;
             push_count++;
         }
         else

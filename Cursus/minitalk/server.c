@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:37:42 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/08 09:03:57 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:33:18 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 	int					pid;
 	struct sigaction	sa;
 
-	memset(&sa, 0, sizeof(sa));
+	ft_memset(&sa, 0, sizeof(sa));
 	sa.sa_sigaction = default_handler;
 	pid = getpid();
 	ft_printf("%d\n", pid);

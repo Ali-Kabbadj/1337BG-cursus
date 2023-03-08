@@ -8,6 +8,8 @@ void push_swap(t_stack **stack_a, t_stack **stack_b, int stacksize)
         do_sa(stack_a);
     else if (stacksize == 3)
         small_sort(stack_a);
+    else if (stacksize <= 5)
+        medium_sort(stack_a, stack_b);
     else
         large_sort(stack_a, stack_b);
 }
@@ -20,12 +22,12 @@ void printstack(t_stack *stack)
     tmp = stack;
     while (tmp)
     {
-        printf("\nvalue :%d\nindex: %d\ntarget_pos: %d\npos :%d\n",tmp->value, tmp->index, tmp->target_pos, tmp->pos);
+        ft_printf("\nvalue :%d\nindex: %d\ntarget_pos: %d\npos :%d\n",tmp->value, tmp->index, tmp->target_pos, tmp->pos);
         if (tmp->next)
-            printf("next->value:%d\n\n", (tmp->next)->value);
+            ft_printf("next->value:%d\n\n", (tmp->next)->value);
         else
         {
-            printf("next->value : NULL");
+            ft_printf("next->value : NULL");
         }
         tmp = tmp->next;
     }
@@ -36,25 +38,30 @@ void printstack(t_stack *stack)
 
 int main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
-    int stacksize;
+    t_stack     *stack_a;
+    t_stack     *stack_b;
+    int         stacksize;
+    int         error_id;
 
     if (argc <= 2)
-        return(0);
-    if (!is_valid_args(argc, argv))
-        exit_program(&stack_a, &stack_b);
+        exit_program(&stack_a, &stack_b, TOO_FEW_ARGS_ID);
+    if ((error_id = is_valid_args(argc, argv)) != TRUE)
+        exit_program(&stack_a, &stack_b, error_id);
     stack_b = NULL;
     stack_a = initialize_stack(argc, argv);
     stacksize = get_stack_size(stack_a);
     set_stack_indexes(stack_a);
 
-    printstack(stack_a);
+    // ft_printf("\n\n------Before----\n\n");
+    // printstack(stack_a);
+
     push_swap(&stack_a, &stack_b, stacksize);
-    printf("\nAfter----\n");
-    printstack(stack_a);
-    printf("\n\n|||||||||||\n\n");
-    printstack(stack_b);
+
+    // ft_printf("\n\n------After----\n\n");
+    // ft_printf("\n\n------Stack A----\n\n");
+    // printstack(stack_a);
+    // ft_printf("\n\n------Stack B----\n\n");
+    // printstack(stack_b);
     
     return (0);
 }

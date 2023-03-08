@@ -21,18 +21,33 @@ void set_stack_indexes(t_stack *stack)
     }
 }
 
+static int it_out_of_int_range(char *s)
+{
+    char    *min;
+    char    *max;
+
+    min = ft_itoa(INT_MIN);
+    max = ft_itoa(INT_MAX);
+    if (( ft_strlen(s) >= 11 && ft_strcmp(min, s) < 0) || ( ft_strlen(s) >= 10 && ft_strcmp(max, s) < 0))
+        return (1);
+    free(min);
+    free(max);
+    return (0);
+}
+
 t_stack *initialize_stack(int argc, char **argv)
 {
     int i;
     t_stack *stack_a;
-    long int nb_value;
+    int nb_value;
     
     i = 1;
+    nb_value = 0;
     while (i < argc)
     {
-        nb_value = atoi(argv[i]);
-        if (nb_value > INT_MAX || nb_value < INT_MIN)
-            exit_program(&stack_a, NULL);
+        if (it_out_of_int_range(argv[i]))
+            exit_program(&stack_a, NULL, -3);
+        nb_value = ft_atoi(argv[i]);
         if (i == 1)
             stack_a = create_new_stack_node(nb_value);
         else

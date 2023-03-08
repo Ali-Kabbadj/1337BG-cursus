@@ -3,11 +3,11 @@
 
 #include <stdlib.h>
 #include <limits.h>
-#include <unistd.h> 
+#include "./libft/libft.h"
+#include "./printf/ft_printf.h"
+#include "push_swap_macros.h"
 
-//tmp includes 
-#include <stdio.h>
-//end tmp includes
+
 typedef struct s_stack
 {
     int value;
@@ -72,10 +72,14 @@ int is_valid_args(int argc, char **argv);
 int is_duplicate(char *s ,int argc, char **argv, int s_index);
 
 /*Argument validator Helper*/
-int nbstrcmp(char *s1 , char *s2);
+int is_same_integer_str(char *s1 , char *s2);
 int is_integer(char *s);
 
 /*Error Handler*/
 void free_stack(t_stack **stack);
-void exit_program(t_stack **stack_a, t_stack **stack_b);
+void exit_program(t_stack **stack_a, t_stack **stack_b, int error_id);
+
+
+void printstack(t_stack *stack);
+void medium_sort(t_stack **stack_a, t_stack **stack_b);
 #endif

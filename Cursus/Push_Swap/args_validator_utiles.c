@@ -6,13 +6,13 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 06:58:26 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/12/16 07:42:27 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:04:15 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int nbstrcmp(char *s1 , char *s2)
+int is_same_integer_str(char *s1 , char *s2)
 {
     int i;
     int j;
@@ -30,12 +30,12 @@ int nbstrcmp(char *s1 , char *s2)
             i++;
             j++;
         }
-        if (s1[i] != s2[j])
-          return (1);
+        if (ft_strcmp(&s1[i],&s2[j]) != 0)
+            return(FALSE);
         i++;
         j++;
     }
-    return (0);
+    return (TRUE);
 }
 
 int is_integer(char *s)
@@ -48,8 +48,8 @@ int is_integer(char *s)
         if (s[i] == '+' || s[i] == '-')
             i++;
         if (s[i] < '0' || s[i] > '9')
-            return (0);
+            return (FALSE);
         i++;
     }
-    return (1);
+    return (TRUE);
 }

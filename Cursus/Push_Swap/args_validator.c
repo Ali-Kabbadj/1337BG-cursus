@@ -6,12 +6,11 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 06:46:44 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/12/16 08:11:04 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:37:58 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int is_valid_args(int argc, char **argv)
 {
@@ -20,11 +19,13 @@ int is_valid_args(int argc, char **argv)
     i = 1;
     while (i < argc)
     {
-        if (is_duplicate(argv[i], argc, argv, i)  || !is_integer(argv[i]))
-            return (0);
+        if (is_duplicate(argv[i], argc, argv, i))
+            return(DUPLICATE_DIGIT_ID);
+        else if (!is_integer(argv[i]))
+            return (ARG_INVALID_ID);
         i++;
     }
-    return (1);
+    return (TRUE);
 }
 
 int is_duplicate(char *s ,int argc, char **argv, int s_index)
@@ -34,9 +35,9 @@ int is_duplicate(char *s ,int argc, char **argv, int s_index)
     i = 1;
     while (i < argc)
     {
-        if (i != s_index && !nbstrcmp(s, argv[i]))
-            return (1);
+        if (i != s_index && is_same_integer_str(s, argv[i]))
+            return (TRUE);
         i++;
     }
-    return (0);
+    return (FALSE);
 }
