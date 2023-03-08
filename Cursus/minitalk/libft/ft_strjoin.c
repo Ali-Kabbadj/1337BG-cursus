@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 04:44:38 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/04 22:08:02 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:02:29 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s2)
 		return (0);
 	if (!s1)
-		return(ft_strdup(s2));
+		return (ft_strdup(s2));
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2) + 1;
 	res = malloc((s1len + s2len) * sizeof(char));

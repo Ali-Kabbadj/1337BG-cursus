@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:37:39 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/07 18:38:24 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:04:35 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_server_notif(int sig)
 	static int	bytes_cnt;
 	static int	bit;
 
-	if (sig == SIGUSR1)
+	if (sig == SIGUSR2)
 	{
 		bit++;
 		ft_printf("Server has recieved %d bit", bit);
@@ -32,11 +32,7 @@ void	handle_server_notif(int sig)
 			ft_printf("\n\n");
 		}
 	}
-	else if (sig == SIGUSR2)
-	{
-		ft_printf("Something When wrong on the server's side");
-		exit(0);
-	}
+	usleep(500);
 }
 
 static int	ft_check_pid(char *PID)
@@ -63,7 +59,7 @@ void	send_bits(int c, int i, int PID)
 			kill(PID, SIGUSR1);
 		else
 			kill(PID, SIGUSR2);
-		usleep(22500);
+		usleep(27500);
 	}
 }
 
