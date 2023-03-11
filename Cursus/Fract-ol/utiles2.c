@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:51:14 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/02 16:08:51 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/10 00:40:57 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ static void	decide_color(t_fract *fract)
 	blue = 0;
 	transparency = 0;
 	if (fract->vars.switch_color_formula == 0)
-		smooth_color = fract->vars.iterations + (log(log(200))
-				- (log(log(sqrt(absolute_value(fract->vars.z))))) / log(2));
+		smooth_color = fract->vars.iterations + (log(log(2))- (log(log(sqrt(absolute_value(fract->vars.z))))) / log(2));
 	else
-		smooth_color = fract->vars.iterations + (log(log(200))
+		smooth_color = fract->vars.iterations + (log(log(2))
 				- (log(log(sqrt(absolute_value(fract->vars.z)))))
 				/ log(fract->vars.e_z));
 	transparency = fract->vars.colors.transparency * smooth_color;

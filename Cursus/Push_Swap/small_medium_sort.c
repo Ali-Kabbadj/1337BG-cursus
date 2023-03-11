@@ -6,7 +6,7 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:12:01 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/08 18:49:25 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:16:42 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,34 @@ int get_min_index(t_stack *stack)
     return (min_index);
 }
 
+int get_next_min_index(t_stack *stack)
+{
+    int next_min_index;
+
+    next_min_index = get_min_index(stack);
+    return (next_min_index +  1);
+}
+
+int get_next_min_index_pos(t_stack *stack)
+{
+    t_stack *tmp;
+    int     next_min_index;
+    int     min_idx;
+
+    tmp = stack;
+    min_idx = get_min_index(stack);
+    next_min_index = get_next_min_index(stack);
+    while (tmp->next)
+    {
+        if (tmp->index == next_min_index)
+        {
+            return (tmp->pos);
+        }
+        tmp = tmp->next;
+    }   
+    return (0);
+}
+
 int get_min_index_pos(t_stack *stack)
 {
     t_stack *tmp;
@@ -58,56 +86,67 @@ int get_min_index_pos(t_stack *stack)
             return (tmp->pos);
         tmp = tmp->next;
     }
-    return (0);
+    return (get_stack_size(stack) - 1);
 }
 
 void get_closest_min_index_to_top(t_stack **stack)
 {
-    t_stack **tmp;
     int move_amount;
     int stack_size;
     int min_index_pos;
+    int next_min_idx_pos;
     
     stack_size = get_stack_size(*stack);
     min_index_pos = get_min_index_pos(*stack);
+    next_min_idx_pos = get_next_min_index_pos(*stack);
     move_amount = stack_size - min_index_pos;
-    
-    if (min_index_pos <= 2)
+    if (next_min_idx_pos == 1 && min_index_pos > stack_size / 2) 
+        do_sa(stack);
+    if (min_index_pos <= get_stack_size(*stack) / 2)
     {
-        while (move_amount > -1)
-        {
+        if (min_index_pos == 1)
+            do_sa(stack);
+        else
             do_ra(stack);
-            move_amount--;
-        }
     }
-    else 
-    {
-        while (move_amount > -1)
-        {
-            do_rra(stack);
-            move_amount--;
-        }
-    }
-    tmp = stack;
-    
-    
+    else
+        do_rra(stack);
 }
+
+// void get_closest_min_index_to_top(t_stack **stack)
+// {
+//     int move_amount;
+//     int stack_size;
+//     int min_index_pos;
+//     int next_min_idx_pos;
+    
+//     stack_size = get_stack_size(*stack);
+//     min_index_pos = get_min_index_pos(*stack);
+//     next_min_idx_pos = get_next_min_index_pos(*stack);
+//     move_amount = stack_size - min_index_pos;
+//     if (next_min_idx_pos == 1 && min_index_pos > stack_size / 2) 
+//         do_sa(stack);
+//     if (min_index_pos <= get_stack_size(*stack) / 5)
+//     {
+//         if (min_index_pos == 1)
+//             do_sa(stack);
+//         else
+//             do_ra(stack);
+//     }
+//     else
+//         do_rra(stack);
+// }
+
 
 void medium_sort(t_stack **stack_a, t_stack **stack_b)
 {
     while (get_stack_size(*stack_a) > 3)
     {
         set_pos(stack_a);
-        if ((*stack_a)->index ==  get_min_index(*stack_a) && (*stack_a)->index <= 2)
+        if ((*stack_a)->index ==  get_min_index(*stack_a) && (*stack_a)->index <= get_stack_size(*stack_a) / 2)
             do_pb(stack_a,stack_b);
         else
-        {
-            // if ((*stack_a)->next != NULL && (*stack_a)->next->index == get_min_index((*stack_a)->next) && (*stack_a)->next->index <= 2)
-            //     do_sa(stack_a);
-            // else
-            //     do_ra(stack_a);
             get_closest_min_index_to_top(stack_a);
-        }
     }
     small_sort(stack_a);
     while (get_stack_size(*stack_b) > 0)

@@ -15,6 +15,7 @@ typedef struct s_stack
     int pos;
     int target_pos;
     struct s_stack *next;
+    int is_in_lis;
 }   t_stack;
 
 /* main */
@@ -82,4 +83,8 @@ void exit_program(t_stack **stack_a, t_stack **stack_b, int error_id);
 
 void printstack(t_stack *stack);
 void medium_sort(t_stack **stack_a, t_stack **stack_b);
+int get_min_index(t_stack *stack);
+void get_closest_min_index_to_top(t_stack **stack);
+
+
 #endif

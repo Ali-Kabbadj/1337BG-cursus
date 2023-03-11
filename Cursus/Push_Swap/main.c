@@ -22,7 +22,7 @@ void printstack(t_stack *stack)
     tmp = stack;
     while (tmp)
     {
-        ft_printf("\nvalue :%d\nindex: %d\ntarget_pos: %d\npos :%d\n",tmp->value, tmp->index, tmp->target_pos, tmp->pos);
+        ft_printf("\nvalue :%d\nindex: %d\ntarget_pos: %d\npos :%d\n is_in_lis :%d\n",tmp->value, tmp->index, tmp->target_pos, tmp->pos, tmp->is_in_lis);
         if (tmp->next)
             ft_printf("next->value:%d\n\n", (tmp->next)->value);
         else

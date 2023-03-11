@@ -8,6 +8,21 @@ int char_is_digit(char c)
     return (0);
 }
 
+void set_pos(t_stack **stack)
+{
+    int i;
+    t_stack *tmp;
+
+    i = 0;
+    tmp = *stack;
+    while (tmp)
+    {
+        tmp->pos = i;
+        tmp = tmp->next;
+        i++;
+    }
+}
+
 int ft_atoi(const char *s)
 {
     int i;
