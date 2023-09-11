@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "includePath": [
+                //"__SIZE_TYPE__=long unsigned int",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/includes/**",
+                "${workspaceFolder}/libft/**",
+                "${workspaceFolder}/printf/**"
+            ],
+            "defines": [
+                "FOO",
+                "BAR=100"
+            ],
+            "cStandard": "c23",
+            "cppStandard": "c++23",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "compilerPath": "/mnt/c/msys64/mingw64/bin/gcc.exe"
+        }
+    ],
+    "version": 4
+}

@@ -6,9 +6,10 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 06:02:09 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/04 01:58:39 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/09/11 01:00:42 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_get_word_count(const char *str, char wordsep)

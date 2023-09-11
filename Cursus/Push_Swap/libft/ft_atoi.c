@@ -6,10 +6,9 @@
 /*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 01:16:48 by akabbadj          #+#    #+#             */
-/*   Updated: 2022/11/04 23:01:56 by akabbadj         ###   ########.fr       */
+/*   Updated: 2023/09/10 22:23:23 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
 static int	set_sign(unsigned char c)
 {
@@ -21,9 +20,9 @@ static int	set_sign(unsigned char c)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		sign;
-	int		res;
+	int	i;
+	int	sign;
+	int	res;
 
 	i = 0;
 	sign = 1;

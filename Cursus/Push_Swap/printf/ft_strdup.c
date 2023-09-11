@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akabbadj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:23:34 by akabbadj          #+#    #+#             */
-/*   Updated: 2023/03/01 16:14:21 by akabbadj         ###   ########.fr       */
+/*   Updated: 2022/11/17 21:23:37 by akabbadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 static size_t	ft_strlen(const char *s)

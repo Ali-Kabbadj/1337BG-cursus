@@ -6,12 +6,13 @@
 #    By: akabbadj <akabbadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 09:09:12 by akabbadj          #+#    #+#              #
-#    Updated: 2023/03/08 10:39:22 by akabbadj         ###   ########.fr        #
+#    Updated: 2023/08/30 10:27:14 by akabbadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra
 
 SRCS = ft_islower.c ft_memmove.c ft_strdup.c ft_strnstr.c ft_atoi.c \
 	   ft_isprint.c ft_memset.c ft_striteri.c ft_strrchr.c \
