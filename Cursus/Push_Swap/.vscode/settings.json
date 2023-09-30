@@ -1,0 +1,39 @@
+{
+	"files.associations": {
+		"*.c": "c",
+		"*.h": "c",
+		"optional": "c",
+		"ratio": "c",
+		"system_error": "c",
+		"array": "c",
+		"functional": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"utility": "c",
+		"variant": "c",
+		"chrono": "c",
+		"random": "c",
+		"limits": "c",
+		"algorithm": "c",
+		"semaphore": "c"
+	},
+	"[c]": {
+		"editor.defaultFormatter": "keyhr.42-c-format"
+	},
+	"[h]": {
+		"editor.defaultFormatter": "keyhr.42-c-format"
+	},
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}/**",
+		"${workspaceFolder}/includes/**",
+		"${workspaceFolder}/libft/**",
+		"${workspaceFolder}/printf/**",
+		"/usr/bin/gcc/"
+	],
+	"C_Cpp.intelliSenseEngine": "default",
+	"C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+		"clang-analyzer-core.NullDereference",
+		"clang-analyzer-deadcode.DeadStores"
+	],
+	"C_Cpp.default.compilerPath": "/usr/bin/gcc-11"
+}

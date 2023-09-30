@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Ubuntu",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/includes/**",
+                "${workspaceFolder}/libft/**",
+                "${workspaceFolder}/printf/**"
+            ],
+            "defines": [],
+            "cStandard": "c23",
+            "intelliSenseMode": "${default}",
+            "compilerPath": "/mnt/c/msys64/mingw64/bin/gcc.exe",
+            "cppStandard": "c++23"
+        }
+    ],
+    "version": 4
+}
